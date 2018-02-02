@@ -101,6 +101,7 @@ class ZPhotoMutilPickerHostController: UICollectionViewController {
 private extension ZPhotoMutilPickerHostController {
     
     @objc func clickCancelButton() {
+
         delegate?.photoMutilPickerHostControllerDidCancel(self)
     }
     
@@ -197,6 +198,7 @@ private extension ZPhotoMutilPickerHostController {
     }
     
     func differencesBetweenRects(_ old: CGRect, _ new: CGRect) -> (added: [CGRect], removed: [CGRect]) {
+
         if old.intersects(new) {
             var added = [CGRect]()
             if new.maxY > old.maxY {
@@ -248,6 +250,7 @@ extension ZPhotoMutilPickerHostController: PhotoPickerSelectedCountViewDelegate 
 extension ZPhotoMutilPickerHostController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
         return fetchResult.count
     }
     
@@ -267,6 +270,7 @@ extension ZPhotoMutilPickerHostController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+
         if selectedIndexs.count >= maxCount {
             return false
         } else {
@@ -299,6 +303,7 @@ extension ZPhotoMutilPickerHostController {
 }
 
 extension ZPhotoMutilPickerHostController: UICollectionViewDelegateFlowLayout {
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.bounds.size.width, height: 50)
     }

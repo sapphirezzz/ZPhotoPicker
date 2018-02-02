@@ -10,28 +10,29 @@ import UIKit
 
 class ZPhotoSinglePickerController: UIImagePickerController {
     
+    var imageSelectedHandler: ((_ image: UIImage?) -> Void)?
+    var cancelledHandler: (() -> Void)?
+
     deinit {
         print("\(self) \(#function)")
     }
-    
-    weak var photoPickerDelegate: ZPhotoPickerDelegate?
 }
 
 extension ZPhotoSinglePickerController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
 
         let key = picker.allowsEditing ? UIImagePickerControllerEditedImage: UIImagePickerControllerOriginalImage
         let image = info[key] as? UIImage
         self.dismiss(animated: true, completion: { [weak self] in
-            self?.photoPickerDelegate?.zPhotoPickerDidFinishPickingImage(image)
+            self?.imageSelectedHandler?(image)
         })
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         
         self.dismiss(animated: true, completion: { [weak self] in
-            self?.photoPickerDelegate?.zPhotoPickerDidCancelPickingImage()
+            self?.cancelledHandler?()
         })
     }
 }

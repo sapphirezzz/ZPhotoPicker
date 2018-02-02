@@ -10,7 +10,8 @@ import UIKit
 
 class ZPhotoMutilPickerController: UINavigationController {
     
-    private weak var pickerDelegate: ZPhotoPickerDelegate?
+    var imagesSelectedHandler: ((_ image: [UIImage]) -> Void)?
+    var cancelledHandler: (() -> Void)?
 
     deinit {
         print("\(self) \(#function)")
@@ -24,12 +25,13 @@ class ZPhotoMutilPickerController: UINavigationController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
-    convenience init(delegate: ZPhotoPickerDelegate, maxCount: Int) {
+    convenience init(imagesSelectedHandler: ((_ image: [UIImage]) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil, maxCount: Int) {
         let vc = ZPhotoMutilPickerHostController(collectionViewLayout: UICollectionViewFlowLayout())
         self.init(rootViewController: vc)
+        self.imagesSelectedHandler = imagesSelectedHandler
+        self.cancelledHandler = cancelledHandler
         vc.delegate = self
         vc.maxCount = maxCount
-        self.pickerDelegate = delegate
     }
 
     override init(rootViewController: UIViewController) {
@@ -41,13 +43,13 @@ extension ZPhotoMutilPickerController: ZPhotoMutilPickerHostControllerDelegate {
     
     func photoMutilPickerHostController(_ controller: ZPhotoMutilPickerHostController, didFinishPickingImages images: [UIImage]) {
         self.dismiss(animated: true, completion: { [weak self] in
-            self?.pickerDelegate?.zPhotoPickerDidFinishPickingImages(images)
+            self?.imagesSelectedHandler?(images)
         })
     }
     
     func photoMutilPickerHostControllerDidCancel(_ controller: ZPhotoMutilPickerHostController) {
         self.dismiss(animated: true, completion: { [weak self] in
-            self?.pickerDelegate?.zPhotoPickerDidCancelPickingImage()
+            self?.cancelledHandler?()
         })
     }
 }
