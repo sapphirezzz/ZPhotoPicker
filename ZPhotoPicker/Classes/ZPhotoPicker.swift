@@ -35,6 +35,11 @@ public class ZPhotoPicker {
     
     private class func pickWithSinglePicker(onViewController controller: UIViewController, allowsEditing: Bool, sourceType: UIImagePickerControllerSourceType, imageSelectedHandler: ((_ image: UIImage) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil) {
 
+        guard UIImagePickerController.isSourceTypeAvailable(sourceType) else {
+            alertUnsupportTypeError(onViewController: controller)
+            return
+        }
+        
         let pickerVC = ZPhotoSinglePickerController()
         pickerVC.allowsEditing = allowsEditing
         pickerVC.sourceType = sourceType
@@ -42,5 +47,12 @@ public class ZPhotoPicker {
         pickerVC.imageSelectedHandler = imageSelectedHandler
         pickerVC.cancelledHandler = cancelledHandler
         controller.present(pickerVC, animated: true, completion: nil)
+    }
+    
+    private class func alertUnsupportTypeError(onViewController controller: UIViewController) {
+
+        let alertVC = UIAlertController(title: "不支持的方式", message: "该设备不支持以该方式选取图片~", preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "知道了", style: .default, handler: nil))
+        controller.present(alertVC, animated: true, completion: nil)
     }
 }
