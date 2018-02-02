@@ -16,7 +16,7 @@ public class ZPhotoPicker {
         case multiPhotoes(maxCount: Int)
     }
 
-    public class func pickPhoto(onViewController controller: UIViewController, type: PhotoPickType, imageSelectedHandler: ((_ image: UIImage?) -> Void)? = nil, imagesSelectedHandler: ((_ image: [UIImage]) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil) {
+    public class func pickPhoto(onViewController controller: UIViewController, type: PhotoPickType, imageSelectedHandler: ((_ image: UIImage) -> Void)? = nil, imagesSelectedHandler: ((_ image: [UIImage]) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil) {
 
         switch type {
         case let .camera(allowsEditing):
@@ -33,7 +33,7 @@ public class ZPhotoPicker {
         }
     }
     
-    private class func pickWithSinglePicker(onViewController controller: UIViewController, allowsEditing: Bool, sourceType: UIImagePickerControllerSourceType, imageSelectedHandler: ((_ image: UIImage?) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil) {
+    private class func pickWithSinglePicker(onViewController controller: UIViewController, allowsEditing: Bool, sourceType: UIImagePickerControllerSourceType, imageSelectedHandler: ((_ image: UIImage) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil) {
 
         let pickerVC = ZPhotoSinglePickerController()
         pickerVC.allowsEditing = allowsEditing
