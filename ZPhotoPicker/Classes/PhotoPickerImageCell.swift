@@ -18,28 +18,38 @@ class PhotoPickerImageCell: UICollectionViewCell {
         let size = CGSize(width: side, height: side)
         return size
     }
+    
+    override func awakeFromNib() {
+        
+        super.awakeFromNib()
+        backgroundColor = UIColor.white
+    }
 
     override func draw(_ rect: CGRect) {
 
         super.draw(rect)
         
-        let imageWidth = image.size.width
-        let imageHeight = image.size.height
         let viewWidth = rect.size.width
 
-        let imageRect: CGRect = {
+        if let image = image {
 
-            if imageWidth > imageHeight {
-                let a = ((imageWidth / imageHeight - 1) * viewWidth) / 2
-                return CGRect(x: -a, y: 0, width: 2 * a + viewWidth, height: viewWidth)
-            } else if imageWidth < imageHeight {
-                let a = ((imageHeight / imageWidth - 1) * viewWidth) / 2
-                return CGRect(x: 0, y: -a, width: viewWidth, height: 2 * a + viewWidth)
-            } else {
-                return rect
-            }
-        }()
-        image.draw(in: imageRect)
+            let imageWidth = image.size.width
+            let imageHeight = image.size.height
+            
+            let imageRect: CGRect = {
+                
+                if imageWidth > imageHeight {
+                    let a = ((imageWidth / imageHeight - 1) * viewWidth) / 2
+                    return CGRect(x: -a, y: 0, width: 2 * a + viewWidth, height: viewWidth)
+                } else if imageWidth < imageHeight {
+                    let a = ((imageHeight / imageWidth - 1) * viewWidth) / 2
+                    return CGRect(x: 0, y: -a, width: viewWidth, height: 2 * a + viewWidth)
+                } else {
+                    return rect
+                }
+            }()
+            image.draw(in: imageRect)
+        }
 
         if self.isSelected {
             let context = UIGraphicsGetCurrentContext()
@@ -52,7 +62,7 @@ class PhotoPickerImageCell: UICollectionViewCell {
     }
 
     var representedAssetIdentifier: String!
-    var image: UIImage! {
+    var image: UIImage? {
         didSet {
             setNeedsDisplay()
         }
