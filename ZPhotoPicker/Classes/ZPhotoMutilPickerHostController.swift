@@ -251,7 +251,11 @@ extension ZPhotoMutilPickerHostController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        return fetchResult.count
+        if #available(iOS 10.0, *) {
+            return fetchResult.count // iOS 9.0在未授权时，fetchResult未开始获取图片，调用该属性会导致崩溃
+        } else {
+            return fetchResult.countOfAssets(with: .image)
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -295,7 +299,11 @@ extension ZPhotoMutilPickerHostController {
         
         if kind == UICollectionElementKindSectionFooter {
             let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: PhotoPickerImageCountView.reuseIdentifier, for: indexPath) as! PhotoPickerImageCountView
-            view.count = fetchResult.count
+            if #available(iOS 10.0, *) {
+                view.count = fetchResult.count
+            } else {
+                view.count = fetchResult.countOfAssets(with: .image)
+            }
             return view
         }
         return UICollectionReusableView()
