@@ -17,10 +17,20 @@ class ViewController: UIViewController {
     
     @IBAction func clickAddButton(_ sender: Any) {
         
-        let imageSelectedHandler: ((UIImage) -> Void) = { [weak self] image in
+//        let vc = ZPhotoCropperController()
+//        vc.image = UIImage(named: "squre")
+//        vc.imageCroppedHandler = { [weak self] image in
+//            self?.imageView.image = image
+//        }
+//        self.present(vc, animated: true, completion: nil)
+//        return
+//
+//
+        
+        let imagePickedHandler: ((UIImage) -> Void) = { [weak self] image in
             self?.imageView.image = image
         }
-        let imagesSelectedHandler: (([UIImage]) -> Void) = { [weak self] images in
+        let imagesPickedHandler: (([UIImage]) -> Void) = { [weak self] images in
             self?.images = images
             self?.currentImagesIndex = 0
             self?.imageView.image = images.first
@@ -32,23 +42,23 @@ class ViewController: UIViewController {
         let alertVC = UIAlertController(title: nil, message: "请选择类型", preferredStyle: UIDevice.current.model == "iPad" ? .alert : .actionSheet)
         let cameraAction = UIAlertAction(title: "拍照不裁剪", style: .default) { (_) in
             
-            ZPhotoPicker.pickPhoto(onViewController: self, type: .camera(allowsEditing: false), imageSelectedHandler: imageSelectedHandler, cancelledHandler: cancelledHandler)
+            ZPhotoPicker.pickPhoto(onViewController: self, type: .camera(allowsEditing: false), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
         }
         let cameraEditableAction = UIAlertAction(title: "拍照需裁剪", style: .default) { (_) in
             
-            ZPhotoPicker.pickPhoto(onViewController: self, type: .camera(allowsEditing: true), imageSelectedHandler: imageSelectedHandler, cancelledHandler: cancelledHandler)
+            ZPhotoPicker.pickPhoto(onViewController: self, type: .camera(allowsEditing: true), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
         }
         let photoAction = UIAlertAction(title: "选取照片不裁剪", style: .default) { (_) in
             
-            ZPhotoPicker.pickPhoto(onViewController: self, type: .singlePhoto(allowsEditing: false), imageSelectedHandler: imageSelectedHandler, cancelledHandler: cancelledHandler)
+            ZPhotoPicker.pickPhoto(onViewController: self, type: .singlePhoto(allowsEditing: false), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
         }
         let photoEditableAction = UIAlertAction(title: "选取照片需裁剪", style: .default) { (_) in
             
-            ZPhotoPicker.pickPhoto(onViewController: self, type: .singlePhoto(allowsEditing: true), imageSelectedHandler: imageSelectedHandler, cancelledHandler: cancelledHandler)
+            ZPhotoPicker.pickPhoto(onViewController: self, type: .singlePhoto(allowsEditing: true), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
         }
         let photoesAction = UIAlertAction(title: "选取多张照片", style: .default) { (_) in
-            
-            ZPhotoPicker.pickPhoto(onViewController: self, type: .multiPhotoes(maxCount: 4), imagesSelectedHandler: imagesSelectedHandler, cancelledHandler: cancelledHandler)
+
+            ZPhotoPicker.pickPhoto(onViewController: self, type: .multiPhotoes(maxCount: 4), imagesPickedHandler: imagesPickedHandler, cancelledHandler: cancelledHandler)
         }
         let cancelAction = UIAlertAction(title: "取消", style: .cancel)
         alertVC.addAction(cameraAction)

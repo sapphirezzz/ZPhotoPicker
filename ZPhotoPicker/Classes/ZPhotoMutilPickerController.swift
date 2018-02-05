@@ -10,8 +10,8 @@ import UIKit
 
 class ZPhotoMutilPickerController: UINavigationController {
     
-    var imagesSelectedHandler: ((_ image: [UIImage]) -> Void)?
-    var cancelledHandler: (() -> Void)?
+    private var imagesPickedHandler: ((_ image: [UIImage]) -> Void)?
+    private var cancelledHandler: (() -> Void)?
 
     deinit {
         print("\(self) \(#function)")
@@ -25,10 +25,10 @@ class ZPhotoMutilPickerController: UINavigationController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
-    convenience init(imagesSelectedHandler: ((_ image: [UIImage]) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil, maxCount: Int) {
+    convenience init(maxCount: Int, imagesPickedHandler: ((_ image: [UIImage]) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil) {
         let vc = ZPhotoMutilPickerHostController(collectionViewLayout: UICollectionViewFlowLayout())
         self.init(rootViewController: vc)
-        self.imagesSelectedHandler = imagesSelectedHandler
+        self.imagesPickedHandler = imagesPickedHandler
         self.cancelledHandler = cancelledHandler
         vc.delegate = self
         vc.maxCount = maxCount
@@ -39,11 +39,20 @@ class ZPhotoMutilPickerController: UINavigationController {
     }
 }
 
+extension ZPhotoMutilPickerController {
+    
+    class func pickPhotoes(onPresentingViewController controller: UIViewController, maxCount: Int, imagesPickedHandler: @escaping (_ image: [UIImage]) -> Void, cancelledHandler: (() -> Void)? = nil) {
+
+        let vc = ZPhotoMutilPickerController(maxCount: maxCount, imagesPickedHandler: imagesPickedHandler, cancelledHandler: cancelledHandler)
+        controller.present(vc, animated: true, completion: nil)
+    }
+}
+
 extension ZPhotoMutilPickerController: ZPhotoMutilPickerHostControllerDelegate {
     
     func photoMutilPickerHostController(_ controller: ZPhotoMutilPickerHostController, didFinishPickingImages images: [UIImage]) {
         self.dismiss(animated: true, completion: { [weak self] in
-            self?.imagesSelectedHandler?(images)
+            self?.imagesPickedHandler?(images)
         })
     }
     

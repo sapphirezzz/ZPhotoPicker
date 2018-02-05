@@ -1,5 +1,5 @@
 //
-//  ZPhotoMutilPickerHostController.swift
+//  ZPhotoSinglePickerHostController.swift
 //  hhh
 //
 //  Created by Zack･Zheng on 2018/2/1.
@@ -9,25 +9,15 @@
 import UIKit
 import Photos
 
-protocol ZPhotoMutilPickerHostControllerDelegate: class {
+class ZPhotoSinglePickerHostController: UICollectionViewController {
     
-    func photoMutilPickerHostController(_ controller: ZPhotoMutilPickerHostController, didFinishPickingImages images: [UIImage])
-    func photoMutilPickerHostControllerDidCancel(_ controller: ZPhotoMutilPickerHostController)
-}
-
-class ZPhotoMutilPickerHostController: UICollectionViewController {
-    
-    weak var delegate: ZPhotoMutilPickerHostControllerDelegate?
-
-    var maxCount: Int = 1
-    private var selectedIndexs: [Int] = [] // 使用collectionView?.indexPathsForSelectedItems的话没有保证顺序
+    weak var delegate: ZPhotoSinglePickerHostControllerDelegate?
 
     private var thumbnailSize: CGSize!
     fileprivate var previousPreheatRect = CGRect.zero
     private var fetchResult: PHFetchResult<PHAsset> = PHFetchResult()
     private var imageManager: PHCachingImageManager? // 如果未授权访问相册，此时直接 = PHCachingImageManager()会导致页面deinit时崩溃
 
-    private var bottomView: PhotoPickerSelectedCountView = PhotoPickerSelectedCountView()
     lazy private var insufficientPermissionsLabel: UILabel = {
         let view = UILabel()
         view.textAlignment = .center
@@ -51,18 +41,12 @@ class ZPhotoMutilPickerHostController: UICollectionViewController {
         super.viewDidLoad()
 
         navigationItem.title = "所有照片"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(ZPhotoMutilPickerHostController.clickCancelButton))
-        
-        collectionView?.allowsMultipleSelection = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(ZPhotoSinglePickerHostController.clickCancelButton))
+
+        collectionView?.allowsMultipleSelection = false
         collectionView?.backgroundColor = UIColor.white
         collectionView?.register(PhotoPickerImageCell.self, forCellWithReuseIdentifier: "PhotoPickerImageCell")
         collectionView?.register(PhotoPickerImageCountView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: PhotoPickerImageCountView.reuseIdentifier)
-
-        bottomView.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: bottomLayoutGuide.length + 50)
-        bottomView.maxCount = maxCount
-        bottomView.selectedCount = 0
-        bottomView.delegate = self
-        view.addSubview(bottomView)
 
         PHPhotoLibrary.requestAuthorization { [weak self] status in
             guard let `self` = self else {return}
@@ -98,19 +82,18 @@ class ZPhotoMutilPickerHostController: UICollectionViewController {
     }
 }
 
-private extension ZPhotoMutilPickerHostController {
+private extension ZPhotoSinglePickerHostController {
     
     @objc func clickCancelButton() {
-
-        delegate?.photoMutilPickerHostControllerDidCancel(self)
+        delegate?.photoSinglePickerHostControllerDidCancel(self)
     }
     
     func getPhotoes() {
-        
+
         imageManager = PHCachingImageManager()
         imageManager!.stopCachingImagesForAllAssets()
         previousPreheatRect = .zero
-        
+
         let allPhotosOptions = PHFetchOptions()
         allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         allPhotosOptions.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
@@ -127,26 +110,6 @@ private extension ZPhotoMutilPickerHostController {
 
             insufficientPermissionsLabel.frame = view.bounds
             view.addSubview(insufficientPermissionsLabel)
-        }
-    }
-    
-    func configBottomView(selectOrDeselect isSelect: Bool) {
-        
-        let preSelectCount = selectedIndexs.count
-        let wantSelectCount = isSelect ? (preSelectCount + 1) : (preSelectCount - 1)
-        bottomView.selectedCount = wantSelectCount
-
-        let height = bottomLayoutGuide.length + 50
-        if isSelect && preSelectCount == 0 {
-
-            UIView.animate(withDuration: 0.3, animations: { [weak self] in
-                self?.bottomView.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - height, width: UIScreen.main.bounds.width, height: height)
-            })
-        } else if !isSelect && wantSelectCount == 0 {
-      
-            UIView.animate(withDuration: 0.3, animations: { [weak self] in
-                self?.bottomView.frame = CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: height)
-            })
         }
     }
     
@@ -225,30 +188,7 @@ private extension ZPhotoMutilPickerHostController {
     }
 }
 
-extension ZPhotoMutilPickerHostController: PhotoPickerSelectedCountViewDelegate {
-
-    func photoPickerSelectedCountViewDidCompletePicking() {
-
-        let selectedAssets: [PHAsset] = selectedIndexs.flatMap({ fetchResult.object(at: $0) })
-        guard selectedAssets.count > 0 else {return}
-        
-        let options = PHImageRequestOptions()
-        options.isSynchronous = true
-        var selectedImages: [UIImage] = []
-        
-        // 同步获取图片
-        selectedAssets.forEach { asset in
-            imageManager?.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .default, options: options, resultHandler: { (image, _) in
-                if let image = image {
-                    selectedImages.append(image)
-                }
-            })
-        }
-        delegate?.photoMutilPickerHostController(self, didFinishPickingImages: selectedImages)
-    }
-}
-
-extension ZPhotoMutilPickerHostController {
+extension ZPhotoSinglePickerHostController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
@@ -274,31 +214,10 @@ extension ZPhotoMutilPickerHostController {
         return cell
     }
     
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-
-        if selectedIndexs.count >= maxCount {
-            return false
-        } else {
-            let asset = fetchResult.object(at: indexPath.item)
-            imageManager?.startCachingImages(for: [asset], targetSize: PHImageManagerMaximumSize, contentMode: .aspectFill, options: nil)
-            configBottomView(selectOrDeselect: true)
-            selectedIndexs.append(indexPath.item)
-            return true
-        }
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
-        
-        let asset = fetchResult.object(at: indexPath.item)
-        imageManager?.stopCachingImages(for: [asset], targetSize: PHImageManagerMaximumSize, contentMode: .aspectFill, options: nil)
-        configBottomView(selectOrDeselect: false)
-        selectedIndexs = selectedIndexs.filter { $0 != indexPath.item }
-        return true
-    }
-    
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
+
         if kind == UICollectionElementKindSectionFooter {
+
             let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: PhotoPickerImageCountView.reuseIdentifier, for: indexPath) as! PhotoPickerImageCountView
             if #available(iOS 10.0, *) {
                 view.count = fetchResult.count
@@ -309,9 +228,25 @@ extension ZPhotoMutilPickerHostController {
         }
         return UICollectionReusableView()
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let selectedAsset: PHAsset = fetchResult.object(at: indexPath.item)
+        let options = PHImageRequestOptions()
+        options.isSynchronous = true
+        
+        // 同步获取图片
+        imageManager?.requestImage(for: selectedAsset, targetSize: PHImageManagerMaximumSize, contentMode: .default, options: options, resultHandler: { [weak self] (image, _) in
+
+            guard let `self` = self else {return}
+            if let image = image {
+                self.delegate?.photoSinglePickerHostController(self, didFinishPickingImage: image)
+            }
+        })
+    }
 }
 
-extension ZPhotoMutilPickerHostController: UICollectionViewDelegateFlowLayout {
+extension ZPhotoSinglePickerHostController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.bounds.size.width, height: 50)
@@ -326,4 +261,10 @@ private extension UICollectionView {
             attribute.representedElementKind == nil ? attribute.indexPath : nil
         })
     }
+}
+
+protocol ZPhotoSinglePickerHostControllerDelegate: class {
+    
+    func photoSinglePickerHostController(_ controller: ZPhotoSinglePickerHostController, didFinishPickingImage image: UIImage)
+    func photoSinglePickerHostControllerDidCancel(_ controller: ZPhotoSinglePickerHostController)
 }

@@ -8,50 +8,82 @@
 
 import UIKit
 
-class ZPhotoSinglePickerController: UIImagePickerController {
+class ZPhotoSinglePickerController: UINavigationController {
     
-    var imageSelectedHandler: ((_ image: UIImage) -> Void)?
-    var cancelledHandler: (() -> Void)?
+    private var imagePickedHandler: ((_ image: UIImage) -> Void)?
+    private var cancelledHandler: (() -> Void)?
+    private var allowsCropping: Bool = false
 
     deinit {
         print("\(self) \(#function)")
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    convenience init(allowsCropping: Bool = false, imagePickedHandler: @escaping (_ image: UIImage) -> Void, cancelledHandler: (() -> Void)? = nil) {
+
+        let vc = ZPhotoSinglePickerHostController(collectionViewLayout: UICollectionViewFlowLayout())
+        self.init(rootViewController: vc)
+        self.allowsCropping = allowsCropping
+        self.imagePickedHandler = imagePickedHandler
+        self.cancelledHandler = cancelledHandler
+        vc.delegate = self
+    }
+    
+    override init(rootViewController: UIViewController) {
+        super.init(rootViewController: rootViewController)
+    }
 }
 
-private extension ZPhotoSinglePickerController {
+extension ZPhotoSinglePickerController {
     
-    func alertPickingImageError() {
+    class func pickPhoto(onPresentingViewController controller: UIViewController, allowsCropping: Bool = false, imageTookHandler: @escaping (_ image: UIImage) -> Void, cancelledHandler: (() -> Void)? = nil) {
 
-        let alertVC = UIAlertController(title: "获取图片失败", message: "图片获取失败，请重新选择~", preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "知道了", style: .default, handler: { [weak self] _ in
+        let vc = ZPhotoSinglePickerController(allowsCropping: allowsCropping, imagePickedHandler: imageTookHandler, cancelledHandler: cancelledHandler)
+        controller.present(vc, animated: true, completion: nil)
+    }
+}
 
-            guard let `self` = self else {return}
-            if self.allowsEditing {
-                self.popViewController(animated: true)
+extension ZPhotoSinglePickerController: ZPhotoSinglePickerHostControllerDelegate {
+
+    func photoSinglePickerHostController(_ controller: ZPhotoSinglePickerHostController, didFinishPickingImage image: UIImage) {
+
+        if allowsCropping {
+            
+            let vc = ZPhotoCropperController()
+            vc.cancelledHandler = { [weak vc] in
+                vc?.dismiss(animated: true)
             }
-        }))
-        present(alertVC, animated: true, completion: nil)
-    }
-}
+            vc.image = image
+            vc.imageCroppedHandler = { [weak vc] image in
 
-extension ZPhotoSinglePickerController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+                vc?.dismiss(animated: false) { [weak self] in
 
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+                    self?.dismiss(animated: true) { [weak self] in
+                        self?.imagePickedHandler?(image)
+                    }
+                }
+            }
+            vc.transitioningDelegate = vc
+            present(vc, animated: true)
 
-        let key = picker.allowsEditing ? UIImagePickerControllerEditedImage: UIImagePickerControllerOriginalImage
-        guard let image = info[key] as? UIImage else {
-            self.alertPickingImageError()
-            return
+        } else {
+
+            dismiss(animated: true) { [weak self] in
+                self?.imagePickedHandler?(image)
+            }
         }
-        self.dismiss(animated: true, completion: { [weak self] in
-            self?.imageSelectedHandler?(image)
-        })
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        
-        self.dismiss(animated: true, completion: { [weak self] in
+    func photoSinglePickerHostControllerDidCancel(_ controller: ZPhotoSinglePickerHostController) {
+        self.dismiss(animated: true) { [weak self] in
             self?.cancelledHandler?()
-        })
+        }
     }
 }
