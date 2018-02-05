@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ZPhotoPicker'
-  s.version          = '0.1.2'
+  s.version          = '1.0'
   s.summary          = 'A short description of ZPhotoPicker.'
 
   s.description      = <<-DESC
@@ -26,6 +26,6 @@ TODO: Add long description of the pod here.
   s.source_files = 'ZPhotoPicker/Classes/**/*'
   s.resources = ['ZPhotoPicker/Assets/images.xcassets']
 
-  s.frameworks = 'UIKit'
+  s.frameworks = 'UIKit', 'Photos'
 
 end
