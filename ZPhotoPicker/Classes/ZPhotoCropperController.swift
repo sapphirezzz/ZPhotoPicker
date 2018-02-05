@@ -71,14 +71,25 @@ class ZPhotoCropperController: UIViewController {
         view.addSubview(imageView)
         view.addSubview(cropView)
         view.addSubview(toolBar)
+        
+        toolBar.translatesAutoresizingMaskIntoConstraints = false
+        let left: NSLayoutConstraint = toolBar.leftAnchor.constraint(equalTo: view.leftAnchor)
+        let right: NSLayoutConstraint = toolBar.rightAnchor.constraint(equalTo: view.rightAnchor)
+        let bottom: NSLayoutConstraint = {
+            if #available(iOS 11.0, *) {
+                return toolBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            } else {
+                return toolBar.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            }
+        }()
+        let height: NSLayoutConstraint = toolBar.heightAnchor.constraint(equalToConstant: 50)
+        NSLayoutConstraint.activate([left, right, bottom, height])
     }
 
     override func viewDidLayoutSubviews() {
 
         super.viewDidLayoutSubviews()
-        let toolBarHeight: CGFloat = 50
         cropView.frame = CGRect(x: 0, y: (view.bounds.height - view.bounds.width) / 2, width: view.bounds.width, height: view.bounds.width)
-        toolBar.frame = CGRect(x: 0, y: view.bounds.height - toolBarHeight - bottomLayoutGuide.length, width: view.bounds.width, height: toolBarHeight)
     }
 }
 
