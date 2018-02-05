@@ -16,17 +16,7 @@ class ViewController: UIViewController {
     private var currentImagesIndex: Int = 0
     
     @IBAction func clickAddButton(_ sender: Any) {
-        
-//        let vc = ZPhotoCropperController()
-//        vc.image = UIImage(named: "squre")
-//        vc.imageCroppedHandler = { [weak self] image in
-//            self?.imageView.image = image
-//        }
-//        self.present(vc, animated: true, completion: nil)
-//        return
-//
-//
-        
+
         let imagePickedHandler: ((UIImage) -> Void) = { [weak self] image in
             self?.imageView.image = image
         }
