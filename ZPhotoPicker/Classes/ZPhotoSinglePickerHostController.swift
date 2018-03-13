@@ -35,7 +35,7 @@ extension ZPhotoSinglePickerHostController {
         let selectedAsset: PHAsset = fetchResult.object(at: indexPath.item)
         let options = PHImageRequestOptions()
         options.isSynchronous = true
-        
+        options.isNetworkAccessAllowed = true // 默认为false，会导致iCloud的照片无法下载
         // 同步获取图片
         self.imageManager?.requestImage(for: selectedAsset, targetSize: PHImageManagerMaximumSize, contentMode: .default, options: options, resultHandler: { [weak self] (image, _) in
 
