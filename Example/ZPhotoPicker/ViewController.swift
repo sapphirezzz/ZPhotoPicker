@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     @IBAction func clickAddButton(_ sender: Any) {
 
         let imagePickedHandler: ((UIImage) -> Void) = { [weak self] image in
+            self?.images = []
+            self?.currentImagesIndex = 0
             self?.imageView.image = image
         }
         let imagesPickedHandler: (([UIImage]) -> Void) = { [weak self] images in

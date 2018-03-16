@@ -75,6 +75,25 @@ class ZPhotoesListController: UICollectionViewController {
     }
 }
 
+internal extension ZPhotoesListController {
+    
+    func showIndicatorView() {
+
+        hideIndicatorView()
+        let indicatorView = UINib(nibName: "IndicatorView", bundle: Bundle(for: ZPhotoPicker.self)).instantiate(withOwner: nil, options: nil)[0] as! IndicatorView
+        indicatorView.frame = view.bounds
+        indicatorView.tag = 123212
+        view.addSubview(indicatorView)
+        indicatorView.indicatorView.startAnimating()
+    }
+
+    func hideIndicatorView() {
+        let indicatorView = view.subviews.filter { $0.tag == 123212 }.first as? IndicatorView
+        indicatorView?.indicatorView.stopAnimating()
+        indicatorView?.removeFromSuperview()
+    }
+}
+
 private extension ZPhotoesListController {
 
     func getPhotoes() {

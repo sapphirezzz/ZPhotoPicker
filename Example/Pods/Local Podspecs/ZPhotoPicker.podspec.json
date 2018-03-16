@@ -1,19 +1,19 @@
 {
   "name": "ZPhotoPicker",
-  "version": "0.1.0",
+  "version": "1.0.3",
   "summary": "A short description of ZPhotoPicker.",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/public@mooyoo.com.cn/ZPhotoPicker",
+  "homepage": "https://github.com/sapphirezzz/ZPhotoPicker",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "public@mooyoo.com.cn": "zackzheng@meijiabang.cn"
+    "sapphirezzz": "zhengzuanzhe@gmail.com"
   },
   "source": {
-    "git": "https://github.com/public@mooyoo.com.cn/ZPhotoPicker.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/sapphirezzz/ZPhotoPicker.git",
+    "tag": "1.0.3"
   },
   "platforms": {
     "ios": "9.0"
@@ -22,5 +22,8 @@
   "resources": [
     "ZPhotoPicker/Assets/images.xcassets"
   ],
-  "frameworks": "UIKit"
+  "frameworks": [
+    "UIKit",
+    "Photos"
+  ]
 }

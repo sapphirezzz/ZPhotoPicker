@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="IndicatorView" customModule="ZPhotoPicker" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yk1-zz-KWF">
+                    <rect key="frame" x="124.5" y="273" width="125" height="120"/>
+                    <subviews>
+                        <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qiL-5x-gDM">
+                            <rect key="frame" x="0.0" y="0.0" width="125" height="120"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="495-4O-DSK">
+                            <rect key="frame" x="43.5" y="25" width="37" height="37"/>
+                        </activityIndicatorView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正在上传图片" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOM-5U-3qh">
+                            <rect key="frame" x="19.5" y="77" width="86" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="qiL-5x-gDM" secondAttribute="trailing" id="AHA-0Z-SUH"/>
+                        <constraint firstItem="NOM-5U-3qh" firstAttribute="centerX" secondItem="yk1-zz-KWF" secondAttribute="centerX" id="Krg-8B-jhM"/>
+                        <constraint firstItem="qiL-5x-gDM" firstAttribute="leading" secondItem="yk1-zz-KWF" secondAttribute="leading" id="MNr-Y5-gh6"/>
+                        <constraint firstAttribute="width" constant="125" id="Obl-Bg-cJI"/>
+                        <constraint firstItem="qiL-5x-gDM" firstAttribute="top" secondItem="yk1-zz-KWF" secondAttribute="top" id="ZrB-oJ-I9v"/>
+                        <constraint firstAttribute="bottom" secondItem="qiL-5x-gDM" secondAttribute="bottom" id="g15-Hy-Wmx"/>
+                        <constraint firstItem="495-4O-DSK" firstAttribute="top" secondItem="yk1-zz-KWF" secondAttribute="top" constant="25" id="gOC-G6-8PN"/>
+                        <constraint firstItem="495-4O-DSK" firstAttribute="centerX" secondItem="yk1-zz-KWF" secondAttribute="centerX" id="kZU-5Z-gB6"/>
+                        <constraint firstItem="NOM-5U-3qh" firstAttribute="top" secondItem="495-4O-DSK" secondAttribute="bottom" constant="15" id="p7E-ma-8R5"/>
+                        <constraint firstAttribute="height" constant="120" id="rHn-V8-jVb"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="yk1-zz-KWF" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="VN7-Ch-ugp"/>
+                <constraint firstItem="yk1-zz-KWF" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="s3l-t9-jXM"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="centerView" destination="yk1-zz-KWF" id="4Uo-nU-zgm"/>
+                <outlet property="indicatorView" destination="495-4O-DSK" id="KM8-W9-c1y"/>
+            </connections>
+        </view>
+    </objects>
+</document>

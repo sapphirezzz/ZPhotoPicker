@@ -71,17 +71,29 @@ extension ZPhotoMutilPickerHostController: PhotoPickerSelectedCountViewDelegate 
         
         let options = PHImageRequestOptions()
         options.isSynchronous = true
+        options.isNetworkAccessAllowed = true // 默认为false，会导致iCloud的照片无法下载
         var selectedImages: [UIImage] = []
-        
-        // 同步获取图片
-        selectedAssets.forEach { asset in
-            imageManager?.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .default, options: options, resultHandler: { (image, _) in
-                if let image = image {
-                    selectedImages.append(image)
-                }
+        showIndicatorView()
+
+        DispatchQueue.global().async { [weak self] in
+
+            // 同步获取图片
+            selectedAssets.forEach { asset in
+                self?.imageManager?.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .default, options: options, resultHandler: { (image, _) in
+                    
+                    if let image = image {
+                        selectedImages.append(image)
+                    }
+                })
+            }
+            
+            DispatchQueue.main.async(execute: { [weak self] in
+                
+                guard let `self` = self else { return }
+                self.hideIndicatorView()
+                self.delegate?.photoMutilPickerHostController(self, didFinishPickingImages: selectedImages)
             })
         }
-        delegate?.photoMutilPickerHostController(self, didFinishPickingImages: selectedImages)
     }
 }
 

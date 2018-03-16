@@ -48,7 +48,7 @@
 		B94AF12ACC251D75438D2433 /* Pods-ZPhotoPicker_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZPhotoPicker_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZPhotoPicker_Example/Pods-ZPhotoPicker_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		BDAF458EDC6427AC03ABBCE1 /* Pods-ZPhotoPicker_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZPhotoPicker_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZPhotoPicker_Example/Pods-ZPhotoPicker_Example.release.xcconfig"; sourceTree = "<group>"; };
 		F267C4021D30FA8E8CCF5CEA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		F90009B5244B9D036842EE57 /* ZPhotoPicker.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ZPhotoPicker.podspec; path = ../ZPhotoPicker.podspec; sourceTree = "<group>"; };
+		F90009B5244B9D036842EE57 /* ZPhotoPicker.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ZPhotoPicker.podspec; path = ../ZPhotoPicker.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
