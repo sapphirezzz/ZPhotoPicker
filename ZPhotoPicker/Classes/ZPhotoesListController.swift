@@ -92,6 +92,13 @@ internal extension ZPhotoesListController {
         indicatorView?.indicatorView.stopAnimating()
         indicatorView?.removeFromSuperview()
     }
+    
+    func alertGetImageError() {
+
+        let alertVC = UIAlertController(title: "获取照片失败", message: "从iCloud获取照片失败，请重新尝试~", preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "知道了", style: .default, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
+    }
 }
 
 private extension ZPhotoesListController {

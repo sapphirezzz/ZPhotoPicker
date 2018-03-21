@@ -51,7 +51,10 @@ extension ZPhotoSinglePickerHostController {
                 
                 guard let `self` = self else { return }
                 self.hideIndicatorView()
-                guard let image = selectedImage else { return }
+                guard let image = selectedImage else {
+                    self.alertGetImageError()
+                    return
+                }
                 self.delegate?.photoSinglePickerHostController(self, didFinishPickingImage: image)
             })
         }

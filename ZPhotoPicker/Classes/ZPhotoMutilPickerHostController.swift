@@ -91,6 +91,10 @@ extension ZPhotoMutilPickerHostController: PhotoPickerSelectedCountViewDelegate 
                 
                 guard let `self` = self else { return }
                 self.hideIndicatorView()
+                guard selectedAssets.count == selectedImages.count else {
+                    self.alertGetImageError()
+                    return
+                }
                 self.delegate?.photoMutilPickerHostController(self, didFinishPickingImages: selectedImages)
             })
         }
