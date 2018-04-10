@@ -28,12 +28,15 @@ class ZPhotoSinglePickerController: UINavigationController {
     
     convenience init(allowsCropping: Bool = false, imagePickedHandler: @escaping (_ image: UIImage) -> Void, cancelledHandler: (() -> Void)? = nil) {
 
-        let vc = ZPhotoSinglePickerHostController(collectionViewLayout: UICollectionViewFlowLayout())
+        let vc = ZPhotoAlbumListController()
         self.init(rootViewController: vc)
         self.allowsCropping = allowsCropping
         self.imagePickedHandler = imagePickedHandler
         self.cancelledHandler = cancelledHandler
-        vc.delegate = self
+        vc.albumListdelegate = self
+        let secondVC = ZPhotoSinglePickerHostController(collectionViewLayout: UICollectionViewFlowLayout())
+        secondVC.delegate = self
+        self.pushViewController(secondVC, animated: false)
     }
     
     override init(rootViewController: UIViewController) {
@@ -82,6 +85,23 @@ extension ZPhotoSinglePickerController: ZPhotoSinglePickerHostControllerDelegate
     }
     
     func photoSinglePickerHostControllerDidCancel(_ controller: ZPhotoSinglePickerHostController) {
+        self.dismiss(animated: true) { [weak self] in
+            self?.cancelledHandler?()
+        }
+    }
+}
+
+extension ZPhotoSinglePickerController: ZPhotoAlbumListControllerDelegate {
+
+    func photoAlbumListController(_ controller: ZPhotoAlbumListController, didSelectAlbum album: AlbumItem) {
+
+        let vc = ZPhotoSinglePickerHostController(collectionViewLayout: UICollectionViewFlowLayout())
+        vc.delegate = self
+        pushViewController(vc, animated: true)
+    }
+    
+    func photoAlbumListControllerDidCancel(_ controller: ZPhotoAlbumListController) {
+
         self.dismiss(animated: true) { [weak self] in
             self?.cancelledHandler?()
         }
