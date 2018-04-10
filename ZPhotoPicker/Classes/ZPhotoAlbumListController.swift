@@ -17,7 +17,7 @@ class ZPhotoAlbumListController: UITableViewController {
 
         super.viewDidLoad()
         
-        title = "照片"
+        title = "相册列表"
         let cancelButton = UIBarButtonItem.init(title: "取消", style: .done, target: self, action: #selector(ZPhotoAlbumListController.clickCancelButton(sender:)))
         navigationItem.setRightBarButton(cancelButton, animated: false)
 
@@ -42,15 +42,15 @@ private extension ZPhotoAlbumListController {
 
     private func getAlbums() {
 
+        // 所有用户创建的相册
+        let userCollections = PHCollectionList.fetchTopLevelUserCollections(with: nil)
+        convertCollection(collection: userCollections as! PHFetchResult<PHAssetCollection>)
+        
         // 智能相册（系统提供的特定的一系列相册，例如：最近删除，视频列表，收藏等等）
         let smartAlbums = PHAssetCollection.fetchAssetCollections(with: .smartAlbum,
                                                                   subtype: .albumRegular,
                                                                   options: nil)
         convertCollection(collection: smartAlbums)
-        
-        // 所有用户创建的相册
-        let userCollections = PHCollectionList.fetchTopLevelUserCollections(with: nil)
-        convertCollection(collection: userCollections as! PHFetchResult<PHAssetCollection>)
 
         DispatchQueue.main.sync {
             self.tableView.reloadData()
@@ -69,7 +69,8 @@ private extension ZPhotoAlbumListController {
             if assetsFetchResult.count > 0, let localizedTitle = collection.localizedTitle {
                 
                 let title = convertTitle(fromEnglish: localizedTitle)
-                items.append(AlbumItem(title: "\(title)（\(assetsFetchResult.count)）", fetchResult: assetsFetchResult))
+                let album = AlbumItem(title: title, count: assetsFetchResult.count, fetchResult: assetsFetchResult)
+                items.append(album)
             }
         }
     }
@@ -109,7 +110,7 @@ extension ZPhotoAlbumListController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlumTableViewCell")!
-        cell.textLabel?.text = items[indexPath.row].title
+        cell.textLabel?.text = "\(items[indexPath.row].title)（\(items[indexPath.row].count)）"
         cell.accessoryType = .disclosureIndicator
         cell.selectionStyle = .none
         return cell
@@ -135,5 +136,6 @@ protocol ZPhotoAlbumListControllerDelegate: class {
 struct AlbumItem {
 
     var title: String
+    var count: Int
     var fetchResult: PHFetchResult<PHAsset>
 }

@@ -106,6 +106,7 @@ extension ZPhotoMutilPickerController: ZPhotoAlbumListControllerDelegate {
         let vc = ZPhotoMutilPickerHostController(collectionViewLayout: UICollectionViewFlowLayout())
         vc.delegate = self
         vc.dataSource = self
+        vc.selectedAlbum = album
         pushViewController(vc, animated: true)
     }
     

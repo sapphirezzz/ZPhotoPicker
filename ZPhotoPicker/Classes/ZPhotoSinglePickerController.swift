@@ -97,6 +97,7 @@ extension ZPhotoSinglePickerController: ZPhotoAlbumListControllerDelegate {
 
         let vc = ZPhotoSinglePickerHostController(collectionViewLayout: UICollectionViewFlowLayout())
         vc.delegate = self
+        vc.selectedAlbum = album
         pushViewController(vc, animated: true)
     }
     

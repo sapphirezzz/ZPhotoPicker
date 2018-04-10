@@ -11,6 +11,8 @@ import Photos
 class ZPhotoesListController: UICollectionViewController {
 
     var clickedCancelHandler: (()->Void)?
+    var selectedAlbum: AlbumItem?
+    
     private(set) var fetchResult: PHFetchResult<PHAsset> = PHFetchResult()
     private(set) var imageManager: PHCachingImageManager? // 如果未授权访问相册，此时直接 = PHCachingImageManager()会导致页面deinit时崩溃
     
@@ -33,10 +35,10 @@ class ZPhotoesListController: UICollectionViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        navigationItem.title = "所有照片"
+
+        navigationItem.title = selectedAlbum?.title ?? "所有照片"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(ZPhotoesListController.clickCancelButton))
-        
+
         collectionView?.backgroundColor = UIColor.white
         collectionView?.register(PhotoPickerImageCell.self, forCellWithReuseIdentifier: "PhotoPickerImageCell")
         collectionView?.register(PhotoPickerImageCountView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: PhotoPickerImageCountView.reuseIdentifier)
@@ -109,11 +111,16 @@ private extension ZPhotoesListController {
         imageManager!.stopCachingImagesForAllAssets()
         previousPreheatRect = .zero
 
-        let allPhotosOptions = PHFetchOptions()
-        allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        allPhotosOptions.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
-        fetchResult = PHAsset.fetchAssets(with: PHAssetMediaType.image, options: allPhotosOptions)
-        
+        if let result = selectedAlbum?.fetchResult {
+            fetchResult = result
+        } else {
+
+            let allPhotosOptions = PHFetchOptions()
+            allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+            allPhotosOptions.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
+            fetchResult = PHAsset.fetchAssets(with: PHAssetMediaType.image, options: allPhotosOptions)
+        }
+
         DispatchQueue.main.sync {
             self.collectionView?.reloadData()
         }
