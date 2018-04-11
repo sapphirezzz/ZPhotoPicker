@@ -9,7 +9,7 @@
 import UIKit
 
 class PhotoPickerImageCell: UICollectionViewCell {
-
+    
     class func size(inCollectionView view: UICollectionView, itemSpacing: CGFloat) -> CGSize {
         
         let countPerLine = 4

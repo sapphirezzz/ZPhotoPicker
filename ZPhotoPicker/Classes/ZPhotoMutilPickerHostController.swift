@@ -140,6 +140,7 @@ extension ZPhotoMutilPickerHostController {
         let asset = fetchResult.object(at: indexPath.item)
         if let assets = dataSource?.selectedItems(self), assets.contains(asset) {
             cell.isSelected = true
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
         } else {
             cell.isSelected = false
         }
