@@ -43,12 +43,14 @@ private extension ZPhotoAlbumListController {
     private func getAlbums() {
 
         // 所有用户创建的相册
-        let userCollections = PHCollectionList.fetchTopLevelUserCollections(with: nil)
-        convertCollection(collection: userCollections as! PHFetchResult<PHAssetCollection>)
+        let userCollections = PHAssetCollection.fetchAssetCollections(with: .album,
+                                                                  subtype: .albumRegular,
+                                                                  options: nil)
+        convertCollection(collection: userCollections)
         
         // 智能相册（系统提供的特定的一系列相册，例如：最近删除，视频列表，收藏等等）
         let smartAlbums = PHAssetCollection.fetchAssetCollections(with: .smartAlbum,
-                                                                  subtype: .albumRegular,
+                                                                  subtype: .smartAlbumUserLibrary,
                                                                   options: nil)
         convertCollection(collection: smartAlbums)
 
@@ -78,24 +80,37 @@ private extension ZPhotoAlbumListController {
     private func convertTitle(fromEnglish title: String) -> String {
 
         switch title {
-        case "Slo-mo":
-            return "慢动作"
-        case "Recently Added":
-            return "最近添加"
+            
         case "Favorites":
             return "个人收藏"
-        case "Recently Deleted":
-            return "最近删除"
-        case "Videos":
-            return "视频"
-        case "All Photos":
-            return "所有照片"
-        case "Selfies":
-            return "自拍"
-        case "Screenshots":
-            return "屏幕快照"
+        case "Panoramas":
+            return "个人收藏"
         case "Camera Roll":
             return "相机胶卷"
+        case "Slo-mo":
+            return "慢动作"
+        case "Screenshots":
+            return "屏幕快照"
+        case "Bursts":
+            return "全景照片"
+//        case "Videos":
+//            return "视频"
+        case "Selfies":
+            return "自拍"
+        case "Hidden":
+            return "隐藏照片"
+//        case "Time-lapse":
+//            return "延时视频"
+        case "Recently Added":
+            return "最近添加"
+//        case "Long Exposure":
+//        case "Animated":
+//        case "Live Photos":
+//        case "Portrait":
+        case "Recently Deleted":
+            return "最近删除"
+        case "All Photos":
+            return "所有照片"
         default:
             return title
         }
