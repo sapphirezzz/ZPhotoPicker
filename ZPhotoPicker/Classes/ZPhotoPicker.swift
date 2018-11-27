@@ -22,7 +22,7 @@ public class ZPhotoPicker {
         switch type {
         case let .camera(allowsEditing):
 
-            let sourceType: UIImagePickerControllerSourceType = .camera
+            let sourceType: UIImagePickerController.SourceType = .camera
             guard UIImagePickerController.isSourceTypeAvailable(sourceType) else {
                 alertUnsupportTypeError(onViewController: controller)
                 return
@@ -30,7 +30,7 @@ public class ZPhotoPicker {
             ZPhotoTakingController.takePhoto(onPresentingViewController: controller, allowsCropping: allowsEditing, imageTookHandler: imagePickedHandler ?? { _ in}, cancelledHandler: cancelledHandler)
         case let .singlePhoto(allowsEditing):
 
-            let sourceType: UIImagePickerControllerSourceType = .photoLibrary
+            let sourceType: UIImagePickerController.SourceType = .photoLibrary
             guard UIImagePickerController.isSourceTypeAvailable(sourceType) else {
                 alertUnsupportTypeError(onViewController: controller)
                 return

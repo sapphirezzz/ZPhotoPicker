@@ -6,6 +6,8 @@
 //  Copyright © 2017年 Double. All rights reserved.
 //
 
+import UIKit
+
 enum AnimationType {
     case present
     case dismiss
@@ -53,7 +55,7 @@ class CoverHorizontalAnimatedTransitioning: NSObject, UIViewControllerAnimatedTr
                        delay: 0,
                        usingSpringWithDamping: 0.95,
                        initialSpringVelocity: 0,
-                       options: UIViewAnimationOptions.curveEaseIn, animations: {
+                       options: UIView.AnimationOptions.curveEaseIn, animations: {
                         vc.view.frame = finalFrame
         }) { _ in
             transitionContext.completeTransition(true)

@@ -37,10 +37,10 @@ class ZPhotoCropperController: UIViewController {
         bar.barTintColor = UIColor(red: value, green: value, blue: value, alpha: 0.8)
 
         let cancelButton = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(ZPhotoCropperController.clickCancelButton(sender:)))
-        cancelButton.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.white], for: UIControlState.normal)
+        cancelButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.normal)
         let flexButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let completeButton = UIBarButtonItem(title: "完成", style: .plain, target: self, action: #selector(ZPhotoCropperController.clickCompleteButton(sender:)))
-        completeButton.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.white], for: UIControlState.normal)
+        completeButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.normal)
         bar.setItems([cancelButton, flexButton, completeButton], animated: false)
 
         cancelButton.tintColor = .white

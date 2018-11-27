@@ -41,7 +41,7 @@ class ZPhotoesListController: UICollectionViewController {
 
         collectionView?.backgroundColor = UIColor.white
         collectionView?.register(PhotoPickerImageCell.self, forCellWithReuseIdentifier: "PhotoPickerImageCell")
-        collectionView?.register(PhotoPickerImageCountView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: PhotoPickerImageCountView.reuseIdentifier)
+        collectionView?.register(PhotoPickerImageCountView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: PhotoPickerImageCountView.reuseIdentifier)
         
         PHPhotoLibrary.requestAuthorization { [weak self] status in
             guard let `self` = self else {return}
@@ -242,7 +242,7 @@ extension ZPhotoesListController {
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        if kind == UICollectionElementKindSectionFooter {
+        if kind == UICollectionView.elementKindSectionFooter {
             
             let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: PhotoPickerImageCountView.reuseIdentifier, for: indexPath) as! PhotoPickerImageCountView
             if #available(iOS 10.0, *) {
@@ -267,7 +267,7 @@ private extension UICollectionView {
 
     func indexPathsForElements(in rect: CGRect) -> [IndexPath] {
         let allLayoutAttributes = collectionViewLayout.layoutAttributesForElements(in: rect)!
-        return allLayoutAttributes.flatMap({ attribute in
+        return allLayoutAttributes.compactMap({ attribute in
             attribute.representedElementKind == nil ? attribute.indexPath : nil
         })
     }
