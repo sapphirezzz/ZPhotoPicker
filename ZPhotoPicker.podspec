@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ZPhotoPicker'
-  s.version          = '2.0.0'
+  s.version          = '3.0.0'
   s.summary          = 'A short description of ZPhotoPicker.'
 
   s.description      = <<-DESC
@@ -22,7 +22,7 @@ TODO: Add long description of the pod here.
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '9.0'
-  s.swift_version = '4.2'
+  s.swift_version = '5.0'
 
   s.source_files = 'ZPhotoPicker/Classes/**/*'
   s.resources = ['ZPhotoPicker/Assets/images.xcassets']
