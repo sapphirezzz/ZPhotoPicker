@@ -1,6 +1,5 @@
 //
 //  ZPhotoCropperController.swift
-//  ZPhotoPicker
 //
 //  Created by Zack･Zheng on 2018/2/4.
 //

@@ -1,6 +1,5 @@
 //
 //  ZPhotoAlbumListController.swift
-//  ZPhotoPicker
 //
 //  Created by Zack･Zheng on 2018/4/9.
 //

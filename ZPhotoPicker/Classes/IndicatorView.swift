@@ -1,8 +1,7 @@
 //
 //  IndicatorView.swift
-//  ZPhotoPicker
 //
-//  Created by Zack･Zheng on 2018/3/16.
+//  Created by Zack･Zheng on 2017/9/11.
 //
 
 import UIKit

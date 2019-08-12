@@ -1,6 +1,5 @@
 //
 //  ZVideoPhotoMutilPickerHostController.swift
-//  ZPhotoPicker
 //
 //  Created by zackzheng on 2019/8/9.
 //

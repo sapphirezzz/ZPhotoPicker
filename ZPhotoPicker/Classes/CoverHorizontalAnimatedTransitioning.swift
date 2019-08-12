@@ -1,9 +1,7 @@
 //
 //  CoverHorizontalAnimatedTransitioning.swift
-//  Meijiabang
 //
 //  Created by Zack･Zheng on 2017/9/11.
-//  Copyright © 2017年 Double. All rights reserved.
 //
 
 import UIKit
