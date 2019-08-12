@@ -30,6 +30,18 @@ class ZPhotoSinglePickerHostController: ZPhotoesListController {
 
 extension ZPhotoSinglePickerHostController {
 
+    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        return fetchResult.object(at: indexPath.item).mediaType != .video
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! PhotoPickerImageCell
+        let asset = fetchResult.object(at: indexPath.item)
+        cell.canSelected = asset.mediaType != .video
+
+        return cell
+    }
+
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let selectedAsset: PHAsset = fetchResult.object(at: indexPath.item)

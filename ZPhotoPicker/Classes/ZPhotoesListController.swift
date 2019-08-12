@@ -12,10 +12,10 @@ class ZPhotoesListController: UICollectionViewController {
 
     var clickedCancelHandler: (()->Void)?
     var selectedAlbum: AlbumItem?
-    
+
     private(set) var fetchResult: PHFetchResult<PHAsset> = PHFetchResult()
     private(set) var imageManager: PHCachingImageManager? // 如果未授权访问相册，此时直接 = PHCachingImageManager()会导致页面deinit时崩溃
-    
+
     private var previousPreheatRect = CGRect.zero
     private var thumbnailSize: CGSize!
     lazy private var insufficientPermissionsLabel: UILabel = {
@@ -117,8 +117,7 @@ private extension ZPhotoesListController {
 
             let allPhotosOptions = PHFetchOptions()
             allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-            allPhotosOptions.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
-            fetchResult = PHAsset.fetchAssets(with: PHAssetMediaType.image, options: allPhotosOptions)
+            fetchResult = PHAsset.fetchAssets(with: allPhotosOptions)
         }
 
         DispatchQueue.main.sync {
@@ -236,14 +235,14 @@ extension ZPhotoesListController {
                 cell.image = image
             }
         }
-        
+        cell.videoDuration = asset.mediaType == .video ? asset.duration : 0
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         if kind == UICollectionView.elementKindSectionFooter {
-            
+
             let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: PhotoPickerImageCountView.reuseIdentifier, for: indexPath) as! PhotoPickerImageCountView
             if #available(iOS 10.0, *) {
                 view.count = fetchResult.count

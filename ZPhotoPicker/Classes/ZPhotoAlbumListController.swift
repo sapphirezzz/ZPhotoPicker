@@ -63,7 +63,6 @@ private extension ZPhotoAlbumListController {
 
         let resultsOptions = PHFetchOptions()
         resultsOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        resultsOptions.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
 
         (0..<collection.count).forEach { (index) in
             let collection = collection[index]

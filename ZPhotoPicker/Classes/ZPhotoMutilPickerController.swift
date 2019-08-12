@@ -78,7 +78,7 @@ extension ZPhotoMutilPickerController: ZPhotoMutilPickerHostControllerDelegate {
     
     func photoMutilPickerHostController(_ controller: ZPhotoMutilPickerHostController, didDeselectAsset asset: PHAsset) {
         
-        if let index = selectedAssets.index(of: asset) {
+        if let index = selectedAssets.firstIndex(of: asset) {
             selectedAssets.remove(at: index)
         }
     }

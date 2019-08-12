@@ -34,23 +34,35 @@ class ViewController: UIViewController {
         let alertVC = UIAlertController(title: nil, message: "请选择类型", preferredStyle: UIDevice.current.model == "iPad" ? .alert : .actionSheet)
         let cameraAction = UIAlertAction(title: "拍照不裁剪", style: .default) { (_) in
             
-            ZPhotoPicker.pickPhoto(onViewController: self, type: .camera(allowsEditing: false), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
+            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .camera(allowsEditing: false), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
         }
         let cameraEditableAction = UIAlertAction(title: "拍照需裁剪", style: .default) { (_) in
             
-            ZPhotoPicker.pickPhoto(onViewController: self, type: .camera(allowsEditing: true), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
+            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .camera(allowsEditing: true), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
         }
         let photoAction = UIAlertAction(title: "选取照片不裁剪", style: .default) { (_) in
             
-            ZPhotoPicker.pickPhoto(onViewController: self, type: .singlePhoto(allowsEditing: false), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
+            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .singlePhoto(allowsEditing: false), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
         }
         let photoEditableAction = UIAlertAction(title: "选取照片需裁剪", style: .default) { (_) in
             
-            ZPhotoPicker.pickPhoto(onViewController: self, type: .singlePhoto(allowsEditing: true), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
+            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .singlePhoto(allowsEditing: true), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
         }
         let photoesAction = UIAlertAction(title: "选取多张照片", style: .default) { (_) in
+            
+            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiPhotoes(maxCount: 4), imagesPickedHandler: imagesPickedHandler, cancelledHandler: cancelledHandler)
+        }
+        let multiVideoPhotoesAction = UIAlertAction(title: "选取多个视频/图片", style: .default) { (_) in
+            
+            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiVideoOrPhotoes(maxCount: 4, canMultiSelectVideo: true), imagesPickedHandler: imagesPickedHandler, videosPickedHandler: { (videos) in
+                print("videos = ", videos)
+            }, cancelledHandler: cancelledHandler)
+        }
+        let singleVideoPhotoesAction = UIAlertAction(title: "选取一个视频/多个图片", style: .default) { (_) in
 
-            ZPhotoPicker.pickPhoto(onViewController: self, type: .multiPhotoes(maxCount: 4), imagesPickedHandler: imagesPickedHandler, cancelledHandler: cancelledHandler)
+            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiVideoOrPhotoes(maxCount: 4, canMultiSelectVideo: false), imagesPickedHandler: imagesPickedHandler, videosPickedHandler: { (videos) in
+                print("videos = ", videos)
+            }, cancelledHandler: cancelledHandler)
         }
         let cancelAction = UIAlertAction(title: "取消", style: .cancel)
         alertVC.addAction(cameraAction)
@@ -59,6 +71,8 @@ class ViewController: UIViewController {
         alertVC.addAction(photoEditableAction)
         alertVC.addAction(photoesAction)
         alertVC.addAction(cancelAction)
+        alertVC.addAction(multiVideoPhotoesAction)
+        alertVC.addAction(singleVideoPhotoesAction)
         self.present(alertVC, animated: true, completion: nil)
     }
     

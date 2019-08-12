@@ -123,20 +123,24 @@ extension ZPhotoMutilPickerHostController {
     
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
 
+
         let selectedCount = dataSource?.numberOfItemsSelected(self) ?? 0
         if selectedCount >= dataSource?.maxSelectedCount(self) ?? 0 {
             return false
         } else {
             let asset = fetchResult.object(at: indexPath.item)
+            if (asset.mediaType == .video) {
+                return false
+            }
             imageManager?.startCachingImages(for: [asset], targetSize: PHImageManagerMaximumSize, contentMode: .aspectFill, options: nil)
             configBottomView(selectOrDeselect: true)
             delegate?.photoMutilPickerHostController(self, didSelectAsset: asset)
             return true
         }
     }
-    
+
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = super.collectionView(collectionView, cellForItemAt: indexPath)
+        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! PhotoPickerImageCell
         let asset = fetchResult.object(at: indexPath.item)
         if let assets = dataSource?.selectedItems(self), assets.contains(asset) {
             cell.isSelected = true
@@ -144,7 +148,9 @@ extension ZPhotoMutilPickerHostController {
         } else {
             cell.isSelected = false
         }
-        
+
+        cell.canSelected = asset.mediaType != .video
+
         return cell
     }
 
