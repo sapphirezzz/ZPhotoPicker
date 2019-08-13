@@ -8,6 +8,7 @@
 
 import UIKit
 import ZPhotoPicker
+import Photos
 
 class ViewController: UIViewController {
     
@@ -60,8 +61,8 @@ class ViewController: UIViewController {
         }
         let singleVideoPhotoesAction = UIAlertAction(title: "选取一个视频/多个图片", style: .default) { (_) in
 
-            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiVideoOrPhotoes(maxCount: 4, canMultiSelectVideo: false), imagesPickedHandler: imagesPickedHandler, videosPickedHandler: { (videos) in
-                print("videos = ", videos)
+            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiVideoOrPhotoes(maxCount: 4, canMultiSelectVideo: false), imagesPickedHandler: imagesPickedHandler, videosPickedHandler: { [weak self] (videos) in
+                print("videos = ", videos)                
             }, cancelledHandler: cancelledHandler)
         }
         let cancelAction = UIAlertAction(title: "取消", style: .cancel)

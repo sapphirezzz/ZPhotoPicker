@@ -5,6 +5,7 @@
 //
 
 import UIKit
+import Photos
 
 public class ZPhotoPicker {
 
@@ -16,7 +17,7 @@ public class ZPhotoPicker {
         case multiVideoOrPhotoes(maxCount: Int, canMultiSelectVideo: Bool)
     }
 
-    public class func pickVideoOrPhoto(onViewController controller: UIViewController, type: PhotoPickType, imagePickedHandler: ((_ image: UIImage) -> Void)? = nil, imagesPickedHandler: ((_ image: [UIImage]) -> Void)? = nil, videosPickedHandler: ((_ videos: [URL]) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil) {
+    public class func pickVideoOrPhoto(onViewController controller: UIViewController, type: PhotoPickType, imagePickedHandler: ((_ image: UIImage) -> Void)? = nil, imagesPickedHandler: ((_ images: [UIImage]) -> Void)? = nil, videosPickedHandler: ((_ videos: [AVURLAsset]) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil) {
 
         switch type {
         case let .camera(allowsEditing):
@@ -42,7 +43,7 @@ public class ZPhotoPicker {
             break
             
         case let .multiVideoOrPhotoes(maxCount, canMultiSelectVideo):
-            ZVideoPhotoMutilPickerController.pickPhotoes(onPresentingViewController: controller, maxCount: maxCount, canMultiSelectVideo: canMultiSelectVideo, imagesPickedHandler: imagesPickedHandler ?? {_ in}, cancelledHandler: cancelledHandler)
+            ZVideoPhotoMutilPickerController.pickPhotoes(onPresentingViewController: controller, maxCount: maxCount, canMultiSelectVideo: canMultiSelectVideo, imagesPickedHandler: imagesPickedHandler, videosPickedHandler: videosPickedHandler, cancelledHandler: cancelledHandler)
         }
     }
 

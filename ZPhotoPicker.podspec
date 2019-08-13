@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ZPhotoPicker'
-  s.version          = '3.0.2'
+  s.version          = '3.0.3'
   s.summary          = 'A short description of ZPhotoPicker.'
 
   s.description      = <<-DESC
@@ -17,7 +17,7 @@ TODO: Add long description of the pod here.
 
   s.homepage         = 'https://github.com/sapphirezzz/ZPhotoPicker'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'sapphirezzz' => 'zhengzuanzhe@gmail.com' }
+  s.author           = { 'zackzheng' => 'zhengzuanzhe@gmail.com' }
   s.source           = { :git => 'https://github.com/sapphirezzz/ZPhotoPicker.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 

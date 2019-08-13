@@ -9,8 +9,8 @@ import Photos
 
 class ZVideoPhotoMutilPickerController: UINavigationController {
     
-    private var imagesPickedHandler: ((_ image: [UIImage]) -> Void)?
-    private var videosPickedHandler: ((_ videos: [URL]) -> Void)?
+    private var imagesPickedHandler: ((_ images: [UIImage]) -> Void)? = nil
+    private var videosPickedHandler: ((_ videos: [AVURLAsset]) -> Void)? = nil
     private var cancelledHandler: (() -> Void)?
     private var maxCount: Int = 0
     private var canMutilSelectVideo: Bool = false
@@ -28,7 +28,7 @@ class ZVideoPhotoMutilPickerController: UINavigationController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
-    convenience init(maxCount: Int, canMutilSelectVideo: Bool = false, imagesPickedHandler: ((_ image: [UIImage]) -> Void)? = nil, videosPickedHandler: ((_ videos: [URL]) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil) {
+    convenience init(maxCount: Int, canMutilSelectVideo: Bool = false, imagesPickedHandler: ((_ images: [UIImage]) -> Void)? = nil, videosPickedHandler: ((_ videos: [AVURLAsset]) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil) {
         
         let vc = ZPhotoAlbumListController()
         self.init(rootViewController: vc)
@@ -51,9 +51,9 @@ class ZVideoPhotoMutilPickerController: UINavigationController {
 
 extension ZVideoPhotoMutilPickerController {
     
-    class func pickPhotoes(onPresentingViewController controller: UIViewController, maxCount: Int, canMultiSelectVideo: Bool, imagesPickedHandler: @escaping (_ image: [UIImage]) -> Void, cancelledHandler: (() -> Void)? = nil) {
-        
-        let vc = ZVideoPhotoMutilPickerController(maxCount: maxCount, canMutilSelectVideo: canMultiSelectVideo, imagesPickedHandler: imagesPickedHandler, cancelledHandler: cancelledHandler)
+    class func pickPhotoes(onPresentingViewController controller: UIViewController, maxCount: Int, canMultiSelectVideo: Bool, imagesPickedHandler: ((_ images: [UIImage]) -> Void)? = nil, videosPickedHandler: ((_ videos: [AVURLAsset]) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil) {
+
+        let vc = ZVideoPhotoMutilPickerController(maxCount: maxCount, canMutilSelectVideo: canMultiSelectVideo, imagesPickedHandler: imagesPickedHandler, videosPickedHandler: videosPickedHandler, cancelledHandler: cancelledHandler)
         controller.present(vc, animated: true, completion: nil)
     }
 }
@@ -67,7 +67,7 @@ extension ZVideoPhotoMutilPickerController: ZVideoPhotoMutilPickerHostController
         })
     }
 
-    func photoMutilPickerHostController(_ controller: ZVideoPhotoMutilPickerHostController, didFinishPickingVideos videos: [URL]) {
+    func photoMutilPickerHostController(_ controller: ZVideoPhotoMutilPickerHostController, didFinishPickingVideos videos: [AVURLAsset]) {
 
         self.dismiss(animated: true, completion: { [weak self] in
             self?.videosPickedHandler?(videos)
