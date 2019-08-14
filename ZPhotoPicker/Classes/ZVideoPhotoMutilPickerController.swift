@@ -83,9 +83,7 @@ extension ZVideoPhotoMutilPickerController: ZVideoPhotoMutilPickerHostController
     
     func photoMutilPickerHostController(_ controller: ZVideoPhotoMutilPickerHostController, didSelectAsset asset: PHAsset) {
         selectedAssets.append(asset)
-        if selectedAssets.count == 1 {
-            controller.collectionView.reloadData()
-        }
+        controller.collectionView.reloadData()
     }
     
     func photoMutilPickerHostController(_ controller: ZVideoPhotoMutilPickerHostController, didDeselectAsset asset: PHAsset) {
@@ -93,9 +91,7 @@ extension ZVideoPhotoMutilPickerController: ZVideoPhotoMutilPickerHostController
         if let index = selectedAssets.firstIndex(of: asset) {
             selectedAssets.remove(at: index)
         }
-        if selectedAssets.count == 0 {
-            controller.collectionView.reloadData()
-        }
+        controller.collectionView.reloadData()
     }
     
     func photoMutilPickerHostControllerDidFetchFailed(_ controller: ZVideoPhotoMutilPickerHostController) {

@@ -49,9 +49,16 @@ class PhotoPickerImageCell: UICollectionViewCell {
             image.draw(in: imageRect)
         }
 
-        if self.isSelected {
+        if let index = index, self.isSelected {
             let checkedImage: UIImage = UIImage(named: "image_checked", in: Bundle(for: ZPhotoPicker.self), compatibleWith: nil)!
             checkedImage.draw(at: CGPoint(x: viewWidth - checkedImage.size.width, y: 0))
+            
+            let indexLabel = UILabel()
+            indexLabel.textAlignment = .center
+            indexLabel.textColor = .white
+            indexLabel.font = .systemFont(ofSize: 13)
+            indexLabel.text = "\(index)"
+            indexLabel.drawText(in: CGRect.init(x: viewWidth - checkedImage.size.width, y: 0, width: checkedImage.size.width, height: checkedImage.size.height))
         }
 
         if videoDuration > 0 {
@@ -110,9 +117,16 @@ class PhotoPickerImageCell: UICollectionViewCell {
             setNeedsDisplay()
         }
     }
-    
+
+    var index: Int? {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+
     override func prepareForReuse() {
         super.prepareForReuse()
         image = nil
+        index = nil
     }
 }

@@ -250,21 +250,29 @@ extension ZVideoPhotoMutilPickerHostController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let selectedCount = dataSource?.numberOfItemsSelected(self) ?? 0
+        let maxSelectedCount = dataSource?.maxSelectedCount(self) ?? 0
+        
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! PhotoPickerImageCell
+        cell.canSelected = true
+
         let asset = fetchResult.object(at: indexPath.item)
-        if let assets = dataSource?.selectedItems(self), assets.contains(asset) {
+        if let assets = dataSource?.selectedItems(self), let index = assets.firstIndex(of: asset) {
             cell.isSelected = true
+            cell.index = index
             collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
         } else {
+            cell.index = nil
             cell.isSelected = false
+            if (selectedCount == maxSelectedCount) {
+                cell.canSelected = false
+            }
+            if let type = dataSource?.assetsTypeSelecting(self), type != asset.mediaType {
+                cell.canSelected = false
+            }
         }
 
-        if let type = dataSource?.assetsTypeSelecting(self), type != asset.mediaType {
-            cell.canSelected = false
-        } else {
-            cell.canSelected = true
-        }
-        
         return cell
     }
     
