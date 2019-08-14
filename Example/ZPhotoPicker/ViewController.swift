@@ -55,14 +55,20 @@ class ViewController: UIViewController {
         }
         let multiVideoPhotoesAction = UIAlertAction(title: "选取多个视频/图片", style: .default) { (_) in
             
-            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiVideoOrPhotoes(maxCount: 4, canMultiSelectVideo: true), imagesPickedHandler: imagesPickedHandler, videosPickedHandler: { (videos) in
+            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiVideoOrPhotoes(maxCount: 4, canMultiSelectVideo: true, maxVideoDurationInSecond: nil), imagesPickedHandler: imagesPickedHandler, videosPickedHandler: { (videos) in
+                print("videos = ", videos)
+            }, cancelledHandler: cancelledHandler)
+        }
+        let singleVideoPhotoesWithDurationAction = UIAlertAction(title: "选取一个视频/多个图片(视频限时2分钟)", style: .default) { (_) in
+            
+            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiVideoOrPhotoes(maxCount: 4, canMultiSelectVideo: false, maxVideoDurationInSecond: 2 * 60), imagesPickedHandler: imagesPickedHandler, videosPickedHandler: { (videos) in
                 print("videos = ", videos)
             }, cancelledHandler: cancelledHandler)
         }
         let singleVideoPhotoesAction = UIAlertAction(title: "选取一个视频/多个图片", style: .default) { (_) in
-
-            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiVideoOrPhotoes(maxCount: 4, canMultiSelectVideo: false), imagesPickedHandler: imagesPickedHandler, videosPickedHandler: { (videos) in
-                print("videos = ", videos)                
+            
+            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiVideoOrPhotoes(maxCount: 4, canMultiSelectVideo: false, maxVideoDurationInSecond: nil), imagesPickedHandler: imagesPickedHandler, videosPickedHandler: { (videos) in
+                print("videos = ", videos)
             }, cancelledHandler: cancelledHandler)
         }
         let cancelAction = UIAlertAction(title: "取消", style: .cancel)
@@ -73,6 +79,7 @@ class ViewController: UIViewController {
         alertVC.addAction(photoesAction)
         alertVC.addAction(cancelAction)
         alertVC.addAction(multiVideoPhotoesAction)
+        alertVC.addAction(singleVideoPhotoesWithDurationAction)
         alertVC.addAction(singleVideoPhotoesAction)
         self.present(alertVC, animated: true, completion: nil)
     }

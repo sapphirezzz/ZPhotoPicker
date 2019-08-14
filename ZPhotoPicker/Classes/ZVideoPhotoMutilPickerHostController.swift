@@ -12,6 +12,7 @@ class ZVideoPhotoMutilPickerHostController: ZPhotoesListController {
     weak var dataSource: ZVideoPhotoMutilPickerHostControllerDataSource?
     weak var delegate: ZVideoPhotoMutilPickerHostControllerDelegate?
 
+    var maxVideoDurationInSecond: Int?
     private var bottomView: PhotoPickerSelectedCountView = PhotoPickerSelectedCountView()
     
     deinit {
@@ -239,6 +240,10 @@ extension ZVideoPhotoMutilPickerHostController {
         if let type = dataSource?.assetsTypeSelecting(self), type != asset.mediaType {
             return false
         }
+
+        if let maxVideoDurationInSecond = maxVideoDurationInSecond, asset.mediaType == .video, asset.duration > TimeInterval(maxVideoDurationInSecond) {
+            return false
+        }
         imageManager?.startCachingImages(for: [asset], targetSize: PHImageManagerMaximumSize, contentMode: .aspectFill, options: nil)
         return true
     }
@@ -271,6 +276,10 @@ extension ZVideoPhotoMutilPickerHostController {
             if let type = dataSource?.assetsTypeSelecting(self), type != asset.mediaType {
                 cell.canSelected = false
             }
+        }
+        
+        if let maxVideoDurationInSecond = maxVideoDurationInSecond, asset.mediaType == .video, asset.duration > TimeInterval(maxVideoDurationInSecond) {
+            cell.canSelected = false
         }
 
         return cell

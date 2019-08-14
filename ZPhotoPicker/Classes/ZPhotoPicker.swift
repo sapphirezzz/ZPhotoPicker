@@ -14,7 +14,7 @@ public class ZPhotoPicker {
         case camera(allowsEditing: Bool)
         case singlePhoto(allowsEditing: Bool)
         case multiPhotoes(maxCount: Int)
-        case multiVideoOrPhotoes(maxCount: Int, canMultiSelectVideo: Bool)
+        case multiVideoOrPhotoes(maxCount: Int, canMultiSelectVideo: Bool, maxVideoDurationInSecond: Int?)
     }
 
     public class func pickVideoOrPhoto(onViewController controller: UIViewController, type: PhotoPickType, imagePickedHandler: ((_ image: UIImage) -> Void)? = nil, imagesPickedHandler: ((_ images: [UIImage]) -> Void)? = nil, videosPickedHandler: ((_ videos: [AVURLAsset]) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil) {
@@ -42,8 +42,8 @@ public class ZPhotoPicker {
             ZPhotoMutilPickerController.pickPhotoes(onPresentingViewController: controller, maxCount: maxCount, imagesPickedHandler: imagesPickedHandler ?? {_ in}, cancelledHandler: cancelledHandler)
             break
             
-        case let .multiVideoOrPhotoes(maxCount, canMultiSelectVideo):
-            ZVideoPhotoMutilPickerController.pickPhotoes(onPresentingViewController: controller, maxCount: maxCount, canMultiSelectVideo: canMultiSelectVideo, imagesPickedHandler: imagesPickedHandler, videosPickedHandler: videosPickedHandler, cancelledHandler: cancelledHandler)
+        case let .multiVideoOrPhotoes(maxCount, canMultiSelectVideo, maxVideoDurationInSecond):
+            ZVideoPhotoMutilPickerController.pickPhotoes(onPresentingViewController: controller, maxCount: maxCount, canMultiSelectVideo: canMultiSelectVideo, maxVideoDurationInSecond: maxVideoDurationInSecond, imagesPickedHandler: imagesPickedHandler, videosPickedHandler: videosPickedHandler, cancelledHandler: cancelledHandler)
         }
     }
 
