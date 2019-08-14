@@ -265,10 +265,9 @@ extension ZVideoPhotoMutilPickerHostController {
         let asset = fetchResult.object(at: indexPath.item)
         if let assets = dataSource?.selectedItems(self), let index = assets.firstIndex(of: asset) {
             cell.isSelected = true
-            cell.index = index
+            cell.index = index + 1
             collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
         } else {
-            cell.index = nil
             cell.isSelected = false
             if (selectedCount == maxSelectedCount) {
                 cell.canSelected = false
