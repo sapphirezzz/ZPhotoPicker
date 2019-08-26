@@ -13,6 +13,7 @@ class ZVideoPhotoMutilPickerHostController: ZPhotoesListController {
     weak var delegate: ZVideoPhotoMutilPickerHostControllerDelegate?
 
     var maxVideoDurationInSecond: Int?
+    var minVideoDurationInSecond: Int?
     private var bottomView: PhotoPickerSelectedCountView = PhotoPickerSelectedCountView()
     
     deinit {
@@ -97,16 +98,6 @@ extension ZVideoPhotoMutilPickerHostController: PhotoPickerSelectedCountViewDele
             options.deliveryMode = .automatic
             var selectedVideos: [AVURLAsset] = []
             showIndicatorView()
-            
-//            let directoryToSave = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first!.appending("/ZPhotoPicker")
-            // AVAssetExportSession exportAsynchronously
-            // 使用 NSHomeDirectory().appending("/ZPhotoPicker") 会导致报错
-//            Error Domain=AVFoundationErrorDomain Code=-11800 "这项操作无法完成" UserInfo={NSLocalizedFailureReason=发生未知错误（-12780）, NSLocalizedDescription=这项操作无法完成, NSUnderlyingError=0x281754150 {Error Domain=NSOSStatusErrorDomain Code=-12780 "(null)"}}
-            
-//            if !FileManager.default.fileExists(atPath: directoryToSave) {
-//                try? FileManager.default.createDirectory(atPath: directoryToSave, withIntermediateDirectories: true, attributes: nil)
-//            }
-
             DispatchQueue.global().async { [weak self] in
 
                 selectedAssets.forEach { asset in
@@ -128,65 +119,6 @@ extension ZVideoPhotoMutilPickerHostController: PhotoPickerSelectedCountViewDele
                             self.hideIndicatorView()
                             self.delegate?.photoMutilPickerHostController(self, didFinishPickingVideos: selectedVideos)
                         })
-                        
-//                        let now = Date().timeIntervalSince1970
-//                        let fileName = "video-\("\(now)".replacingOccurrences(of: ".", with: "-"))\("\(avURLAsset.duration.seconds)".replacingOccurrences(of: ".", with: "-")).mp4"
-//                        let filePath = directoryToSave.appending("/\(fileName)")
-//                        if FileManager.default.fileExists(atPath: filePath) {
-//                            try? FileManager.default.removeItem(atPath: filePath)
-//                        }
-//                        let fileURLToSave = URL(fileURLWithPath: filePath)
-//
-//                        let session = AVAssetExportSession(asset: avURLAsset, presetName: AVAssetExportPresetLowQuality)!
-//                        session.shouldOptimizeForNetworkUse = true
-//                        session.outputURL = fileURLToSave
-//                        let supportedTypes = session.supportedFileTypes
-//                        if supportedTypes.contains(AVFileType.mp4) {
-//                            session.outputFileType = .mp4
-//                        } else if let firstType = supportedTypes.first {
-//                            session.outputFileType = firstType
-//                        } else {
-//                            DispatchQueue.main.async(execute: { [weak self] in
-//
-//                                guard let `self` = self else { return }
-//                                self.hideIndicatorView()
-//                                if (shouldCallWhenError) {
-//                                    shouldCallWhenError = false
-//                                    self.delegate?.photoMutilPickerHostControllerDidFetchFailed(self)
-//                                }
-//                            })
-//                            return
-//                        }
-//                        session.exportAsynchronously(completionHandler: {
-//                            switch (session.status) {
-//                            case .completed:
-//                                DispatchQueue.main.async(execute: { [weak self] in
-//
-//                                    guard let `self` = self else { return }
-//                                    selectedVideos.append(fileURLToSave)
-//                                    guard selectedAssets.count == selectedVideos.count else {
-//                                        return
-//                                    }
-//                                    self.hideIndicatorView()
-//                                    self.delegate?.photoMutilPickerHostController(self, didFinishPickingVideos: selectedVideos)
-//                                })
-//                            case .failed:
-//                                DispatchQueue.main.async(execute: { [weak self] in
-//
-//                                    guard let `self` = self else { return }
-//                                    self.hideIndicatorView()
-//                                    if (shouldCallWhenError) {
-//                                        shouldCallWhenError = false
-//                                        self.delegate?.photoMutilPickerHostControllerDidFetchFailed(self)
-//                                    }
-//                                })
-//                                break
-//                            case .unknown, .waiting, .exporting, .cancelled:
-//                                break
-//                            @unknown default:
-//                                break
-//                            }
-//                        })
                     })
                 }
             }
@@ -240,8 +172,14 @@ extension ZVideoPhotoMutilPickerHostController {
         if let type = dataSource?.assetsTypeSelecting(self), type != asset.mediaType {
             return false
         }
-
+        
         if let maxVideoDurationInSecond = maxVideoDurationInSecond, asset.mediaType == .video, asset.duration > TimeInterval(maxVideoDurationInSecond) {
+            delegate?.photoMutilPickerHostController(self, didForbidSelectionDuration: asset.duration)
+            return false
+        }
+
+        if let minVideoDurationInSecond = minVideoDurationInSecond, asset.mediaType == .video, asset.duration < TimeInterval(minVideoDurationInSecond) {
+            delegate?.photoMutilPickerHostController(self, didForbidSelectionDuration: asset.duration)
             return false
         }
         imageManager?.startCachingImages(for: [asset], targetSize: PHImageManagerMaximumSize, contentMode: .aspectFill, options: nil)
@@ -276,10 +214,6 @@ extension ZVideoPhotoMutilPickerHostController {
                 cell.canSelected = false
             }
         }
-        
-        if let maxVideoDurationInSecond = maxVideoDurationInSecond, asset.mediaType == .video, asset.duration > TimeInterval(maxVideoDurationInSecond) {
-            cell.canSelected = false
-        }
 
         return cell
     }
@@ -307,6 +241,8 @@ protocol ZVideoPhotoMutilPickerHostControllerDelegate: class {
 
     func photoMutilPickerHostController(_ controller: ZVideoPhotoMutilPickerHostController, didSelectAsset asset: PHAsset)
     func photoMutilPickerHostController(_ controller: ZVideoPhotoMutilPickerHostController, didDeselectAsset asset: PHAsset)
+    
+    func photoMutilPickerHostController(_ controller: ZVideoPhotoMutilPickerHostController, didForbidSelectionDuration videoDuration: TimeInterval)
 }
 
 protocol ZVideoPhotoMutilPickerHostControllerDataSource: class {

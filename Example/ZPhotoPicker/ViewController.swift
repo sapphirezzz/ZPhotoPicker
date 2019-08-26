@@ -55,21 +55,25 @@ class ViewController: UIViewController {
         }
         let multiVideoPhotoesAction = UIAlertAction(title: "选取多个视频/图片", style: .default) { (_) in
             
-            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiVideoOrPhotoes(maxCount: 4, canMultiSelectVideo: true, maxVideoDurationInSecond: nil), imagesPickedHandler: imagesPickedHandler, videosPickedHandler: { (videos) in
+            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiVideoOrPhotoes(maxCount: 4, canMultiSelectVideo: true, maxVideoDurationInSecond: nil, minVideoDurationInSecond: nil), imagesPickedHandler: imagesPickedHandler, videosPickedHandler: { (videos) in
                 print("videos = ", videos)
             }, cancelledHandler: cancelledHandler)
         }
         let singleVideoPhotoesWithDurationAction = UIAlertAction(title: "选取一个视频/多个图片(视频限时2分钟)", style: .default) { (_) in
             
-            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiVideoOrPhotoes(maxCount: 4, canMultiSelectVideo: false, maxVideoDurationInSecond: 2 * 60), imagesPickedHandler: imagesPickedHandler, videosPickedHandler: { (videos) in
+            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiVideoOrPhotoes(maxCount: 4, canMultiSelectVideo: false, maxVideoDurationInSecond: 2 * 60, minVideoDurationInSecond: 1), imagesPickedHandler: imagesPickedHandler, videosPickedHandler: { (videos) in
                 print("videos = ", videos)
-            }, cancelledHandler: cancelledHandler)
+            }, cancelledHandler: cancelledHandler, selectionDurationForbidHandler: { (duration) in
+                print("duration = ", duration)
+            })
         }
         let singleVideoPhotoesAction = UIAlertAction(title: "选取一个视频/多个图片", style: .default) { (_) in
-            
-            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiVideoOrPhotoes(maxCount: 4, canMultiSelectVideo: false, maxVideoDurationInSecond: nil), imagesPickedHandler: imagesPickedHandler, videosPickedHandler: { (videos) in
+
+            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiVideoOrPhotoes(maxCount: 4, canMultiSelectVideo: false, maxVideoDurationInSecond: nil, minVideoDurationInSecond: nil), imagesPickedHandler: imagesPickedHandler, videosPickedHandler: { (videos) in
                 print("videos = ", videos)
-            }, cancelledHandler: cancelledHandler)
+            }, cancelledHandler: cancelledHandler, selectionDurationForbidHandler: { (duration) in
+                print("duration = ", duration)
+            })
         }
         let cancelAction = UIAlertAction(title: "取消", style: .cancel)
         alertVC.addAction(cameraAction)

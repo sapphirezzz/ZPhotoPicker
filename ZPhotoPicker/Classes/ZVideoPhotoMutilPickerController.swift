@@ -11,10 +11,10 @@ class ZVideoPhotoMutilPickerController: UINavigationController {
     
     private var imagesPickedHandler: ((_ images: [UIImage]) -> Void)? = nil
     private var videosPickedHandler: ((_ videos: [AVURLAsset]) -> Void)? = nil
+    private var selectionDurationForbidHandler: ((_ duration: TimeInterval) -> Void)? = nil
     private var cancelledHandler: (() -> Void)?
     private var maxCount: Int = 0
     private var canMutilSelectVideo: Bool = false
-    private var maxVideoDurationInSecond: Int?
     private var selectedAssets: [PHAsset] = []
     
     deinit {
@@ -29,19 +29,19 @@ class ZVideoPhotoMutilPickerController: UINavigationController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
-    convenience init(maxCount: Int, canMutilSelectVideo: Bool = false, maxVideoDurationInSecond: Int?, imagesPickedHandler: ((_ images: [UIImage]) -> Void)? = nil, videosPickedHandler: ((_ videos: [AVURLAsset]) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil) {
+    convenience init(maxCount: Int, canMutilSelectVideo: Bool = false, maxVideoDurationInSecond: Int?, minVideoDurationInSecond: Int?, imagesPickedHandler: ((_ images: [UIImage]) -> Void)? = nil, videosPickedHandler: ((_ videos: [AVURLAsset]) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil) {
         
         let vc = ZPhotoAlbumListController()
         self.init(rootViewController: vc)
         self.maxCount = maxCount
         self.canMutilSelectVideo = canMutilSelectVideo
-        self.maxVideoDurationInSecond = maxVideoDurationInSecond
         self.imagesPickedHandler = imagesPickedHandler
         self.videosPickedHandler = videosPickedHandler
         self.cancelledHandler = cancelledHandler
         vc.albumListdelegate = self
         let secondVC = ZVideoPhotoMutilPickerHostController(collectionViewLayout: UICollectionViewFlowLayout())
         secondVC.maxVideoDurationInSecond = maxVideoDurationInSecond
+        secondVC.minVideoDurationInSecond = minVideoDurationInSecond
         secondVC.delegate = self
         secondVC.dataSource = self
         self.pushViewController(secondVC, animated: false)
@@ -54,14 +54,19 @@ class ZVideoPhotoMutilPickerController: UINavigationController {
 
 extension ZVideoPhotoMutilPickerController {
     
-    class func pickPhotoes(onPresentingViewController controller: UIViewController, maxCount: Int, canMultiSelectVideo: Bool, maxVideoDurationInSecond: Int?, imagesPickedHandler: ((_ images: [UIImage]) -> Void)? = nil, videosPickedHandler: ((_ videos: [AVURLAsset]) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil) {
+    class func pickPhotoes(onPresentingViewController controller: UIViewController, maxCount: Int, canMultiSelectVideo: Bool, maxVideoDurationInSecond: Int?, minVideoDurationInSecond: Int?, imagesPickedHandler: ((_ images: [UIImage]) -> Void)? = nil, videosPickedHandler: ((_ videos: [AVURLAsset]) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil, selectionDurationForbidHandler: ((_ duration: TimeInterval) -> Void)? = nil) {
 
-        let vc = ZVideoPhotoMutilPickerController(maxCount: maxCount, canMutilSelectVideo: canMultiSelectVideo, maxVideoDurationInSecond: maxVideoDurationInSecond, imagesPickedHandler: imagesPickedHandler, videosPickedHandler: videosPickedHandler, cancelledHandler: cancelledHandler)
+        let vc = ZVideoPhotoMutilPickerController(maxCount: maxCount, canMutilSelectVideo: canMultiSelectVideo, maxVideoDurationInSecond: maxVideoDurationInSecond, minVideoDurationInSecond: minVideoDurationInSecond, imagesPickedHandler: imagesPickedHandler, videosPickedHandler: videosPickedHandler, cancelledHandler: cancelledHandler)
+        vc.selectionDurationForbidHandler = selectionDurationForbidHandler
         controller.present(vc, animated: true, completion: nil)
     }
 }
 
 extension ZVideoPhotoMutilPickerController: ZVideoPhotoMutilPickerHostControllerDelegate {
+    func photoMutilPickerHostController(_ controller: ZVideoPhotoMutilPickerHostController, didForbidSelectionDuration videoDuration: TimeInterval) {
+        selectionDurationForbidHandler?(videoDuration)
+    }
+    
     
     func photoMutilPickerHostController(_ controller: ZVideoPhotoMutilPickerHostController, didFinishPickingImages images: [UIImage]) {
         
