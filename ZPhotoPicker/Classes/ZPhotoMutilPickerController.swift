@@ -50,6 +50,7 @@ extension ZPhotoMutilPickerController {
     class func pickPhotoes(onPresentingViewController controller: UIViewController, maxCount: Int, imagesPickedHandler: @escaping (_ image: [UIImage]) -> Void, cancelledHandler: (() -> Void)? = nil) {
 
         let vc = ZPhotoMutilPickerController(maxCount: maxCount, imagesPickedHandler: imagesPickedHandler, cancelledHandler: cancelledHandler)
+        vc.modalPresentationStyle = .fullScreen
         controller.present(vc, animated: true, completion: nil)
     }
 }

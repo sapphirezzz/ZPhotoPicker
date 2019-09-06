@@ -47,6 +47,7 @@ extension ZPhotoSinglePickerController {
     class func pickPhoto(onPresentingViewController controller: UIViewController, allowsCropping: Bool = false, imageTookHandler: @escaping (_ image: UIImage) -> Void, cancelledHandler: (() -> Void)? = nil) {
 
         let vc = ZPhotoSinglePickerController(allowsCropping: allowsCropping, imagePickedHandler: imageTookHandler, cancelledHandler: cancelledHandler)
+        vc.modalPresentationStyle = .fullScreen
         controller.present(vc, animated: true, completion: nil)
     }
 }
