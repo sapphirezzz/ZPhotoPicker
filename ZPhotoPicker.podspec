@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ZPhotoPicker'
-  s.version          = '3.0.8'
+  s.version          = '3.0.9'
   s.summary          = 'A short description of ZPhotoPicker.'
 
   s.description      = <<-DESC

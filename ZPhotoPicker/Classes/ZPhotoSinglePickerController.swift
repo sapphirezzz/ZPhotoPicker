@@ -72,6 +72,7 @@ extension ZPhotoSinglePickerController: ZPhotoSinglePickerHostControllerDelegate
                     }
                 }
             }
+            vc.modalPresentationStyle = UIModalPresentationStyle.fullScreen
             vc.transitioningDelegate = vc
             present(vc, animated: true)
 

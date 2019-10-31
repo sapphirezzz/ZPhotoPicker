@@ -63,6 +63,7 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
                     }
                 }
             }
+            vc.modalPresentationStyle = UIModalPresentationStyle.fullScreen
             vc.transitioningDelegate = vc
             present(vc, animated: true)
 
