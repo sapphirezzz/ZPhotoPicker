@@ -58,6 +58,7 @@ extension ZVideoPhotoMutilPickerController {
 
         let vc = ZVideoPhotoMutilPickerController(maxCount: maxCount, canMutilSelectVideo: canMultiSelectVideo, maxVideoDurationInSecond: maxVideoDurationInSecond, minVideoDurationInSecond: minVideoDurationInSecond, imagesPickedHandler: imagesPickedHandler, videosPickedHandler: videosPickedHandler, cancelledHandler: cancelledHandler)
         vc.selectionDurationForbidHandler = selectionDurationForbidHandler
+        vc.modalPresentationStyle = .fullScreen
         controller.present(vc, animated: true, completion: nil)
     }
 }
