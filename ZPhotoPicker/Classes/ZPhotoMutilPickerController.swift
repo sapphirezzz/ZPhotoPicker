@@ -73,6 +73,7 @@ extension ZPhotoMutilPickerController: ZPhotoMutilPickerHostControllerDelegate {
     
     func photoMutilPickerHostController(_ controller: ZPhotoMutilPickerHostController, didSelectAsset asset: PHAsset) {
         selectedAssets.append(asset)
+        controller.collectionView.reloadData()
     }
     
     func photoMutilPickerHostController(_ controller: ZPhotoMutilPickerHostController, didDeselectAsset asset: PHAsset) {
@@ -80,6 +81,7 @@ extension ZPhotoMutilPickerController: ZPhotoMutilPickerHostControllerDelegate {
         if let index = selectedAssets.firstIndex(of: asset) {
             selectedAssets.remove(at: index)
         }
+        controller.collectionView.reloadData()
     }
 }
 

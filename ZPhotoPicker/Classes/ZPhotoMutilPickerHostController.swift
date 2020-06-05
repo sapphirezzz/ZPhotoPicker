@@ -46,8 +46,8 @@ private extension ZPhotoMutilPickerHostController {
     
     func configBottomView(selectOrDeselect isSelect: Bool) {
         
-        let preSelectCount = dataSource?.numberOfItemsSelected(self) ?? 0
-        let wantSelectCount = isSelect ? (preSelectCount + 1) : (preSelectCount - 1)
+        let wantSelectCount = dataSource?.numberOfItemsSelected(self) ?? 0
+        let preSelectCount = isSelect ? (wantSelectCount - 1) : (wantSelectCount + 1)
         bottomView.selectedCount = wantSelectCount
 
         let height = bottomLayoutGuide.length + 50
@@ -131,34 +131,51 @@ extension ZPhotoMutilPickerHostController {
                 return false
             }
             imageManager?.startCachingImages(for: [asset], targetSize: PHImageManagerMaximumSize, contentMode: .aspectFill, options: nil)
-            configBottomView(selectOrDeselect: true)
-            delegate?.photoMutilPickerHostController(self, didSelectAsset: asset)
             return true
         }
     }
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let asset = fetchResult.object(at: indexPath.item)
+        delegate?.photoMutilPickerHostController(self, didSelectAsset: asset)
+        configBottomView(selectOrDeselect: true)
+    }
+
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let selectedCount = dataSource?.numberOfItemsSelected(self) ?? 0
+        let maxSelectedCount = dataSource?.maxSelectedCount(self) ?? 0
+        
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! PhotoPickerImageCell
         let asset = fetchResult.object(at: indexPath.item)
-        if let assets = dataSource?.selectedItems(self), assets.contains(asset) {
+        if let assets = dataSource?.selectedItems(self), let index = assets.firstIndex(of: asset) {
+            cell.canSelected = true
             cell.isSelected = true
+            cell.index = index + 1
             collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
         } else {
+            if (selectedCount == maxSelectedCount) {
+                cell.canSelected = false
+            } else {
+                cell.canSelected = true
+            }
             cell.isSelected = false
         }
-
-        cell.canSelected = asset.mediaType != .video
 
         return cell
     }
 
     override func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
-        
+
         let asset = fetchResult.object(at: indexPath.item)
         imageManager?.stopCachingImages(for: [asset], targetSize: PHImageManagerMaximumSize, contentMode: .aspectFill, options: nil)
-        configBottomView(selectOrDeselect: false)
-        delegate?.photoMutilPickerHostController(self, didDeselectAsset: asset)
         return true
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let asset = fetchResult.object(at: indexPath.item)
+        delegate?.photoMutilPickerHostController(self, didDeselectAsset: asset)
+        configBottomView(selectOrDeselect: false)
     }
 }
 
