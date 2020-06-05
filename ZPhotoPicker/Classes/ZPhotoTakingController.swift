@@ -30,6 +30,22 @@ extension ZPhotoTakingController {
         vc.delegate = vc
         controller.present(vc, animated: true, completion: nil)
     }
+
+    @available(iOS 12.0, *)
+    class func takePhoto(onPresentingViewController controller: UIViewController, allowsCropping: Bool = false, imageTookHandler: @escaping (_ image: UIImage) -> Void, cancelledHandler: (() -> Void)? = nil, userInterfaceStyle: UIUserInterfaceStyle = .unspecified) {
+
+        let vc = ZPhotoTakingController()
+        if #available(iOS 13.0, *) {
+            vc.overrideUserInterfaceStyle = userInterfaceStyle
+        }
+        vc.allowsCropping = allowsCropping
+        vc.allowsEditing = false
+        vc.sourceType = .camera
+        vc.imageTookHandler = imageTookHandler
+        vc.cancelledHandler = cancelledHandler
+        vc.delegate = vc
+        controller.present(vc, animated: true, completion: nil)
+    }
 }
 
 extension ZPhotoTakingController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

@@ -17,6 +17,37 @@ public class ZPhotoPicker {
         case multiVideoOrPhotoes(maxCount: Int, canMultiSelectVideo: Bool, maxVideoDurationInSecond: Int?, minVideoDurationInSecond: Int?)
     }
 
+    @available(iOS 12.0, *)
+    public class func pickVideoOrPhoto(onViewController controller: UIViewController, type: PhotoPickType, imagePickedHandler: ((_ image: UIImage) -> Void)? = nil, imagesPickedHandler: ((_ images: [UIImage]) -> Void)? = nil, videosPickedHandler: ((_ videos: [AVURLAsset]) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil, selectionDurationForbidHandler: ((_ duration: TimeInterval) -> Void)? = nil, userInterfaceStyle: UIUserInterfaceStyle = .unspecified) {
+
+        switch type {
+        case let .camera(allowsEditing):
+
+            let sourceType: UIImagePickerController.SourceType = .camera
+            guard UIImagePickerController.isSourceTypeAvailable(sourceType) else {
+                alertUnsupportTypeError(onViewController: controller)
+                return
+            }
+            ZPhotoTakingController.takePhoto(onPresentingViewController: controller, allowsCropping: allowsEditing, imageTookHandler: imagePickedHandler ?? { _ in}, cancelledHandler: cancelledHandler, userInterfaceStyle: userInterfaceStyle)
+        case let .singlePhoto(allowsEditing):
+
+            let sourceType: UIImagePickerController.SourceType = .photoLibrary
+            guard UIImagePickerController.isSourceTypeAvailable(sourceType) else {
+                alertUnsupportTypeError(onViewController: controller)
+                return
+            }
+            ZPhotoSinglePickerController.pickPhoto(onPresentingViewController: controller, allowsCropping: allowsEditing, imageTookHandler: imagePickedHandler ?? { _ in}, cancelledHandler: cancelledHandler, userInterfaceStyle: userInterfaceStyle)
+            
+        case let .multiPhotoes(maxCount):
+            
+            ZPhotoMutilPickerController.pickPhotoes(onPresentingViewController: controller, maxCount: maxCount, imagesPickedHandler: imagesPickedHandler ?? {_ in}, cancelledHandler: cancelledHandler, userInterfaceStyle: userInterfaceStyle)
+            break
+            
+        case let .multiVideoOrPhotoes(maxCount, canMultiSelectVideo, maxVideoDurationInSecond, minVideoDurationInSecond):
+            ZVideoPhotoMutilPickerController.pickPhotoes(onPresentingViewController: controller, maxCount: maxCount, canMultiSelectVideo: canMultiSelectVideo, maxVideoDurationInSecond: maxVideoDurationInSecond, minVideoDurationInSecond: minVideoDurationInSecond, imagesPickedHandler: imagesPickedHandler, videosPickedHandler: videosPickedHandler, cancelledHandler: cancelledHandler, selectionDurationForbidHandler: selectionDurationForbidHandler, userInterfaceStyle: userInterfaceStyle)
+        }
+    }
+    
     public class func pickVideoOrPhoto(onViewController controller: UIViewController, type: PhotoPickType, imagePickedHandler: ((_ image: UIImage) -> Void)? = nil, imagesPickedHandler: ((_ images: [UIImage]) -> Void)? = nil, videosPickedHandler: ((_ videos: [AVURLAsset]) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil, selectionDurationForbidHandler: ((_ duration: TimeInterval) -> Void)? = nil) {
 
         switch type {

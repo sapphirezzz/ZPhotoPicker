@@ -35,45 +35,87 @@ class ViewController: UIViewController {
         let alertVC = UIAlertController(title: nil, message: "请选择类型", preferredStyle: UIDevice.current.model == "iPad" ? .alert : .actionSheet)
         let cameraAction = UIAlertAction(title: "拍照不裁剪", style: .default) { (_) in
             
-            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .camera(allowsEditing: false), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
+            if #available(iOS 12.0, *) { // 支持设置暗黑模式
+                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .camera(allowsEditing: false), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler, userInterfaceStyle: .light)
+            } else {
+                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .camera(allowsEditing: false), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
+            }
         }
         let cameraEditableAction = UIAlertAction(title: "拍照需裁剪", style: .default) { (_) in
             
-            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .camera(allowsEditing: true), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
+            if #available(iOS 12.0, *) { // 支持设置暗黑模式
+                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .camera(allowsEditing: true), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler, userInterfaceStyle: .light)
+            } else {
+                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .camera(allowsEditing: true), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
+            }
         }
         let photoAction = UIAlertAction(title: "选取照片不裁剪", style: .default) { (_) in
             
-            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .singlePhoto(allowsEditing: false), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
+            if #available(iOS 12.0, *) { // 支持设置暗黑模式
+                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .singlePhoto(allowsEditing: false), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler, userInterfaceStyle: .light)
+            } else {
+                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .singlePhoto(allowsEditing: false), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
+            }
         }
         let photoEditableAction = UIAlertAction(title: "选取照片需裁剪", style: .default) { (_) in
             
-            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .singlePhoto(allowsEditing: true), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
+            if #available(iOS 12.0, *) { // 支持设置暗黑模式
+                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .singlePhoto(allowsEditing: true), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler, userInterfaceStyle: .light)
+            } else {
+                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .singlePhoto(allowsEditing: true), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
+            }
         }
         let photoesAction = UIAlertAction(title: "选取多张照片", style: .default) { (_) in
             
-            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiPhotoes(maxCount: 4), imagesPickedHandler: imagesPickedHandler, cancelledHandler: cancelledHandler)
+            if #available(iOS 12.0, *) { // 支持设置暗黑模式
+                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiPhotoes(maxCount: 4), imagesPickedHandler: imagesPickedHandler, cancelledHandler: cancelledHandler, userInterfaceStyle: .light)
+            } else {
+                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiPhotoes(maxCount: 4), imagesPickedHandler: imagesPickedHandler, cancelledHandler: cancelledHandler)
+            }
         }
         let multiVideoPhotoesAction = UIAlertAction(title: "选取多个视频/图片", style: .default) { (_) in
             
-            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiVideoOrPhotoes(maxCount: 4, canMultiSelectVideo: true, maxVideoDurationInSecond: nil, minVideoDurationInSecond: nil), imagesPickedHandler: imagesPickedHandler, videosPickedHandler: { (videos) in
-                print("videos = ", videos)
-            }, cancelledHandler: cancelledHandler)
+            if #available(iOS 12.0, *) { // 支持设置暗黑模式
+                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiVideoOrPhotoes(maxCount: 4, canMultiSelectVideo: true, maxVideoDurationInSecond: nil, minVideoDurationInSecond: nil), imagesPickedHandler: imagesPickedHandler, videosPickedHandler: { (videos) in
+                    print("videos = ", videos)
+                }, cancelledHandler: cancelledHandler, userInterfaceStyle: .light)
+            } else {
+                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiVideoOrPhotoes(maxCount: 4, canMultiSelectVideo: true, maxVideoDurationInSecond: nil, minVideoDurationInSecond: nil), imagesPickedHandler: imagesPickedHandler, videosPickedHandler: { (videos) in
+                    print("videos = ", videos)
+                }, cancelledHandler: cancelledHandler)
+            }
         }
         let singleVideoPhotoesWithDurationAction = UIAlertAction(title: "选取一个视频/多个图片(视频限时2分钟)", style: .default) { (_) in
             
-            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiVideoOrPhotoes(maxCount: 4, canMultiSelectVideo: false, maxVideoDurationInSecond: 2 * 60, minVideoDurationInSecond: 1), imagesPickedHandler: imagesPickedHandler, videosPickedHandler: { (videos) in
-                print("videos = ", videos)
-            }, cancelledHandler: cancelledHandler, selectionDurationForbidHandler: { (duration) in
-                print("duration = ", duration)
-            })
+            if #available(iOS 12.0, *) { // 支持设置暗黑模式
+                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiVideoOrPhotoes(maxCount: 4, canMultiSelectVideo: false, maxVideoDurationInSecond: 2 * 60, minVideoDurationInSecond: 1), imagesPickedHandler: imagesPickedHandler, videosPickedHandler: { (videos) in
+                    print("videos = ", videos)
+                }, cancelledHandler: cancelledHandler, selectionDurationForbidHandler: { (duration) in
+                    print("duration = ", duration)
+                }, userInterfaceStyle: .light)
+            } else {
+                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiVideoOrPhotoes(maxCount: 4, canMultiSelectVideo: false, maxVideoDurationInSecond: 2 * 60, minVideoDurationInSecond: 1), imagesPickedHandler: imagesPickedHandler, videosPickedHandler: { (videos) in
+                    print("videos = ", videos)
+                }, cancelledHandler: cancelledHandler, selectionDurationForbidHandler: { (duration) in
+                    print("duration = ", duration)
+                })
+            }
         }
         let singleVideoPhotoesAction = UIAlertAction(title: "选取一个视频/多个图片", style: .default) { (_) in
 
-            ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiVideoOrPhotoes(maxCount: 4, canMultiSelectVideo: false, maxVideoDurationInSecond: nil, minVideoDurationInSecond: nil), imagesPickedHandler: imagesPickedHandler, videosPickedHandler: { (videos) in
-                print("videos = ", videos)
-            }, cancelledHandler: cancelledHandler, selectionDurationForbidHandler: { (duration) in
-                print("duration = ", duration)
-            })
+            if #available(iOS 12.0, *) { // 支持设置暗黑模式
+                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiVideoOrPhotoes(maxCount: 4, canMultiSelectVideo: false, maxVideoDurationInSecond: nil, minVideoDurationInSecond: nil), imagesPickedHandler: imagesPickedHandler, videosPickedHandler: { (videos) in
+                    print("videos = ", videos)
+                }, cancelledHandler: cancelledHandler, selectionDurationForbidHandler: { (duration) in
+                    print("duration = ", duration)
+                }, userInterfaceStyle: .light)
+            } else {
+                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .multiVideoOrPhotoes(maxCount: 4, canMultiSelectVideo: false, maxVideoDurationInSecond: nil, minVideoDurationInSecond: nil), imagesPickedHandler: imagesPickedHandler, videosPickedHandler: { (videos) in
+                    print("videos = ", videos)
+                }, cancelledHandler: cancelledHandler, selectionDurationForbidHandler: { (duration) in
+                    print("duration = ", duration)
+                })
+            }
         }
         let cancelAction = UIAlertAction(title: "取消", style: .cancel)
         alertVC.addAction(cameraAction)

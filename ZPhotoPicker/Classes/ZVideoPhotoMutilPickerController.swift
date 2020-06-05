@@ -61,6 +61,18 @@ extension ZVideoPhotoMutilPickerController {
         vc.modalPresentationStyle = .fullScreen
         controller.present(vc, animated: true, completion: nil)
     }
+
+    @available(iOS 12.0, *)
+    class func pickPhotoes(onPresentingViewController controller: UIViewController, maxCount: Int, canMultiSelectVideo: Bool, maxVideoDurationInSecond: Int?, minVideoDurationInSecond: Int?, imagesPickedHandler: ((_ images: [UIImage]) -> Void)? = nil, videosPickedHandler: ((_ videos: [AVURLAsset]) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil, selectionDurationForbidHandler: ((_ duration: TimeInterval) -> Void)? = nil, userInterfaceStyle: UIUserInterfaceStyle = .unspecified) {
+
+        let vc = ZVideoPhotoMutilPickerController(maxCount: maxCount, canMutilSelectVideo: canMultiSelectVideo, maxVideoDurationInSecond: maxVideoDurationInSecond, minVideoDurationInSecond: minVideoDurationInSecond, imagesPickedHandler: imagesPickedHandler, videosPickedHandler: videosPickedHandler, cancelledHandler: cancelledHandler)
+        if #available(iOS 13.0, *) {
+            vc.overrideUserInterfaceStyle = userInterfaceStyle
+        }
+        vc.selectionDurationForbidHandler = selectionDurationForbidHandler
+        vc.modalPresentationStyle = .fullScreen
+        controller.present(vc, animated: true, completion: nil)
+    }
 }
 
 extension ZVideoPhotoMutilPickerController: ZVideoPhotoMutilPickerHostControllerDelegate {
