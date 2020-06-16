@@ -17,7 +17,17 @@ class ZPhotoMutilPickerHostController: ZPhotoesListController {
     deinit {
         print("\(self) \(#function)")
     }
+
+    override init(collectionViewLayout layout: UICollectionViewLayout) {
+        super.init(collectionViewLayout: layout)
+        self.mediaType = .image
+    }
     
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.mediaType = .image
+    }
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -121,15 +131,11 @@ extension ZPhotoMutilPickerHostController {
     
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
 
-
         let selectedCount = dataSource?.numberOfItemsSelected(self) ?? 0
         if selectedCount >= dataSource?.maxSelectedCount(self) ?? 0 {
             return false
         } else {
             let asset = fetchResult.object(at: indexPath.item)
-            if (asset.mediaType == .video) {
-                return false
-            }
             imageManager?.startCachingImages(for: [asset], targetSize: PHImageManagerMaximumSize, contentMode: .aspectFill, options: nil)
             return true
         }
