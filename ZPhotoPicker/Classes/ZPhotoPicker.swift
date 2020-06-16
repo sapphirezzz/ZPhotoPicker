@@ -13,12 +13,13 @@ public class ZPhotoPicker {
 
         case camera(allowsEditing: Bool)
         case singlePhoto(allowsEditing: Bool)
+        case singleVideo(maxVideoDurationInSecond: Int?, minVideoDurationInSecond: Int?)
         case multiPhotoes(maxCount: Int)
         case multiVideoOrPhotoes(maxCount: Int, canMultiSelectVideo: Bool, maxVideoDurationInSecond: Int?, minVideoDurationInSecond: Int?)
     }
 
     @available(iOS 12.0, *)
-    public class func pickVideoOrPhoto(onViewController controller: UIViewController, type: PhotoPickType, imagePickedHandler: ((_ image: UIImage) -> Void)? = nil, imagesPickedHandler: ((_ images: [UIImage]) -> Void)? = nil, videosPickedHandler: ((_ videos: [AVURLAsset]) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil, selectionDurationForbidHandler: ((_ duration: TimeInterval) -> Void)? = nil, userInterfaceStyle: UIUserInterfaceStyle = .unspecified) {
+    public class func pickVideoOrPhoto(onViewController controller: UIViewController, type: PhotoPickType, imagePickedHandler: ((_ image: UIImage) -> Void)? = nil, imagesPickedHandler: ((_ images: [UIImage]) -> Void)? = nil, videoPickedHandler: ((_ videos: AVURLAsset) -> Void)? = nil, videosPickedHandler: ((_ videos: [AVURLAsset]) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil, selectionDurationForbidHandler: ((_ duration: TimeInterval) -> Void)? = nil, userInterfaceStyle: UIUserInterfaceStyle = .unspecified) {
 
         switch type {
         case let .camera(allowsEditing):
@@ -37,6 +38,9 @@ public class ZPhotoPicker {
                 return
             }
             ZPhotoSinglePickerController.pickPhoto(onPresentingViewController: controller, allowsCropping: allowsEditing, imageTookHandler: imagePickedHandler ?? { _ in}, cancelledHandler: cancelledHandler, userInterfaceStyle: userInterfaceStyle)
+                
+        case let .singleVideo(maxVideoDurationInSecond, minVideoDurationInSecond):
+            ZVideoSinglePickerController.pickVideo(onPresentingViewController: controller, maxVideoDurationInSecond: maxVideoDurationInSecond, minVideoDurationInSecond: minVideoDurationInSecond, videoPickedHandler: videoPickedHandler ?? { _ in}, cancelledHandler: cancelledHandler, userInterfaceStyle: userInterfaceStyle)
             
         case let .multiPhotoes(maxCount):
             
@@ -48,7 +52,7 @@ public class ZPhotoPicker {
         }
     }
     
-    public class func pickVideoOrPhoto(onViewController controller: UIViewController, type: PhotoPickType, imagePickedHandler: ((_ image: UIImage) -> Void)? = nil, imagesPickedHandler: ((_ images: [UIImage]) -> Void)? = nil, videosPickedHandler: ((_ videos: [AVURLAsset]) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil, selectionDurationForbidHandler: ((_ duration: TimeInterval) -> Void)? = nil) {
+    public class func pickVideoOrPhoto(onViewController controller: UIViewController, type: PhotoPickType, imagePickedHandler: ((_ image: UIImage) -> Void)? = nil, imagesPickedHandler: ((_ images: [UIImage]) -> Void)? = nil, videoPickedHandler: ((_ videos: AVURLAsset) -> Void)? = nil, videosPickedHandler: ((_ videos: [AVURLAsset]) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil, selectionDurationForbidHandler: ((_ duration: TimeInterval) -> Void)? = nil) {
 
         switch type {
         case let .camera(allowsEditing):
@@ -67,7 +71,10 @@ public class ZPhotoPicker {
                 return
             }
             ZPhotoSinglePickerController.pickPhoto(onPresentingViewController: controller, allowsCropping: allowsEditing, imageTookHandler: imagePickedHandler ?? { _ in}, cancelledHandler: cancelledHandler)
-            
+                
+        case let .singleVideo(maxVideoDurationInSecond, minVideoDurationInSecond):
+            ZVideoSinglePickerController.pickVideo(onPresentingViewController: controller, maxVideoDurationInSecond: maxVideoDurationInSecond, minVideoDurationInSecond: minVideoDurationInSecond, videoPickedHandler: videoPickedHandler ?? { _ in}, cancelledHandler: cancelledHandler)
+
         case let .multiPhotoes(maxCount):
             
             ZPhotoMutilPickerController.pickPhotoes(onPresentingViewController: controller, maxCount: maxCount, imagesPickedHandler: imagesPickedHandler ?? {_ in}, cancelledHandler: cancelledHandler)
