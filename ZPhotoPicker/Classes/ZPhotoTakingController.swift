@@ -9,7 +9,7 @@ import UIKit
 class ZPhotoTakingController: UIImagePickerController {
 
     private var allowsCropping: Bool = false
-    private var imageTookHandler: ((_ image: UIImage) -> Void)?
+    private var imagePickedHandler: ((_ image: UIImage) -> Void)?
     private var cancelledHandler: (() -> Void)?
 
     deinit {
@@ -19,29 +19,27 @@ class ZPhotoTakingController: UIImagePickerController {
 
 extension ZPhotoTakingController {
     
-    class func takePhoto(onPresentingViewController controller: UIViewController, allowsCropping: Bool = false, imageTookHandler: @escaping (_ image: UIImage) -> Void, cancelledHandler: (() -> Void)? = nil) {
+    class func takePhoto(onPresentingViewController controller: UIViewController, allowsCropping: Bool = false, imagePickedHandler: @escaping (_ image: UIImage) -> Void, cancelledHandler: (() -> Void)? = nil) {
 
         let vc = ZPhotoTakingController()
         vc.allowsCropping = allowsCropping
-        vc.allowsEditing = false
         vc.sourceType = .camera
-        vc.imageTookHandler = imageTookHandler
+        vc.imagePickedHandler = imagePickedHandler
         vc.cancelledHandler = cancelledHandler
         vc.delegate = vc
         controller.present(vc, animated: true, completion: nil)
     }
 
     @available(iOS 12.0, *)
-    class func takePhoto(onPresentingViewController controller: UIViewController, allowsCropping: Bool = false, imageTookHandler: @escaping (_ image: UIImage) -> Void, cancelledHandler: (() -> Void)? = nil, userInterfaceStyle: UIUserInterfaceStyle = .unspecified) {
+    class func takePhoto(onPresentingViewController controller: UIViewController, allowsCropping: Bool = false, imagePickedHandler: @escaping (_ image: UIImage) -> Void, cancelledHandler: (() -> Void)? = nil, userInterfaceStyle: UIUserInterfaceStyle = .unspecified) {
 
         let vc = ZPhotoTakingController()
         if #available(iOS 13.0, *) {
             vc.overrideUserInterfaceStyle = userInterfaceStyle
         }
         vc.allowsCropping = allowsCropping
-        vc.allowsEditing = false
         vc.sourceType = .camera
-        vc.imageTookHandler = imageTookHandler
+        vc.imagePickedHandler = imagePickedHandler
         vc.cancelledHandler = cancelledHandler
         vc.delegate = vc
         controller.present(vc, animated: true, completion: nil)
@@ -66,7 +64,7 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
                 vc?.dismiss(animated: false) { [weak self] in
 
                     self?.dismiss(animated: true) { [weak self] in
-                        self?.imageTookHandler?(image)
+                        self?.imagePickedHandler?(image)
                     }
                 }
             }
@@ -86,7 +84,7 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         } else {
 
             dismiss(animated: true) { [weak self] in
-                self?.imageTookHandler?(image)
+                self?.imagePickedHandler?(image)
             }
         }
     }

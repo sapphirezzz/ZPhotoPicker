@@ -36,33 +36,33 @@ class ViewController: UIViewController {
         let cameraAction = UIAlertAction(title: "拍照不裁剪", style: .default) { (_) in
             
             if #available(iOS 12.0, *) { // 支持设置暗黑模式
-                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .camera(allowsEditing: false), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler, userInterfaceStyle: .light)
+                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .camera(allowsCropping: false), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler, userInterfaceStyle: .light)
             } else {
-                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .camera(allowsEditing: false), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
+                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .camera(allowsCropping: false), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
             }
         }
         let cameraEditableAction = UIAlertAction(title: "拍照需裁剪", style: .default) { (_) in
             
             if #available(iOS 12.0, *) { // 支持设置暗黑模式
-                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .camera(allowsEditing: true), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler, userInterfaceStyle: .light)
+                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .camera(allowsCropping: true), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler, userInterfaceStyle: .light)
             } else {
-                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .camera(allowsEditing: true), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
+                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .camera(allowsCropping: true), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
             }
         }
         let singlePhotoAction = UIAlertAction(title: "选取一张照片不裁剪", style: .default) { (_) in
             
             if #available(iOS 12.0, *) { // 支持设置暗黑模式
-                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .singlePhoto(allowsEditing: false), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler, userInterfaceStyle: .light)
+                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .singlePhoto(allowsCropping: false), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler, userInterfaceStyle: .light)
             } else {
-                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .singlePhoto(allowsEditing: false), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
+                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .singlePhoto(allowsCropping: false), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
             }
         }
         let singlePhotoEditableAction = UIAlertAction(title: "选取一张照片需裁剪", style: .default) { (_) in
             
             if #available(iOS 12.0, *) { // 支持设置暗黑模式
-                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .singlePhoto(allowsEditing: true), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler, userInterfaceStyle: .light)
+                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .singlePhoto(allowsCropping: true), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler, userInterfaceStyle: .light)
             } else {
-                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .singlePhoto(allowsEditing: true), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
+                ZPhotoPicker.pickVideoOrPhoto(onViewController: self, type: .singlePhoto(allowsCropping: true), imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
             }
         }
         let singleVideoAction = UIAlertAction(title: "选取一个视频(视频限时2分钟)", style: .default) { (_) in

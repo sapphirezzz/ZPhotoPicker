@@ -42,17 +42,17 @@ class ZPhotoSinglePickerController: UINavigationController {
 
 extension ZPhotoSinglePickerController {
     
-    class func pickPhoto(onPresentingViewController controller: UIViewController, allowsCropping: Bool = false, imageTookHandler: @escaping (_ image: UIImage) -> Void, cancelledHandler: (() -> Void)? = nil) {
+    class func pickPhoto(onPresentingViewController controller: UIViewController, allowsCropping: Bool = false, imagePickedHandler: @escaping (_ image: UIImage) -> Void, cancelledHandler: (() -> Void)? = nil) {
 
-        let vc = ZPhotoSinglePickerController(allowsCropping: allowsCropping, imagePickedHandler: imageTookHandler, cancelledHandler: cancelledHandler)
+        let vc = ZPhotoSinglePickerController(allowsCropping: allowsCropping, imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
         vc.modalPresentationStyle = .fullScreen
         controller.present(vc, animated: true, completion: nil)
     }
 
     @available(iOS 12.0, *)
-    class func pickPhoto(onPresentingViewController controller: UIViewController, allowsCropping: Bool = false, imageTookHandler: @escaping (_ image: UIImage) -> Void, cancelledHandler: (() -> Void)? = nil, userInterfaceStyle: UIUserInterfaceStyle = .unspecified) {
+    class func pickPhoto(onPresentingViewController controller: UIViewController, allowsCropping: Bool = false, imagePickedHandler: @escaping (_ image: UIImage) -> Void, cancelledHandler: (() -> Void)? = nil, userInterfaceStyle: UIUserInterfaceStyle = .unspecified) {
 
-        let vc = ZPhotoSinglePickerController(allowsCropping: allowsCropping, imagePickedHandler: imageTookHandler, cancelledHandler: cancelledHandler)
+        let vc = ZPhotoSinglePickerController(allowsCropping: allowsCropping, imagePickedHandler: imagePickedHandler, cancelledHandler: cancelledHandler)
         if #available(iOS 13.0, *) {
             vc.overrideUserInterfaceStyle = userInterfaceStyle
         }
@@ -64,7 +64,7 @@ extension ZPhotoSinglePickerController {
 extension ZPhotoSinglePickerController: ZPhotoSinglePickerHostControllerDelegate {
 
     func photoSinglePickerHostControllerDidClickToTakePhoto(_ controller: ZPhotoSinglePickerHostController) {
-        ZPhotoTakingController.takePhoto(onPresentingViewController: self, allowsCropping: allowsCropping, imageTookHandler: { [weak self] (image) in
+        ZPhotoTakingController.takePhoto(onPresentingViewController: self, allowsCropping: allowsCropping, imagePickedHandler: { [weak self] (image) in
             self?.dismiss(animated: true) { [weak self] in
                 self?.imagePickedHandler?(image)
             }

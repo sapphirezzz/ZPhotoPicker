@@ -11,8 +11,8 @@ public class ZPhotoPicker {
 
     public enum PhotoPickType {
 
-        case camera(allowsEditing: Bool)
-        case singlePhoto(allowsEditing: Bool)
+        case camera(allowsCropping: Bool)
+        case singlePhoto(allowsCropping: Bool)
         case singleVideo(maxVideoDurationInSecond: Int?, minVideoDurationInSecond: Int?)
         case multiPhotoes(maxCount: Int)
         case multiVideoOrPhotoes(maxCount: Int, canMultiSelectVideo: Bool, maxVideoDurationInSecond: Int?, minVideoDurationInSecond: Int?)
@@ -22,22 +22,22 @@ public class ZPhotoPicker {
     public class func pickVideoOrPhoto(onViewController controller: UIViewController, type: PhotoPickType, imagePickedHandler: ((_ image: UIImage) -> Void)? = nil, imagesPickedHandler: ((_ images: [UIImage]) -> Void)? = nil, videoPickedHandler: ((_ videos: AVURLAsset) -> Void)? = nil, videosPickedHandler: ((_ videos: [AVURLAsset]) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil, selectionDurationForbidHandler: ((_ duration: TimeInterval) -> Void)? = nil, userInterfaceStyle: UIUserInterfaceStyle = .unspecified) {
 
         switch type {
-        case let .camera(allowsEditing):
+        case let .camera(allowsCropping):
 
             let sourceType: UIImagePickerController.SourceType = .camera
             guard UIImagePickerController.isSourceTypeAvailable(sourceType) else {
                 alertUnsupportTypeError(onViewController: controller)
                 return
             }
-            ZPhotoTakingController.takePhoto(onPresentingViewController: controller, allowsCropping: allowsEditing, imageTookHandler: imagePickedHandler ?? { _ in}, cancelledHandler: cancelledHandler, userInterfaceStyle: userInterfaceStyle)
-        case let .singlePhoto(allowsEditing):
+            ZPhotoTakingController.takePhoto(onPresentingViewController: controller, allowsCropping: allowsCropping, imagePickedHandler: imagePickedHandler ?? { _ in}, cancelledHandler: cancelledHandler, userInterfaceStyle: userInterfaceStyle)
+        case let .singlePhoto(allowsCropping):
 
             let sourceType: UIImagePickerController.SourceType = .photoLibrary
             guard UIImagePickerController.isSourceTypeAvailable(sourceType) else {
                 alertUnsupportTypeError(onViewController: controller)
                 return
             }
-            ZPhotoSinglePickerController.pickPhoto(onPresentingViewController: controller, allowsCropping: allowsEditing, imageTookHandler: imagePickedHandler ?? { _ in}, cancelledHandler: cancelledHandler, userInterfaceStyle: userInterfaceStyle)
+            ZPhotoSinglePickerController.pickPhoto(onPresentingViewController: controller, allowsCropping: allowsCropping, imagePickedHandler: imagePickedHandler ?? { _ in}, cancelledHandler: cancelledHandler, userInterfaceStyle: userInterfaceStyle)
                 
         case let .singleVideo(maxVideoDurationInSecond, minVideoDurationInSecond):
             ZVideoSinglePickerController.pickVideo(onPresentingViewController: controller, maxVideoDurationInSecond: maxVideoDurationInSecond, minVideoDurationInSecond: minVideoDurationInSecond, videoPickedHandler: videoPickedHandler ?? { _ in}, cancelledHandler: cancelledHandler, userInterfaceStyle: userInterfaceStyle)
@@ -55,22 +55,22 @@ public class ZPhotoPicker {
     public class func pickVideoOrPhoto(onViewController controller: UIViewController, type: PhotoPickType, imagePickedHandler: ((_ image: UIImage) -> Void)? = nil, imagesPickedHandler: ((_ images: [UIImage]) -> Void)? = nil, videoPickedHandler: ((_ videos: AVURLAsset) -> Void)? = nil, videosPickedHandler: ((_ videos: [AVURLAsset]) -> Void)? = nil, cancelledHandler: (() -> Void)? = nil, selectionDurationForbidHandler: ((_ duration: TimeInterval) -> Void)? = nil) {
 
         switch type {
-        case let .camera(allowsEditing):
+        case let .camera(allowsCropping):
 
             let sourceType: UIImagePickerController.SourceType = .camera
             guard UIImagePickerController.isSourceTypeAvailable(sourceType) else {
                 alertUnsupportTypeError(onViewController: controller)
                 return
             }
-            ZPhotoTakingController.takePhoto(onPresentingViewController: controller, allowsCropping: allowsEditing, imageTookHandler: imagePickedHandler ?? { _ in}, cancelledHandler: cancelledHandler)
-        case let .singlePhoto(allowsEditing):
+            ZPhotoTakingController.takePhoto(onPresentingViewController: controller, allowsCropping: allowsCropping, imagePickedHandler: imagePickedHandler ?? { _ in}, cancelledHandler: cancelledHandler)
+        case let .singlePhoto(allowsCropping):
 
             let sourceType: UIImagePickerController.SourceType = .photoLibrary
             guard UIImagePickerController.isSourceTypeAvailable(sourceType) else {
                 alertUnsupportTypeError(onViewController: controller)
                 return
             }
-            ZPhotoSinglePickerController.pickPhoto(onPresentingViewController: controller, allowsCropping: allowsEditing, imageTookHandler: imagePickedHandler ?? { _ in}, cancelledHandler: cancelledHandler)
+            ZPhotoSinglePickerController.pickPhoto(onPresentingViewController: controller, allowsCropping: allowsCropping, imagePickedHandler: imagePickedHandler ?? { _ in}, cancelledHandler: cancelledHandler)
                 
         case let .singleVideo(maxVideoDurationInSecond, minVideoDurationInSecond):
             ZVideoSinglePickerController.pickVideo(onPresentingViewController: controller, maxVideoDurationInSecond: maxVideoDurationInSecond, minVideoDurationInSecond: minVideoDurationInSecond, videoPickedHandler: videoPickedHandler ?? { _ in}, cancelledHandler: cancelledHandler)
