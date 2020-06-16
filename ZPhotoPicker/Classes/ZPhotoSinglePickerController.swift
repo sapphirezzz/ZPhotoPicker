@@ -25,16 +25,14 @@ class ZPhotoSinglePickerController: UINavigationController {
     }
     
     convenience init(allowsCropping: Bool = false, imagePickedHandler: @escaping (_ image: UIImage) -> Void, cancelledHandler: (() -> Void)? = nil) {
-
+        
         let vc = ZPhotoAlbumListController()
         self.init(rootViewController: vc)
         self.allowsCropping = allowsCropping
         self.imagePickedHandler = imagePickedHandler
         self.cancelledHandler = cancelledHandler
         vc.albumListdelegate = self
-        let secondVC = ZPhotoSinglePickerHostController(collectionViewLayout: UICollectionViewFlowLayout())
-        secondVC.delegate = self
-        self.pushViewController(secondVC, animated: false)
+        pushZPhotoSinglePickerHostController()
     }
     
     override init(rootViewController: UIViewController) {
@@ -106,10 +104,7 @@ extension ZPhotoSinglePickerController: ZPhotoAlbumListControllerDelegate {
 
     func photoAlbumListController(_ controller: ZPhotoAlbumListController, didSelectAlbum album: AlbumItem) {
 
-        let vc = ZPhotoSinglePickerHostController(collectionViewLayout: UICollectionViewFlowLayout())
-        vc.delegate = self
-        vc.selectedAlbum = album
-        pushViewController(vc, animated: true)
+        pushZPhotoSinglePickerHostController(with: album)
     }
     
     func photoAlbumListControllerDidCancel(_ controller: ZPhotoAlbumListController) {
@@ -117,5 +112,18 @@ extension ZPhotoSinglePickerController: ZPhotoAlbumListControllerDelegate {
         self.dismiss(animated: true) { [weak self] in
             self?.cancelledHandler?()
         }
+    }
+}
+
+private extension ZPhotoSinglePickerController {
+    
+    func pushZPhotoSinglePickerHostController(with album: AlbumItem? = nil) {
+        
+        let vc = ZPhotoSinglePickerHostController(collectionViewLayout: UICollectionViewFlowLayout())
+        vc.delegate = self
+        if let album = album {
+            vc.selectedAlbum = album
+        }
+        pushViewController(vc, animated: true)
     }
 }

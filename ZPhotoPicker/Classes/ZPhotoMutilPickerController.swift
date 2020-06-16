@@ -34,10 +34,7 @@ class ZPhotoMutilPickerController: UINavigationController {
         self.imagesPickedHandler = imagesPickedHandler
         self.cancelledHandler = cancelledHandler
         vc.albumListdelegate = self
-        let secondVC = ZPhotoMutilPickerHostController(collectionViewLayout: UICollectionViewFlowLayout())
-        secondVC.delegate = self
-        secondVC.dataSource = self
-        self.pushViewController(secondVC, animated: false)
+        pushZPhotoMutilPickerHostController()
     }
 
     override init(rootViewController: UIViewController) {
@@ -115,11 +112,7 @@ extension ZPhotoMutilPickerController: ZPhotoAlbumListControllerDelegate {
     
     func photoAlbumListController(_ controller: ZPhotoAlbumListController, didSelectAlbum album: AlbumItem) {
         
-        let vc = ZPhotoMutilPickerHostController(collectionViewLayout: UICollectionViewFlowLayout())
-        vc.delegate = self
-        vc.dataSource = self
-        vc.selectedAlbum = album
-        pushViewController(vc, animated: true)
+        pushZPhotoMutilPickerHostController(with: album)
     }
     
     func photoAlbumListControllerDidCancel(_ controller: ZPhotoAlbumListController) {
@@ -127,5 +120,19 @@ extension ZPhotoMutilPickerController: ZPhotoAlbumListControllerDelegate {
         self.dismiss(animated: true) { [weak self] in
             self?.cancelledHandler?()
         }
+    }
+}
+
+private extension ZPhotoMutilPickerController {
+
+    func pushZPhotoMutilPickerHostController(with album: AlbumItem? = nil) {
+
+        let vc = ZPhotoMutilPickerHostController(collectionViewLayout: UICollectionViewFlowLayout())
+        vc.delegate = self
+        vc.dataSource = self
+        if let album = album {
+            vc.selectedAlbum = album
+        }
+        pushViewController(vc, animated: true)
     }
 }
