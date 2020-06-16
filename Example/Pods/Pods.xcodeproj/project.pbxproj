@@ -8,35 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		03F3506ACC58362FA922D85FCDB1F0A7 /* Pods-ZPhotoPicker_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C297DC1C39CC016BBC551263D3137A3D /* Pods-ZPhotoPicker_Tests-dummy.m */; };
-		092993BA0DAD7A95CD4BA74F085AD98E /* ZPhotoTakingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8711BA41C87FE50338E3F49186DF18 /* ZPhotoTakingController.swift */; };
-		0F42E8E90CD72105DF86AD88E9BED2DF /* ZPhotoPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 77EDB5ED8107EC44A17C55D377E456BD /* ZPhotoPicker-dummy.m */; };
-		3410A714B563919E3335E9D90C79BB42 /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154B73B2FDC41329747760478F8E6ADE /* IndicatorView.swift */; };
-		47DEA5B957B10FCC2161051E6251BAD8 /* ZPhotoAlbumListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CEC186958F44098CE318CCDB952B4 /* ZPhotoAlbumListController.swift */; };
+		10C460A88521A3CA268690EF0A8F4CC9 /* ZVideoPhotoMutilPickerHostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3A292893B8DCC5EEC843B3D5B0B8D5 /* ZVideoPhotoMutilPickerHostController.swift */; };
+		14C77093EDD12211E14D29B6EE3CEE83 /* PhotoPickerTakePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB88ABC19870E6DBE16C62A4E78C3B2 /* PhotoPickerTakePhotoCell.swift */; };
+		25D53E67E50E7B70ABE5BDE856BAE85A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36E8017CD3DD67036B82DE3355DDA10C /* Foundation.framework */; };
+		35867FB3DA96BB13B90D835E33D3ADBD /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D3CDC39D98E22F2A543100660462A0 /* Photos.framework */; };
+		445B4C61F241A0886553C3EA6ED79518 /* ZVideoPhotoMutilPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB0C255D4AC7FD32F634ED07BB87B1 /* ZVideoPhotoMutilPickerController.swift */; };
 		4BA9EBC3113D56EADE2E0AF03948C4D4 /* Pods-ZPhotoPicker_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F016CB757068CBC46DB618AC443871A /* Pods-ZPhotoPicker_Example-dummy.m */; };
+		4E1E6F8FC39CEA239747948D56A8F8A0 /* CoverHorizontalAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D5EC2A8E2675D913F72AF1B6CB428 /* CoverHorizontalAnimatedTransitioning.swift */; };
 		4E30107C07BACE531C87A92A9EBE68EF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36E8017CD3DD67036B82DE3355DDA10C /* Foundation.framework */; };
-		4F93E482BBEA1687F7E7D7EB2E2D506A /* IndicatorView.xib in Sources */ = {isa = PBXBuildFile; fileRef = 7AB86D4BE2A8D42CCC68FBE8F04B8A8E /* IndicatorView.xib */; };
-		5266E2979C36490DDD13684982B8B562 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2510F85376936AF22717491F571E1966 /* images.xcassets */; };
-		6B3CC2AF47642391A53A7FFE89659AE7 /* CoverHorizontalAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13770E7137D95B7A3BA68F008460EC6 /* CoverHorizontalAnimatedTransitioning.swift */; };
-		7412E42970B16B46E63502DBDA02996F /* ZPhotoSinglePickerHostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0FB9F7B5B1242C31182CB367DA288B /* ZPhotoSinglePickerHostController.swift */; };
-		74C26F30A78237B22846D86B14069592 /* ZVideoPhotoMutilPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525B04EDACC18DD03F15612123AC7D3 /* ZVideoPhotoMutilPickerController.swift */; };
-		74E55A33F6F305B19D0636CB8713E2F5 /* ZPhotoMutilPickerHostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FBD6793D6BE432605C470D41DE0C78 /* ZPhotoMutilPickerHostController.swift */; };
-		776314C473B81354B9EFC606B739F049 /* PhotoPickerImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDBACACD13FB0E5B66C9899D87CF77B /* PhotoPickerImageCell.swift */; };
-		77B30B2CF333573E3653F8321AA40C81 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36E8017CD3DD67036B82DE3355DDA10C /* Foundation.framework */; };
-		841825F584DC13D0D54AFDDE0F14AFF2 /* ZPhotoesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FB2F28284CAC01AC118B6F12955424 /* ZPhotoesListController.swift */; };
-		8741AAA3D698914DC3A680CC4987CB05 /* ZPhotoMutilPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E396B7B33B521F67D0FB2C90EB70840A /* ZPhotoMutilPickerController.swift */; };
-		881964C472D8005DD5A9DE404CC56621 /* ZPhotoSinglePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9362986676809E42C4C7CBD83DB824A7 /* ZPhotoSinglePickerController.swift */; };
-		89241EE31BB6667C286166429DF72848 /* PhotoPickerSelectedCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53D66951F648769E8F13DB6888EB9B5 /* PhotoPickerSelectedCountView.swift */; };
-		89B6A277E24E28D9C17D0AE1727546F0 /* UIImage+fixOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856A910978733229E1AC7AFA6E631BED /* UIImage+fixOrientation.swift */; };
-		8D8B7FABBB8677D0A96A28B06F4B46C8 /* PhotoPickerImageCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9201FBCD8E895A544F3513660ECAA585 /* PhotoPickerImageCountView.swift */; };
-		986D0EEECBD56AD3047260C3C3FEBE83 /* ZVideoPhotoMutilPickerHostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB803AE7E2BFC8386C9A061BA83F43 /* ZVideoPhotoMutilPickerHostController.swift */; };
-		A1F9C9DE9E81DA5986B971EDFF7B6199 /* ZPhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCBD34473918F485840242178E0A677 /* ZPhotoPicker.swift */; };
-		BDA45A554AA3DF2F675927C61149FF02 /* ZPhotoCropperController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46003103147EFF8F1A6413CA80B63A31 /* ZPhotoCropperController.swift */; };
+		5684E13565EE4860B5F550837FAD7448 /* ZPhotoMutilPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2047C2E00C7B2E5690090025C1C988D /* ZPhotoMutilPickerController.swift */; };
+		60B58ABA901091D97FF23407CF1F20C0 /* UIImage+fixOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF753F79D591F9700D144C848AEE7507 /* UIImage+fixOrientation.swift */; };
+		76729B68962D23C73FC148F6867D2F5B /* IndicatorView.xib in Sources */ = {isa = PBXBuildFile; fileRef = B9327B0515723D497400EA315B065EAD /* IndicatorView.xib */; };
+		770EC15D984D20822CE400454FE01AD4 /* ZPhotoAlbumListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB34CACBF86223C278B610BDC6004B69 /* ZPhotoAlbumListController.swift */; };
+		865ECC8FD17C5045516F3FF6F8E44C5A /* ZPhotoSinglePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC83B36CF48B1A585EBF774D2A7D9F77 /* ZPhotoSinglePickerController.swift */; };
+		8BBE51D3A26BADDD066BF0B20AF23624 /* ZPhotoSinglePickerHostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D680EA9C49D792BFA9A2BC34EF744D3 /* ZPhotoSinglePickerHostController.swift */; };
+		917F82F77B637A0336EDD868A8CC8958 /* PhotoPickerImageCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655191C041E03DE0BEA9BB42A30EF4E3 /* PhotoPickerImageCountView.swift */; };
+		A00B23993EE64E1B996E1F04933CC75D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06467B2726119E36A2570D3EA159D619 /* UIKit.framework */; };
+		A3B89B31BAF5D26ED1C550A8D7690A5B /* ZPhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBB109ACE32F072EF04EC0DE98B09D3 /* ZPhotoPicker.swift */; };
+		A9B21E8B5D9B078196DF48732D389964 /* PhotoPickerImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7920E6FB9ADE8715DF7C8CB4F6FB85 /* PhotoPickerImageCell.swift */; };
+		B51C872FA2D1F371F4492C24C2E90DB8 /* ZPhotoMutilPickerHostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B5C321CBE2D7AECD790749DD3EAB2A /* ZPhotoMutilPickerHostController.swift */; };
+		B94118CF44386C681A253FFC5F03E623 /* ZPhotoPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBC737D1DD7E5153205AD0B8944C3FE /* ZPhotoPicker-dummy.m */; };
+		BCF66A7CB4824F3254EE833FB6A7139C /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DEAECC77BF5B85BF145308D279A079D /* images.xcassets */; };
+		C109EAE6793FF0EB721C4737910F0D0B /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A397A9524AB0C0F738AD5FF2335E3BB /* IndicatorView.swift */; };
 		C7069FF9E7F2C5EB6C485B3C4C9FFC65 /* Pods-ZPhotoPicker_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 09B8187807EDFF8A548B38ECB031CEA9 /* Pods-ZPhotoPicker_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D45B556543ACA9D0D365427909F850E5 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D3CDC39D98E22F2A543100660462A0 /* Photos.framework */; };
+		D2895027B1D5F995EFCAAD5693A39320 /* ZPhotoCropperController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0325D17BB59785E3F93AC1B4FCC4531 /* ZPhotoCropperController.swift */; };
+		D59DD0A7AF9259195136B7CE97F4DC44 /* ZPhotoesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD8982B495AC4236114219C24634E2F /* ZPhotoesListController.swift */; };
 		D65C2A1293F2BDB7C9CDC3F471D379FC /* Pods-ZPhotoPicker_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DAF5902EF3C48400D6D439C64A88868 /* Pods-ZPhotoPicker_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DEF35E185CC6BE2DE52EBD42F138DDFE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06467B2726119E36A2570D3EA159D619 /* UIKit.framework */; };
 		E9A85F37551B290C4A3F280DDD5795C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36E8017CD3DD67036B82DE3355DDA10C /* Foundation.framework */; };
-		F13C078E2FD174122173C5FE631CA334 /* ZPhotoPicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 954FD13213F77E036D93C714A021E051 /* ZPhotoPicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F23AF17CD5C6DAE1BCE9DD02C463E6B7 /* PhotoPickerSelectedCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEDEA98FBC3993C7B4EFE2B4F913F94 /* PhotoPickerSelectedCountView.swift */; };
+		F6394F2F1FCE2D07F58BF2930EC9DAF0 /* ZPhotoPicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E05E73502445C449753CB28683A219B /* ZPhotoPicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F9E0797C1B6A6E042D43856C7EE0F241 /* ZPhotoTakingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39CBA9B597C727A434EC969B79CE37F /* ZPhotoTakingController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,57 +60,58 @@
 /* Begin PBXFileReference section */
 		06467B2726119E36A2570D3EA159D619 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		09B8187807EDFF8A548B38ECB031CEA9 /* Pods-ZPhotoPicker_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZPhotoPicker_Example-umbrella.h"; sourceTree = "<group>"; };
-		154B73B2FDC41329747760478F8E6ADE /* IndicatorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IndicatorView.swift; path = ZPhotoPicker/Classes/IndicatorView.swift; sourceTree = "<group>"; };
+		0CD8982B495AC4236114219C24634E2F /* ZPhotoesListController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZPhotoesListController.swift; path = ZPhotoPicker/Classes/ZPhotoesListController.swift; sourceTree = "<group>"; };
 		2203C84357D2BF73FC0EBC0FAC7B40A0 /* Pods-ZPhotoPicker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZPhotoPicker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		2510F85376936AF22717491F571E1966 /* images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = images.xcassets; path = ZPhotoPicker/Assets/images.xcassets; sourceTree = "<group>"; };
 		2A0D42495E284B585EE4F708FA43703E /* Pods-ZPhotoPicker_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZPhotoPicker_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		2A397A9524AB0C0F738AD5FF2335E3BB /* IndicatorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IndicatorView.swift; path = ZPhotoPicker/Classes/IndicatorView.swift; sourceTree = "<group>"; };
 		2C4CB912AD8A69614A40D8F52A99EAB5 /* ZPhotoPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ZPhotoPicker.framework; path = ZPhotoPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CF6670C74FDCE754772ED202554E226 /* Pods-ZPhotoPicker_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZPhotoPicker_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		3427BF2B44725971BEEDE44D70491E1E /* ZPhotoPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZPhotoPicker.debug.xcconfig; sourceTree = "<group>"; };
+		2E377E13096274B8C99739BD56699B08 /* ZPhotoPicker-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ZPhotoPicker-Info.plist"; sourceTree = "<group>"; };
 		36E8017CD3DD67036B82DE3355DDA10C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3C3A292893B8DCC5EEC843B3D5B0B8D5 /* ZVideoPhotoMutilPickerHostController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZVideoPhotoMutilPickerHostController.swift; path = ZPhotoPicker/Classes/ZVideoPhotoMutilPickerHostController.swift; sourceTree = "<group>"; };
 		3DAF5902EF3C48400D6D439C64A88868 /* Pods-ZPhotoPicker_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZPhotoPicker_Tests-umbrella.h"; sourceTree = "<group>"; };
-		3DB45D4FD54F7FA5C85034CCFD70F0F0 /* ZPhotoPicker-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ZPhotoPicker-Info.plist"; sourceTree = "<group>"; };
-		3F8711BA41C87FE50338E3F49186DF18 /* ZPhotoTakingController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZPhotoTakingController.swift; path = ZPhotoPicker/Classes/ZPhotoTakingController.swift; sourceTree = "<group>"; };
 		40D3CDC39D98E22F2A543100660462A0 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Photos.framework; sourceTree = DEVELOPER_DIR; };
-		46003103147EFF8F1A6413CA80B63A31 /* ZPhotoCropperController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZPhotoCropperController.swift; path = ZPhotoPicker/Classes/ZPhotoCropperController.swift; sourceTree = "<group>"; };
 		4B0642D006DDC6DBF825B47DACE0EBD2 /* Pods-ZPhotoPicker_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ZPhotoPicker_Example.modulemap"; sourceTree = "<group>"; };
-		4CDBACACD13FB0E5B66C9899D87CF77B /* PhotoPickerImageCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhotoPickerImageCell.swift; path = ZPhotoPicker/Classes/PhotoPickerImageCell.swift; sourceTree = "<group>"; };
-		4EAB803AE7E2BFC8386C9A061BA83F43 /* ZVideoPhotoMutilPickerHostController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZVideoPhotoMutilPickerHostController.swift; path = ZPhotoPicker/Classes/ZVideoPhotoMutilPickerHostController.swift; sourceTree = "<group>"; };
-		5039EA6530125CF914010CDF29F5CA8C /* ZPhotoPicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZPhotoPicker-prefix.pch"; sourceTree = "<group>"; };
-		51FBD6793D6BE432605C470D41DE0C78 /* ZPhotoMutilPickerHostController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZPhotoMutilPickerHostController.swift; path = ZPhotoPicker/Classes/ZPhotoMutilPickerHostController.swift; sourceTree = "<group>"; };
+		4B7920E6FB9ADE8715DF7C8CB4F6FB85 /* PhotoPickerImageCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhotoPickerImageCell.swift; path = ZPhotoPicker/Classes/PhotoPickerImageCell.swift; sourceTree = "<group>"; };
+		4D680EA9C49D792BFA9A2BC34EF744D3 /* ZPhotoSinglePickerHostController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZPhotoSinglePickerHostController.swift; path = ZPhotoPicker/Classes/ZPhotoSinglePickerHostController.swift; sourceTree = "<group>"; };
+		4DEAECC77BF5B85BF145308D279A079D /* images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = images.xcassets; path = ZPhotoPicker/Assets/images.xcassets; sourceTree = "<group>"; };
+		4FBC737D1DD7E5153205AD0B8944C3FE /* ZPhotoPicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ZPhotoPicker-dummy.m"; sourceTree = "<group>"; };
 		582DFC637180F5AFDD16FDF4ED473257 /* Pods_ZPhotoPicker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ZPhotoPicker_Example.framework; path = "Pods-ZPhotoPicker_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5E0FB9F7B5B1242C31182CB367DA288B /* ZPhotoSinglePickerHostController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZPhotoSinglePickerHostController.swift; path = ZPhotoPicker/Classes/ZPhotoSinglePickerHostController.swift; sourceTree = "<group>"; };
+		5E05E73502445C449753CB28683A219B /* ZPhotoPicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZPhotoPicker-umbrella.h"; sourceTree = "<group>"; };
 		62DA5904DD1B6B40988BB4CD492A70B9 /* Pods-ZPhotoPicker_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZPhotoPicker_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		655191C041E03DE0BEA9BB42A30EF4E3 /* PhotoPickerImageCountView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhotoPickerImageCountView.swift; path = ZPhotoPicker/Classes/PhotoPickerImageCountView.swift; sourceTree = "<group>"; };
+		65CC4732538A59FF26E2AA2CE46F57DA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		6EEDEA98FBC3993C7B4EFE2B4F913F94 /* PhotoPickerSelectedCountView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhotoPickerSelectedCountView.swift; path = ZPhotoPicker/Classes/PhotoPickerSelectedCountView.swift; sourceTree = "<group>"; };
 		6F016CB757068CBC46DB618AC443871A /* Pods-ZPhotoPicker_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZPhotoPicker_Example-dummy.m"; sourceTree = "<group>"; };
-		77EDB5ED8107EC44A17C55D377E456BD /* ZPhotoPicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ZPhotoPicker-dummy.m"; sourceTree = "<group>"; };
-		7AB86D4BE2A8D42CCC68FBE8F04B8A8E /* IndicatorView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = IndicatorView.xib; path = ZPhotoPicker/Classes/IndicatorView.xib; sourceTree = "<group>"; };
 		7B54B18A9BA508920722CA6986D84C29 /* Pods-ZPhotoPicker_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ZPhotoPicker_Tests.modulemap"; sourceTree = "<group>"; };
-		80FB2F28284CAC01AC118B6F12955424 /* ZPhotoesListController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZPhotoesListController.swift; path = ZPhotoPicker/Classes/ZPhotoesListController.swift; sourceTree = "<group>"; };
-		856A910978733229E1AC7AFA6E631BED /* UIImage+fixOrientation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImage+fixOrientation.swift"; path = "ZPhotoPicker/Classes/UIImage+fixOrientation.swift"; sourceTree = "<group>"; };
-		9201FBCD8E895A544F3513660ECAA585 /* PhotoPickerImageCountView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhotoPickerImageCountView.swift; path = ZPhotoPicker/Classes/PhotoPickerImageCountView.swift; sourceTree = "<group>"; };
-		9362986676809E42C4C7CBD83DB824A7 /* ZPhotoSinglePickerController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZPhotoSinglePickerController.swift; path = ZPhotoPicker/Classes/ZPhotoSinglePickerController.swift; sourceTree = "<group>"; };
-		954FD13213F77E036D93C714A021E051 /* ZPhotoPicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZPhotoPicker-umbrella.h"; sourceTree = "<group>"; };
+		7FDFF03D0A97E6FC3BD593238BA789F4 /* ZPhotoPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ZPhotoPicker.modulemap; sourceTree = "<group>"; };
+		998079A1521E365DBAF77A017B942A07 /* ZPhotoPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZPhotoPicker.debug.xcconfig; sourceTree = "<group>"; };
 		9C8F9372528E62DE44547E76E8DC4438 /* Pods-ZPhotoPicker_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZPhotoPicker_Example-Info.plist"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A13770E7137D95B7A3BA68F008460EC6 /* CoverHorizontalAnimatedTransitioning.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CoverHorizontalAnimatedTransitioning.swift; path = ZPhotoPicker/Classes/CoverHorizontalAnimatedTransitioning.swift; sourceTree = "<group>"; };
-		B53D66951F648769E8F13DB6888EB9B5 /* PhotoPickerSelectedCountView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhotoPickerSelectedCountView.swift; path = ZPhotoPicker/Classes/PhotoPickerSelectedCountView.swift; sourceTree = "<group>"; };
-		B57C379C521F30E3360D44C21C8BA70A /* ZPhotoPicker.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = ZPhotoPicker.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A0325D17BB59785E3F93AC1B4FCC4531 /* ZPhotoCropperController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZPhotoCropperController.swift; path = ZPhotoPicker/Classes/ZPhotoCropperController.swift; sourceTree = "<group>"; };
+		A2047C2E00C7B2E5690090025C1C988D /* ZPhotoMutilPickerController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZPhotoMutilPickerController.swift; path = ZPhotoPicker/Classes/ZPhotoMutilPickerController.swift; sourceTree = "<group>"; };
+		AB34CACBF86223C278B610BDC6004B69 /* ZPhotoAlbumListController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZPhotoAlbumListController.swift; path = ZPhotoPicker/Classes/ZPhotoAlbumListController.swift; sourceTree = "<group>"; };
+		AB4D5EC2A8E2675D913F72AF1B6CB428 /* CoverHorizontalAnimatedTransitioning.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CoverHorizontalAnimatedTransitioning.swift; path = ZPhotoPicker/Classes/CoverHorizontalAnimatedTransitioning.swift; sourceTree = "<group>"; };
+		B9327B0515723D497400EA315B065EAD /* IndicatorView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = IndicatorView.xib; path = ZPhotoPicker/Classes/IndicatorView.xib; sourceTree = "<group>"; };
 		BCDDA8CAB41774E148F59AA482603954 /* Pods-ZPhotoPicker_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZPhotoPicker_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		C297DC1C39CC016BBC551263D3137A3D /* Pods-ZPhotoPicker_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZPhotoPicker_Tests-dummy.m"; sourceTree = "<group>"; };
-		C525B04EDACC18DD03F15612123AC7D3 /* ZVideoPhotoMutilPickerController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZVideoPhotoMutilPickerController.swift; path = ZPhotoPicker/Classes/ZVideoPhotoMutilPickerController.swift; sourceTree = "<group>"; };
+		C8EB0C255D4AC7FD32F634ED07BB87B1 /* ZVideoPhotoMutilPickerController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZVideoPhotoMutilPickerController.swift; path = ZPhotoPicker/Classes/ZVideoPhotoMutilPickerController.swift; sourceTree = "<group>"; };
 		CA18998046CAD53C69C6139B7F44B788 /* Pods_ZPhotoPicker_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ZPhotoPicker_Tests.framework; path = "Pods-ZPhotoPicker_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CDCBD34473918F485840242178E0A677 /* ZPhotoPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZPhotoPicker.swift; path = ZPhotoPicker/Classes/ZPhotoPicker.swift; sourceTree = "<group>"; };
-		CF4CFF3BB6035211BB0F526033FB92F1 /* ZPhotoPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ZPhotoPicker.modulemap; sourceTree = "<group>"; };
-		D1A4F4327566F0501EBB39DC45651219 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		CAB88ABC19870E6DBE16C62A4E78C3B2 /* PhotoPickerTakePhotoCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhotoPickerTakePhotoCell.swift; path = ZPhotoPicker/Classes/PhotoPickerTakePhotoCell.swift; sourceTree = "<group>"; };
+		CC83B36CF48B1A585EBF774D2A7D9F77 /* ZPhotoSinglePickerController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZPhotoSinglePickerController.swift; path = ZPhotoPicker/Classes/ZPhotoSinglePickerController.swift; sourceTree = "<group>"; };
+		D1149FE1C0F0C05147A967737CC81AFD /* ZPhotoPicker.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = ZPhotoPicker.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D39CBA9B597C727A434EC969B79CE37F /* ZPhotoTakingController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZPhotoTakingController.swift; path = ZPhotoPicker/Classes/ZPhotoTakingController.swift; sourceTree = "<group>"; };
 		D61D14667F46A23B70A49810BB493B95 /* Pods-ZPhotoPicker_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZPhotoPicker_Example.release.xcconfig"; sourceTree = "<group>"; };
+		DBBB109ACE32F072EF04EC0DE98B09D3 /* ZPhotoPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZPhotoPicker.swift; path = ZPhotoPicker/Classes/ZPhotoPicker.swift; sourceTree = "<group>"; };
 		E2A32A457C252D8DC152E9B328B8742D /* Pods-ZPhotoPicker_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZPhotoPicker_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		E396B7B33B521F67D0FB2C90EB70840A /* ZPhotoMutilPickerController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZPhotoMutilPickerController.swift; path = ZPhotoPicker/Classes/ZPhotoMutilPickerController.swift; sourceTree = "<group>"; };
-		E564899BF6CE3C5CAE8849F6B767B5A7 /* ZPhotoPicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZPhotoPicker.release.xcconfig; sourceTree = "<group>"; };
+		E6B5C321CBE2D7AECD790749DD3EAB2A /* ZPhotoMutilPickerHostController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZPhotoMutilPickerHostController.swift; path = ZPhotoPicker/Classes/ZPhotoMutilPickerHostController.swift; sourceTree = "<group>"; };
+		E7AFF2AB4B13599069CE6DA64C38C452 /* ZPhotoPicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZPhotoPicker.release.xcconfig; sourceTree = "<group>"; };
 		E7B0B5B2DCA8CD3CE83601A939016DA3 /* Pods-ZPhotoPicker_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZPhotoPicker_Example-frameworks.sh"; sourceTree = "<group>"; };
 		E874E2A354BDD8B50B40174AC453A945 /* Pods-ZPhotoPicker_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZPhotoPicker_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		EA6B6BE3B0207C00D279676AF66732FE /* ZPhotoPicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZPhotoPicker-prefix.pch"; sourceTree = "<group>"; };
 		EC087CD2027AB819BB39C5704D92231D /* Pods-ZPhotoPicker_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZPhotoPicker_Tests-Info.plist"; sourceTree = "<group>"; };
-		FC7CEC186958F44098CE318CCDB952B4 /* ZPhotoAlbumListController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZPhotoAlbumListController.swift; path = ZPhotoPicker/Classes/ZPhotoAlbumListController.swift; sourceTree = "<group>"; };
-		FD3BC84FFAAC5AEA53D373BEB616BE44 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		EF3749C46FC8727B535A010140AB7D29 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		EF753F79D591F9700D144C848AEE7507 /* UIImage+fixOrientation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImage+fixOrientation.swift"; path = "ZPhotoPicker/Classes/UIImage+fixOrientation.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,21 +123,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		438F407265852E40F315C5D45617BD70 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				77B30B2CF333573E3653F8321AA40C81 /* Foundation.framework in Frameworks */,
-				D45B556543ACA9D0D365427909F850E5 /* Photos.framework in Frameworks */,
-				DEF35E185CC6BE2DE52EBD42F138DDFE /* UIKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5F3D9E69308300274D72A6177B59FC2B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E9A85F37551B290C4A3F280DDD5795C2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		622A62B49BC8FFBE17DB3BF0C0B6B410 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25D53E67E50E7B70ABE5BDE856BAE85A /* Foundation.framework in Frameworks */,
+				35867FB3DA96BB13B90D835E33D3ADBD /* Photos.framework in Frameworks */,
+				A00B23993EE64E1B996E1F04933CC75D /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,25 +152,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		10E47F071BC0BD2ED74717E29F383A29 /* Support Files */ = {
+		078CF83CEB94EC3ABBC067B6064DF7DD /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				CF4CFF3BB6035211BB0F526033FB92F1 /* ZPhotoPicker.modulemap */,
-				77EDB5ED8107EC44A17C55D377E456BD /* ZPhotoPicker-dummy.m */,
-				3DB45D4FD54F7FA5C85034CCFD70F0F0 /* ZPhotoPicker-Info.plist */,
-				5039EA6530125CF914010CDF29F5CA8C /* ZPhotoPicker-prefix.pch */,
-				954FD13213F77E036D93C714A021E051 /* ZPhotoPicker-umbrella.h */,
-				3427BF2B44725971BEEDE44D70491E1E /* ZPhotoPicker.debug.xcconfig */,
-				E564899BF6CE3C5CAE8849F6B767B5A7 /* ZPhotoPicker.release.xcconfig */,
+				EF3749C46FC8727B535A010140AB7D29 /* LICENSE */,
+				65CC4732538A59FF26E2AA2CE46F57DA /* README.md */,
+				D1149FE1C0F0C05147A967737CC81AFD /* ZPhotoPicker.podspec */,
 			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/ZPhotoPicker";
+			name = Pod;
 			sourceTree = "<group>";
 		};
-		1F25460BB625D62DF8262A18DF90C271 /* Resources */ = {
+		25D15F07577922F94D033E420A88627C /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2510F85376936AF22717491F571E1966 /* images.xcassets */,
+				D9B502F6C5E98E157361E2AA34DB827D /* ZPhotoPicker */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		27246575722F2B1A031CF87F074496E7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4DEAECC77BF5B85BF145308D279A079D /* images.xcassets */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -181,6 +186,21 @@
 				2C4CB912AD8A69614A40D8F52A99EAB5 /* ZPhotoPicker.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		75421F14F07ED34B5675BE45F5282481 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7FDFF03D0A97E6FC3BD593238BA789F4 /* ZPhotoPicker.modulemap */,
+				4FBC737D1DD7E5153205AD0B8944C3FE /* ZPhotoPicker-dummy.m */,
+				2E377E13096274B8C99739BD56699B08 /* ZPhotoPicker-Info.plist */,
+				EA6B6BE3B0207C00D279676AF66732FE /* ZPhotoPicker-prefix.pch */,
+				5E05E73502445C449753CB28683A219B /* ZPhotoPicker-umbrella.h */,
+				998079A1521E365DBAF77A017B942A07 /* ZPhotoPicker.debug.xcconfig */,
+				E7AFF2AB4B13599069CE6DA64C38C452 /* ZPhotoPicker.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/ZPhotoPicker";
 			sourceTree = "<group>";
 		};
 		7C20A03EA8BCF534E347D209D198722F /* Pods-ZPhotoPicker_Tests */ = {
@@ -197,35 +217,6 @@
 			);
 			name = "Pods-ZPhotoPicker_Tests";
 			path = "Target Support Files/Pods-ZPhotoPicker_Tests";
-			sourceTree = "<group>";
-		};
-		9C2CE2D6F2AE5B7ABA6CCF98451DCE75 /* ZPhotoPicker */ = {
-			isa = PBXGroup;
-			children = (
-				A13770E7137D95B7A3BA68F008460EC6 /* CoverHorizontalAnimatedTransitioning.swift */,
-				154B73B2FDC41329747760478F8E6ADE /* IndicatorView.swift */,
-				7AB86D4BE2A8D42CCC68FBE8F04B8A8E /* IndicatorView.xib */,
-				4CDBACACD13FB0E5B66C9899D87CF77B /* PhotoPickerImageCell.swift */,
-				9201FBCD8E895A544F3513660ECAA585 /* PhotoPickerImageCountView.swift */,
-				B53D66951F648769E8F13DB6888EB9B5 /* PhotoPickerSelectedCountView.swift */,
-				856A910978733229E1AC7AFA6E631BED /* UIImage+fixOrientation.swift */,
-				FC7CEC186958F44098CE318CCDB952B4 /* ZPhotoAlbumListController.swift */,
-				46003103147EFF8F1A6413CA80B63A31 /* ZPhotoCropperController.swift */,
-				80FB2F28284CAC01AC118B6F12955424 /* ZPhotoesListController.swift */,
-				E396B7B33B521F67D0FB2C90EB70840A /* ZPhotoMutilPickerController.swift */,
-				51FBD6793D6BE432605C470D41DE0C78 /* ZPhotoMutilPickerHostController.swift */,
-				CDCBD34473918F485840242178E0A677 /* ZPhotoPicker.swift */,
-				9362986676809E42C4C7CBD83DB824A7 /* ZPhotoSinglePickerController.swift */,
-				5E0FB9F7B5B1242C31182CB367DA288B /* ZPhotoSinglePickerHostController.swift */,
-				3F8711BA41C87FE50338E3F49186DF18 /* ZPhotoTakingController.swift */,
-				C525B04EDACC18DD03F15612123AC7D3 /* ZVideoPhotoMutilPickerController.swift */,
-				4EAB803AE7E2BFC8386C9A061BA83F43 /* ZVideoPhotoMutilPickerHostController.swift */,
-				C1EA28828714259C63D4593DA4BDB4E7 /* Pod */,
-				1F25460BB625D62DF8262A18DF90C271 /* Resources */,
-				10E47F071BC0BD2ED74717E29F383A29 /* Support Files */,
-			);
-			name = ZPhotoPicker;
-			path = ../..;
 			sourceTree = "<group>";
 		};
 		AA209C45E39BE077064501FBFBCDEB53 /* Pods-ZPhotoPicker_Example */ = {
@@ -245,24 +236,6 @@
 			path = "Target Support Files/Pods-ZPhotoPicker_Example";
 			sourceTree = "<group>";
 		};
-		B0225F1DF7A8AE97EF67CCB5279779B6 /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				9C2CE2D6F2AE5B7ABA6CCF98451DCE75 /* ZPhotoPicker */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		C1EA28828714259C63D4593DA4BDB4E7 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				FD3BC84FFAAC5AEA53D373BEB616BE44 /* LICENSE */,
-				D1A4F4327566F0501EBB39DC45651219 /* README.md */,
-				B57C379C521F30E3360D44C21C8BA70A /* ZPhotoPicker.podspec */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
 		CD78C73F15C9719369B2967870B1C6D3 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,11 +250,41 @@
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				B0225F1DF7A8AE97EF67CCB5279779B6 /* Development Pods */,
+				25D15F07577922F94D033E420A88627C /* Development Pods */,
 				03C5C200A0787E300053CFA8F53CA094 /* Frameworks */,
 				4E5E915971BCDB250D186307FD9B7256 /* Products */,
 				DB3D3FF946EB981CA0D8E4C1D20A3BEF /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		D9B502F6C5E98E157361E2AA34DB827D /* ZPhotoPicker */ = {
+			isa = PBXGroup;
+			children = (
+				AB4D5EC2A8E2675D913F72AF1B6CB428 /* CoverHorizontalAnimatedTransitioning.swift */,
+				2A397A9524AB0C0F738AD5FF2335E3BB /* IndicatorView.swift */,
+				B9327B0515723D497400EA315B065EAD /* IndicatorView.xib */,
+				4B7920E6FB9ADE8715DF7C8CB4F6FB85 /* PhotoPickerImageCell.swift */,
+				655191C041E03DE0BEA9BB42A30EF4E3 /* PhotoPickerImageCountView.swift */,
+				6EEDEA98FBC3993C7B4EFE2B4F913F94 /* PhotoPickerSelectedCountView.swift */,
+				CAB88ABC19870E6DBE16C62A4E78C3B2 /* PhotoPickerTakePhotoCell.swift */,
+				EF753F79D591F9700D144C848AEE7507 /* UIImage+fixOrientation.swift */,
+				AB34CACBF86223C278B610BDC6004B69 /* ZPhotoAlbumListController.swift */,
+				A0325D17BB59785E3F93AC1B4FCC4531 /* ZPhotoCropperController.swift */,
+				0CD8982B495AC4236114219C24634E2F /* ZPhotoesListController.swift */,
+				A2047C2E00C7B2E5690090025C1C988D /* ZPhotoMutilPickerController.swift */,
+				E6B5C321CBE2D7AECD790749DD3EAB2A /* ZPhotoMutilPickerHostController.swift */,
+				DBBB109ACE32F072EF04EC0DE98B09D3 /* ZPhotoPicker.swift */,
+				CC83B36CF48B1A585EBF774D2A7D9F77 /* ZPhotoSinglePickerController.swift */,
+				4D680EA9C49D792BFA9A2BC34EF744D3 /* ZPhotoSinglePickerHostController.swift */,
+				D39CBA9B597C727A434EC969B79CE37F /* ZPhotoTakingController.swift */,
+				C8EB0C255D4AC7FD32F634ED07BB87B1 /* ZVideoPhotoMutilPickerController.swift */,
+				3C3A292893B8DCC5EEC843B3D5B0B8D5 /* ZVideoPhotoMutilPickerHostController.swift */,
+				078CF83CEB94EC3ABBC067B6064DF7DD /* Pod */,
+				27246575722F2B1A031CF87F074496E7 /* Resources */,
+				75421F14F07ED34B5675BE45F5282481 /* Support Files */,
+			);
+			name = ZPhotoPicker;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		DB3D3FF946EB981CA0D8E4C1D20A3BEF /* Targets Support Files */ = {
@@ -296,19 +299,19 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		66C55978C7AF8513BA761C5563BAD0DA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6394F2F1FCE2D07F58BF2930EC9DAF0 /* ZPhotoPicker-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C25031A09904C9D55B27CE4D5922B9E5 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				C7069FF9E7F2C5EB6C485B3C4C9FFC65 /* Pods-ZPhotoPicker_Example-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C5DB15F781481644544E36D20977FD8C /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F13C078E2FD174122173C5FE631CA334 /* ZPhotoPicker-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,12 +328,12 @@
 /* Begin PBXNativeTarget section */
 		0D2845A0EE95751FD4717DDCD5E7D7A6 /* ZPhotoPicker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8C3C5BBEF50372EB6B66861BA9ED6EA0 /* Build configuration list for PBXNativeTarget "ZPhotoPicker" */;
+			buildConfigurationList = 77BCFA475B592854778031BFC8C91CFD /* Build configuration list for PBXNativeTarget "ZPhotoPicker" */;
 			buildPhases = (
-				C5DB15F781481644544E36D20977FD8C /* Headers */,
-				83C377E8D5B9160AA97CEE91862902C0 /* Sources */,
-				438F407265852E40F315C5D45617BD70 /* Frameworks */,
-				1725AA61224EB2FCC522A09B18EAD8CC /* Resources */,
+				66C55978C7AF8513BA761C5563BAD0DA /* Headers */,
+				0D7052173216D60D7368E3113E7B8D83 /* Sources */,
+				622A62B49BC8FFBE17DB3BF0C0B6B410 /* Frameworks */,
+				DCB8DCD7AF56246E6B796C873F3DDF3A /* Resources */,
 			);
 			buildRules = (
 			);
@@ -409,14 +412,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1725AA61224EB2FCC522A09B18EAD8CC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5266E2979C36490DDD13684982B8B562 /* images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2D945F06A09EDB4E41C1A581BD60D1AB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -431,32 +426,41 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DCB8DCD7AF56246E6B796C873F3DDF3A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCF66A7CB4824F3254EE833FB6A7139C /* images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		83C377E8D5B9160AA97CEE91862902C0 /* Sources */ = {
+		0D7052173216D60D7368E3113E7B8D83 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B3CC2AF47642391A53A7FFE89659AE7 /* CoverHorizontalAnimatedTransitioning.swift in Sources */,
-				3410A714B563919E3335E9D90C79BB42 /* IndicatorView.swift in Sources */,
-				4F93E482BBEA1687F7E7D7EB2E2D506A /* IndicatorView.xib in Sources */,
-				776314C473B81354B9EFC606B739F049 /* PhotoPickerImageCell.swift in Sources */,
-				8D8B7FABBB8677D0A96A28B06F4B46C8 /* PhotoPickerImageCountView.swift in Sources */,
-				89241EE31BB6667C286166429DF72848 /* PhotoPickerSelectedCountView.swift in Sources */,
-				89B6A277E24E28D9C17D0AE1727546F0 /* UIImage+fixOrientation.swift in Sources */,
-				47DEA5B957B10FCC2161051E6251BAD8 /* ZPhotoAlbumListController.swift in Sources */,
-				BDA45A554AA3DF2F675927C61149FF02 /* ZPhotoCropperController.swift in Sources */,
-				841825F584DC13D0D54AFDDE0F14AFF2 /* ZPhotoesListController.swift in Sources */,
-				8741AAA3D698914DC3A680CC4987CB05 /* ZPhotoMutilPickerController.swift in Sources */,
-				74E55A33F6F305B19D0636CB8713E2F5 /* ZPhotoMutilPickerHostController.swift in Sources */,
-				0F42E8E90CD72105DF86AD88E9BED2DF /* ZPhotoPicker-dummy.m in Sources */,
-				A1F9C9DE9E81DA5986B971EDFF7B6199 /* ZPhotoPicker.swift in Sources */,
-				881964C472D8005DD5A9DE404CC56621 /* ZPhotoSinglePickerController.swift in Sources */,
-				7412E42970B16B46E63502DBDA02996F /* ZPhotoSinglePickerHostController.swift in Sources */,
-				092993BA0DAD7A95CD4BA74F085AD98E /* ZPhotoTakingController.swift in Sources */,
-				74C26F30A78237B22846D86B14069592 /* ZVideoPhotoMutilPickerController.swift in Sources */,
-				986D0EEECBD56AD3047260C3C3FEBE83 /* ZVideoPhotoMutilPickerHostController.swift in Sources */,
+				4E1E6F8FC39CEA239747948D56A8F8A0 /* CoverHorizontalAnimatedTransitioning.swift in Sources */,
+				C109EAE6793FF0EB721C4737910F0D0B /* IndicatorView.swift in Sources */,
+				76729B68962D23C73FC148F6867D2F5B /* IndicatorView.xib in Sources */,
+				A9B21E8B5D9B078196DF48732D389964 /* PhotoPickerImageCell.swift in Sources */,
+				917F82F77B637A0336EDD868A8CC8958 /* PhotoPickerImageCountView.swift in Sources */,
+				F23AF17CD5C6DAE1BCE9DD02C463E6B7 /* PhotoPickerSelectedCountView.swift in Sources */,
+				14C77093EDD12211E14D29B6EE3CEE83 /* PhotoPickerTakePhotoCell.swift in Sources */,
+				60B58ABA901091D97FF23407CF1F20C0 /* UIImage+fixOrientation.swift in Sources */,
+				770EC15D984D20822CE400454FE01AD4 /* ZPhotoAlbumListController.swift in Sources */,
+				D2895027B1D5F995EFCAAD5693A39320 /* ZPhotoCropperController.swift in Sources */,
+				D59DD0A7AF9259195136B7CE97F4DC44 /* ZPhotoesListController.swift in Sources */,
+				5684E13565EE4860B5F550837FAD7448 /* ZPhotoMutilPickerController.swift in Sources */,
+				B51C872FA2D1F371F4492C24C2E90DB8 /* ZPhotoMutilPickerHostController.swift in Sources */,
+				B94118CF44386C681A253FFC5F03E623 /* ZPhotoPicker-dummy.m in Sources */,
+				A3B89B31BAF5D26ED1C550A8D7690A5B /* ZPhotoPicker.swift in Sources */,
+				865ECC8FD17C5045516F3FF6F8E44C5A /* ZPhotoSinglePickerController.swift in Sources */,
+				8BBE51D3A26BADDD066BF0B20AF23624 /* ZPhotoSinglePickerHostController.swift in Sources */,
+				F9E0797C1B6A6E042D43856C7EE0F241 /* ZPhotoTakingController.swift in Sources */,
+				445B4C61F241A0886553C3EA6ED79518 /* ZVideoPhotoMutilPickerController.swift in Sources */,
+				10C460A88521A3CA268690EF0A8F4CC9 /* ZVideoPhotoMutilPickerHostController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +498,37 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		249302267A0695B9EC02C778A54EE160 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 998079A1521E365DBAF77A017B942A07 /* ZPhotoPicker.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ZPhotoPicker/ZPhotoPicker-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ZPhotoPicker/ZPhotoPicker-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ZPhotoPicker/ZPhotoPicker.modulemap";
+				PRODUCT_MODULE_NAME = ZPhotoPicker;
+				PRODUCT_NAME = ZPhotoPicker;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		2B978F6913E08247A0A27457BDB7A819 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BCDDA8CAB41774E148F59AA482603954 /* Pods-ZPhotoPicker_Example.debug.xcconfig */;
@@ -559,38 +594,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		4F64F326B0D9E98C31787F75C30429B2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E564899BF6CE3C5CAE8849F6B767B5A7 /* ZPhotoPicker.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/ZPhotoPicker/ZPhotoPicker-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ZPhotoPicker/ZPhotoPicker-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/ZPhotoPicker/ZPhotoPicker.modulemap";
-				PRODUCT_MODULE_NAME = ZPhotoPicker;
-				PRODUCT_NAME = ZPhotoPicker;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		6E4BE6A51A090506861D52287B55332E /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -784,9 +787,9 @@
 			};
 			name = Release;
 		};
-		D2AC88C298E38429B44698DA2DD167FA /* Debug */ = {
+		D06961F12EDFC40BCCF2B8F716A23862 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3427BF2B44725971BEEDE44D70491E1E /* ZPhotoPicker.debug.xcconfig */;
+			baseConfigurationReference = E7AFF2AB4B13599069CE6DA64C38C452 /* ZPhotoPicker.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -810,10 +813,11 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -827,11 +831,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8C3C5BBEF50372EB6B66861BA9ED6EA0 /* Build configuration list for PBXNativeTarget "ZPhotoPicker" */ = {
+		77BCFA475B592854778031BFC8C91CFD /* Build configuration list for PBXNativeTarget "ZPhotoPicker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D2AC88C298E38429B44698DA2DD167FA /* Debug */,
-				4F64F326B0D9E98C31787F75C30429B2 /* Release */,
+				249302267A0695B9EC02C778A54EE160 /* Debug */,
+				D06961F12EDFC40BCCF2B8F716A23862 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
