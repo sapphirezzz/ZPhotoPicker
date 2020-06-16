@@ -11,6 +11,7 @@ class ZPhotoesListController: UICollectionViewController {
 
     var clickedCancelHandler: (()->Void)?
     var selectedAlbum: AlbumItem?
+    open var mediaType: PHAssetMediaType = .unknown
 
     private(set) var fetchResult: PHFetchResult<PHAsset> = PHFetchResult()
     private(set) var imageManager: PHCachingImageManager? // 如果未授权访问相册，此时直接 = PHCachingImageManager()会导致页面deinit时崩溃
@@ -219,7 +220,7 @@ extension ZPhotoesListController {
         if #available(iOS 10.0, *) {
             return fetchResult.count // iOS 9.0在未授权时，fetchResult未开始获取图片，调用该属性会导致崩溃
         } else {
-            return fetchResult.countOfAssets(with: .image)
+            return fetchResult.countOfAssets(with: mediaType)
         }
     }
     
@@ -246,7 +247,7 @@ extension ZPhotoesListController {
             if #available(iOS 10.0, *) {
                 view.count = fetchResult.count
             } else {
-                view.count = fetchResult.countOfAssets(with: .image)
+                view.count = fetchResult.countOfAssets(with: mediaType)
             }
             return view
         }
