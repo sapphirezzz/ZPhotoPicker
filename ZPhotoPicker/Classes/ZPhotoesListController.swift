@@ -117,7 +117,7 @@ private extension ZPhotoesListController {
 
             let allPhotosOptions = PHFetchOptions()
             allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-            fetchResult = PHAsset.fetchAssets(with: allPhotosOptions)
+            fetchResult = PHAsset.fetchAssets(with: mediaType, options: allPhotosOptions)
         }
 
         DispatchQueue.main.sync {
