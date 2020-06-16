@@ -10,6 +10,7 @@
 		03F3506ACC58362FA922D85FCDB1F0A7 /* Pods-ZPhotoPicker_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C297DC1C39CC016BBC551263D3137A3D /* Pods-ZPhotoPicker_Tests-dummy.m */; };
 		05828F862497845600163AC3 /* ZVideoSinglePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05828F852497845600163AC3 /* ZVideoSinglePickerController.swift */; };
 		05828F882497849600163AC3 /* ZVideoSinglePickerHostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05828F872497849600163AC3 /* ZVideoSinglePickerHostController.swift */; };
+		05828F8A24989B1200163AC3 /* PhotoPickerTakePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05828F8924989B1200163AC3 /* PhotoPickerTakePhotoCell.swift */; };
 		092993BA0DAD7A95CD4BA74F085AD98E /* ZPhotoTakingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8711BA41C87FE50338E3F49186DF18 /* ZPhotoTakingController.swift */; };
 		0F42E8E90CD72105DF86AD88E9BED2DF /* ZPhotoPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 77EDB5ED8107EC44A17C55D377E456BD /* ZPhotoPicker-dummy.m */; };
 		3410A714B563919E3335E9D90C79BB42 /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154B73B2FDC41329747760478F8E6ADE /* IndicatorView.swift */; };
@@ -61,6 +62,7 @@
 /* Begin PBXFileReference section */
 		05828F852497845600163AC3 /* ZVideoSinglePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZVideoSinglePickerController.swift; sourceTree = "<group>"; };
 		05828F872497849600163AC3 /* ZVideoSinglePickerHostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZVideoSinglePickerHostController.swift; sourceTree = "<group>"; };
+		05828F8924989B1200163AC3 /* PhotoPickerTakePhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerTakePhotoCell.swift; sourceTree = "<group>"; };
 		06467B2726119E36A2570D3EA159D619 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		09B8187807EDFF8A548B38ECB031CEA9 /* Pods-ZPhotoPicker_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZPhotoPicker_Example-umbrella.h"; sourceTree = "<group>"; };
 		154B73B2FDC41329747760478F8E6ADE /* IndicatorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IndicatorView.swift; path = ZPhotoPicker/Classes/IndicatorView.swift; sourceTree = "<group>"; };
@@ -206,16 +208,17 @@
 		9C2CE2D6F2AE5B7ABA6CCF98451DCE75 /* ZPhotoPicker */ = {
 			isa = PBXGroup;
 			children = (
+				856A910978733229E1AC7AFA6E631BED /* UIImage+fixOrientation.swift */,
 				A13770E7137D95B7A3BA68F008460EC6 /* CoverHorizontalAnimatedTransitioning.swift */,
 				154B73B2FDC41329747760478F8E6ADE /* IndicatorView.swift */,
 				7AB86D4BE2A8D42CCC68FBE8F04B8A8E /* IndicatorView.xib */,
+				05828F8924989B1200163AC3 /* PhotoPickerTakePhotoCell.swift */,
 				4CDBACACD13FB0E5B66C9899D87CF77B /* PhotoPickerImageCell.swift */,
 				9201FBCD8E895A544F3513660ECAA585 /* PhotoPickerImageCountView.swift */,
 				B53D66951F648769E8F13DB6888EB9B5 /* PhotoPickerSelectedCountView.swift */,
-				856A910978733229E1AC7AFA6E631BED /* UIImage+fixOrientation.swift */,
 				FC7CEC186958F44098CE318CCDB952B4 /* ZPhotoAlbumListController.swift */,
-				46003103147EFF8F1A6413CA80B63A31 /* ZPhotoCropperController.swift */,
 				80FB2F28284CAC01AC118B6F12955424 /* ZPhotoesListController.swift */,
+				46003103147EFF8F1A6413CA80B63A31 /* ZPhotoCropperController.swift */,
 				CDCBD34473918F485840242178E0A677 /* ZPhotoPicker.swift */,
 				3F8711BA41C87FE50338E3F49186DF18 /* ZPhotoTakingController.swift */,
 				9362986676809E42C4C7CBD83DB824A7 /* ZPhotoSinglePickerController.swift */,
@@ -447,6 +450,7 @@
 				6B3CC2AF47642391A53A7FFE89659AE7 /* CoverHorizontalAnimatedTransitioning.swift in Sources */,
 				3410A714B563919E3335E9D90C79BB42 /* IndicatorView.swift in Sources */,
 				4F93E482BBEA1687F7E7D7EB2E2D506A /* IndicatorView.xib in Sources */,
+				05828F8A24989B1200163AC3 /* PhotoPickerTakePhotoCell.swift in Sources */,
 				776314C473B81354B9EFC606B739F049 /* PhotoPickerImageCell.swift in Sources */,
 				8D8B7FABBB8677D0A96A28B06F4B46C8 /* PhotoPickerImageCountView.swift in Sources */,
 				89241EE31BB6667C286166429DF72848 /* PhotoPickerSelectedCountView.swift in Sources */,

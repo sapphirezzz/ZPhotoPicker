@@ -63,6 +63,14 @@ extension ZPhotoSinglePickerController {
 
 extension ZPhotoSinglePickerController: ZPhotoSinglePickerHostControllerDelegate {
 
+    func photoSinglePickerHostControllerDidClickToTakePhoto(_ controller: ZPhotoSinglePickerHostController) {
+        ZPhotoTakingController.takePhoto(onPresentingViewController: self, allowsCropping: allowsCropping, imageTookHandler: { [weak self] (image) in
+            self?.dismiss(animated: true) { [weak self] in
+                self?.imagePickedHandler?(image)
+            }
+        }, cancelledHandler: nil)
+    }
+
     func photoSinglePickerHostController(_ controller: ZPhotoSinglePickerHostController, didFinishPickingImage image: UIImage) {
 
         if allowsCropping {

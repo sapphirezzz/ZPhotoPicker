@@ -18,11 +18,13 @@ class ZPhotoSinglePickerHostController: ZPhotoesListController {
     override init(collectionViewLayout layout: UICollectionViewLayout) {
         super.init(collectionViewLayout: layout)
         self.mediaType = .image
+        self.availableToTakePhoto = true
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.mediaType = .image
+        self.availableToTakePhoto = true
     }
     
     override func viewDidLoad() {
@@ -37,16 +39,15 @@ class ZPhotoSinglePickerHostController: ZPhotoesListController {
 }
 
 extension ZPhotoSinglePickerHostController {
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! PhotoPickerImageCell
-        cell.canSelected = true
-        return cell
-    }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let selectedAsset: PHAsset = fetchResult.object(at: indexPath.item)
+        guard indexPath.row != 0 else {
+            delegate?.photoSinglePickerHostControllerDidClickToTakePhoto(self)
+            return
+        }
+
+        let selectedAsset: PHAsset = fetchResult.object(at: indexPath.item - 1)
         let options = PHImageRequestOptions()
         options.isSynchronous = true
         options.isNetworkAccessAllowed = true // 默认为false，会导致iCloud的照片无法下载
@@ -77,6 +78,7 @@ extension ZPhotoSinglePickerHostController {
 
 protocol ZPhotoSinglePickerHostControllerDelegate: class {
     
+    func photoSinglePickerHostControllerDidClickToTakePhoto(_ controller: ZPhotoSinglePickerHostController)
     func photoSinglePickerHostController(_ controller: ZPhotoSinglePickerHostController, didFinishPickingImage image: UIImage)
     func photoSinglePickerHostControllerDidCancel(_ controller: ZPhotoSinglePickerHostController)
 }
