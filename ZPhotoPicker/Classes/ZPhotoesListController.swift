@@ -117,7 +117,11 @@ private extension ZPhotoesListController {
 
             let allPhotosOptions = PHFetchOptions()
             allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-            fetchResult = PHAsset.fetchAssets(with: mediaType, options: allPhotosOptions)
+            if mediaType != .unknown {
+                fetchResult = PHAsset.fetchAssets(with: mediaType, options: allPhotosOptions)
+            } else {
+                fetchResult = PHAsset.fetchAssets(with: allPhotosOptions)
+            }
         }
 
         DispatchQueue.main.sync {
@@ -220,7 +224,7 @@ extension ZPhotoesListController {
         if #available(iOS 10.0, *) {
             return fetchResult.count // iOS 9.0在未授权时，fetchResult未开始获取图片，调用该属性会导致崩溃
         } else {
-            return fetchResult.countOfAssets(with: mediaType)
+            return mediaType != .unknown ? fetchResult.countOfAssets(with: mediaType) : [PHAssetMediaType.audio, PHAssetMediaType.video, PHAssetMediaType.image].reduce(0, { $0 + fetchResult.countOfAssets(with: $1) })
         }
     }
     
@@ -247,7 +251,7 @@ extension ZPhotoesListController {
             if #available(iOS 10.0, *) {
                 view.count = fetchResult.count
             } else {
-                view.count = fetchResult.countOfAssets(with: mediaType)
+                view.count = mediaType != .unknown ? fetchResult.countOfAssets(with: mediaType) : [PHAssetMediaType.audio, PHAssetMediaType.video, PHAssetMediaType.image].reduce(0, { $0 + fetchResult.countOfAssets(with: $1) })
             }
             return view
         }
