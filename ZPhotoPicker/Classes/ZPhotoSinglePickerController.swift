@@ -32,6 +32,7 @@ class ZPhotoSinglePickerController: UINavigationController {
         self.imagePickedHandler = imagePickedHandler
         self.cancelledHandler = cancelledHandler
         vc.albumListdelegate = self
+        vc.mediaType = .image
         pushZPhotoSinglePickerHostController()
     }
     

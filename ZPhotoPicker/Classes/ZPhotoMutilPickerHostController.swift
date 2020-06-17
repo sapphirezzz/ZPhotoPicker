@@ -135,14 +135,14 @@ extension ZPhotoMutilPickerHostController {
         if selectedCount >= dataSource?.maxSelectedCount(self) ?? 0 {
             return false
         } else {
-            let asset = fetchResult.object(at: indexPath.item)
+            let asset = assets[indexPath.item]
             imageManager?.startCachingImages(for: [asset], targetSize: PHImageManagerMaximumSize, contentMode: .aspectFill, options: nil)
             return true
         }
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let asset = fetchResult.object(at: indexPath.item)
+        let asset = assets[indexPath.item]
         delegate?.photoMutilPickerHostController(self, didSelectAsset: asset)
         configBottomView(selectOrDeselect: true)
     }
@@ -153,7 +153,7 @@ extension ZPhotoMutilPickerHostController {
         let maxSelectedCount = dataSource?.maxSelectedCount(self) ?? 0
         
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! PhotoPickerImageCell
-        let asset = fetchResult.object(at: indexPath.item)
+        let asset = assets[indexPath.item]
         if let assets = dataSource?.selectedItems(self), let index = assets.firstIndex(of: asset) {
             cell.canSelected = true
             cell.isSelected = true
@@ -173,13 +173,13 @@ extension ZPhotoMutilPickerHostController {
 
     override func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
 
-        let asset = fetchResult.object(at: indexPath.item)
+        let asset = assets[indexPath.item]
         imageManager?.stopCachingImages(for: [asset], targetSize: PHImageManagerMaximumSize, contentMode: .aspectFill, options: nil)
         return true
     }
 
     override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let asset = fetchResult.object(at: indexPath.item)
+        let asset = assets[indexPath.item]
         delegate?.photoMutilPickerHostController(self, didDeselectAsset: asset)
         configBottomView(selectOrDeselect: false)
     }

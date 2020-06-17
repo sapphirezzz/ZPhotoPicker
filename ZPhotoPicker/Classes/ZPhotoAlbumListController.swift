@@ -11,6 +11,7 @@ class ZPhotoAlbumListController: UITableViewController {
     
     var items: [AlbumItem] = []
     weak var albumListdelegate: ZPhotoAlbumListControllerDelegate?
+    var mediaType: PHAssetMediaType = .unknown
 
     override func viewDidLoad() {
 
@@ -69,8 +70,12 @@ private extension ZPhotoAlbumListController {
             if assetsFetchResult.count > 0, let localizedTitle = collection.localizedTitle {
                 
                 let title = convertTitle(fromEnglish: localizedTitle)
-                let album = AlbumItem(title: title, count: assetsFetchResult.count, fetchResult: assetsFetchResult)
-                items.append(album)
+                let totalAssets = assetsFetchResult.objects(at: IndexSet(integersIn: 0...assetsFetchResult.count-1))
+                let assets = mediaType == .unknown ? totalAssets : totalAssets.filter({ $0.mediaType == mediaType})
+                if assets.count > 0 {
+                    let album = AlbumItem(title: title, count: assets.count, assets: assets)
+                    items.append(album)
+                }
             }
         }
     }
@@ -150,5 +155,5 @@ struct AlbumItem {
 
     var title: String
     var count: Int
-    var fetchResult: PHFetchResult<PHAsset>
+    var assets: [PHAsset]
 }

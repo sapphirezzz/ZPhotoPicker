@@ -47,7 +47,7 @@ extension ZPhotoSinglePickerHostController {
             return
         }
 
-        let selectedAsset: PHAsset = fetchResult.object(at: indexPath.item - 1)
+        let selectedAsset: PHAsset = assets[indexPath.item - 1]
         let options = PHImageRequestOptions()
         options.isSynchronous = true
         options.isNetworkAccessAllowed = true // 默认为false，会导致iCloud的照片无法下载

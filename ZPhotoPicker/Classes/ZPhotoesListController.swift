@@ -14,7 +14,7 @@ class ZPhotoesListController: UICollectionViewController {
     open var mediaType: PHAssetMediaType = .unknown
     open var availableToTakePhoto: Bool = false // 是否额外在第一个位置添加拍照入口
 
-    private(set) var fetchResult: PHFetchResult<PHAsset> = PHFetchResult()
+    private(set) var assets: [PHAsset] = []
     private(set) var imageManager: PHCachingImageManager? // 如果未授权访问相册，此时直接 = PHCachingImageManager()会导致页面deinit时崩溃
 
     private var previousPreheatRect = CGRect.zero
@@ -113,17 +113,21 @@ private extension ZPhotoesListController {
         imageManager!.stopCachingImagesForAllAssets()
         previousPreheatRect = .zero
 
-        if let result = selectedAlbum?.fetchResult {
-            fetchResult = result
+        if let result = selectedAlbum?.assets {
+            assets = result
         } else {
 
             let allPhotosOptions = PHFetchOptions()
             allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-            if mediaType != .unknown {
-                fetchResult = PHAsset.fetchAssets(with: mediaType, options: allPhotosOptions)
-            } else {
-                fetchResult = PHAsset.fetchAssets(with: allPhotosOptions)
-            }
+            
+            let fetchResult: PHFetchResult<PHAsset> = {
+                if mediaType != .unknown {
+                    return PHAsset.fetchAssets(with: mediaType, options: allPhotosOptions)
+                } else {
+                    return PHAsset.fetchAssets(with: allPhotosOptions)
+                }
+            }()
+            assets = fetchResult.objects(at: IndexSet(integersIn: 0...fetchResult.count-1))
         }
 
         DispatchQueue.main.sync {
@@ -179,12 +183,12 @@ private extension ZPhotoesListController {
         let addedAssets: [PHAsset] = addedRects
             .flatMap { rect in collectionView!.indexPathsForElements(in: rect) }
             .compactMap { indexPath in
-                return availableToTakePhoto && indexPath.row == 0 ? nil : fetchResult.object(at: availableToTakePhoto ? indexPath.item - 1 : indexPath.item)
+                return availableToTakePhoto && indexPath.row == 0 ? nil : self.assets[availableToTakePhoto ? indexPath.item - 1 : indexPath.item]
             }
         let removedAssets: [PHAsset] = removedRects
             .flatMap { rect in collectionView!.indexPathsForElements(in: rect) }
             .compactMap { indexPath in
-                return availableToTakePhoto && indexPath.row == 0 ? nil : fetchResult.object(at: availableToTakePhoto ? indexPath.item - 1 : indexPath.item)
+                return availableToTakePhoto && indexPath.row == 0 ? nil : self.assets[availableToTakePhoto ? indexPath.item - 1 : indexPath.item]
             }
         // Update the assets the PHCachingImageManager is caching.
         imageManager?.startCachingImages(for: addedAssets, targetSize: thumbnailSize, contentMode: .aspectFill, options: nil)
@@ -225,13 +229,7 @@ private extension ZPhotoesListController {
 extension ZPhotoesListController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        if #available(iOS 10.0, *) {
-            return (availableToTakePhoto ? 1 : 0) + fetchResult.count // iOS 9.0在未授权时，fetchResult未开始获取图片，调用该属性会导致崩溃
-        } else {
-            let count = mediaType != .unknown ? fetchResult.countOfAssets(with: mediaType) : [PHAssetMediaType.audio, PHAssetMediaType.video, PHAssetMediaType.image].reduce(0, { $0 + fetchResult.countOfAssets(with: $1) })
-            return availableToTakePhoto ? count + 1 : count
-        }
+        return (availableToTakePhoto ? 1 : 0) + assets.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -242,7 +240,7 @@ extension ZPhotoesListController {
             return cell
         }
         
-        let asset = fetchResult.object(at: availableToTakePhoto ? indexPath.item - 1 : indexPath.item)
+        let asset = assets[availableToTakePhoto ? indexPath.item - 1 : indexPath.item]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoPickerImageCell", for: indexPath) as! PhotoPickerImageCell
         cell.representedAssetIdentifier = asset.localIdentifier
         
@@ -260,11 +258,7 @@ extension ZPhotoesListController {
         if kind == UICollectionView.elementKindSectionFooter {
 
             let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: PhotoPickerImageCountView.reuseIdentifier, for: indexPath) as! PhotoPickerImageCountView
-            if #available(iOS 10.0, *) {
-                view.count = fetchResult.count
-            } else {
-                view.count = mediaType != .unknown ? fetchResult.countOfAssets(with: mediaType) : [PHAssetMediaType.audio, PHAssetMediaType.video, PHAssetMediaType.image].reduce(0, { $0 + fetchResult.countOfAssets(with: $1) })
-            }
+            view.count = assets.count
             return view
         }
         return UICollectionReusableView()

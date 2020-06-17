@@ -44,7 +44,7 @@ extension ZVideoSinglePickerHostController {
 
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
 
-        let asset = fetchResult.object(at: indexPath.item)
+        let asset = assets[indexPath.item]
 
         if let maxVideoDurationInSecond = maxVideoDurationInSecond, asset.duration > TimeInterval(maxVideoDurationInSecond) {
             delegate?.videoSinglePickerHostController(self, didForbidSelectionDuration: asset.duration)
@@ -68,7 +68,7 @@ extension ZVideoSinglePickerHostController {
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let asset = fetchResult.object(at: indexPath.item)
+        let asset = assets[indexPath.item]
 
         let options = PHVideoRequestOptions()
         options.isNetworkAccessAllowed = true // 默认为false，会导致iCloud的照片无法下载

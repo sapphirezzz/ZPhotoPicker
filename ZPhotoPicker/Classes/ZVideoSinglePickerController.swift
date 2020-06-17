@@ -31,6 +31,7 @@ class ZVideoSinglePickerController: UINavigationController {
         self.cancelledHandler = cancelledHandler
         self.selectionDurationForbidHandler = selectionDurationForbidHandler
         vc.albumListdelegate = self
+        vc.mediaType = .video
         self.pushZVideoSinglePickerHostController()
     }
 }

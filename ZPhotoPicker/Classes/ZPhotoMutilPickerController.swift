@@ -34,6 +34,7 @@ class ZPhotoMutilPickerController: UINavigationController {
         self.imagesPickedHandler = imagesPickedHandler
         self.cancelledHandler = cancelledHandler
         vc.albumListdelegate = self
+        vc.mediaType = .image
         pushZPhotoMutilPickerHostController()
     }
 
