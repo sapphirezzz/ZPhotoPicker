@@ -40,7 +40,7 @@ public class ZPhotoPicker {
             ZPhotoSinglePickerController.pickPhoto(onPresentingViewController: controller, allowsCropping: allowsCropping, imagePickedHandler: imagePickedHandler ?? { _ in}, cancelledHandler: cancelledHandler, userInterfaceStyle: userInterfaceStyle)
                 
         case let .singleVideo(maxVideoDurationInSecond, minVideoDurationInSecond):
-            ZVideoSinglePickerController.pickVideo(onPresentingViewController: controller, maxVideoDurationInSecond: maxVideoDurationInSecond, minVideoDurationInSecond: minVideoDurationInSecond, videoPickedHandler: videoPickedHandler ?? { _ in}, cancelledHandler: cancelledHandler, userInterfaceStyle: userInterfaceStyle)
+            ZVideoSinglePickerController.pickVideo(onPresentingViewController: controller, maxVideoDurationInSecond: maxVideoDurationInSecond, minVideoDurationInSecond: minVideoDurationInSecond, videoPickedHandler: videoPickedHandler ?? { _ in}, selectionDurationForbidHandler: selectionDurationForbidHandler, cancelledHandler: cancelledHandler, userInterfaceStyle: userInterfaceStyle)
             
         case let .multiPhotoes(maxCount):
             
@@ -73,7 +73,7 @@ public class ZPhotoPicker {
             ZPhotoSinglePickerController.pickPhoto(onPresentingViewController: controller, allowsCropping: allowsCropping, imagePickedHandler: imagePickedHandler ?? { _ in}, cancelledHandler: cancelledHandler)
                 
         case let .singleVideo(maxVideoDurationInSecond, minVideoDurationInSecond):
-            ZVideoSinglePickerController.pickVideo(onPresentingViewController: controller, maxVideoDurationInSecond: maxVideoDurationInSecond, minVideoDurationInSecond: minVideoDurationInSecond, videoPickedHandler: videoPickedHandler ?? { _ in}, cancelledHandler: cancelledHandler)
+            ZVideoSinglePickerController.pickVideo(onPresentingViewController: controller, maxVideoDurationInSecond: maxVideoDurationInSecond, minVideoDurationInSecond: minVideoDurationInSecond, videoPickedHandler: videoPickedHandler ?? { _ in}, cancelledHandler: cancelledHandler, selectionDurationForbidHandler: selectionDurationForbidHandler)
 
         case let .multiPhotoes(maxCount):
             
