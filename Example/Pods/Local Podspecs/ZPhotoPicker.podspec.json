@@ -1,6 +1,6 @@
 {
   "name": "ZPhotoPicker",
-  "version": "3.0.15",
+  "version": "3.0.16",
   "summary": "A short description of ZPhotoPicker.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/sapphirezzz/ZPhotoPicker",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/sapphirezzz/ZPhotoPicker.git",
-    "tag": "3.0.15"
+    "tag": "3.0.16"
   },
   "social_media_url": "https://zackzheng.info",
   "platforms": {
