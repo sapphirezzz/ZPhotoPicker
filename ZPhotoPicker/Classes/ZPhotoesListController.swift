@@ -127,7 +127,7 @@ private extension ZPhotoesListController {
                     return PHAsset.fetchAssets(with: allPhotosOptions)
                 }
             }()
-            assets = fetchResult.objects(at: IndexSet(integersIn: 0...fetchResult.count-1))
+            assets = fetchResult.count == 0 ? [] : fetchResult.objects(at: IndexSet(integersIn: 0...fetchResult.count - 1))
         }
 
         DispatchQueue.main.sync {

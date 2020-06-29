@@ -70,7 +70,7 @@ private extension ZPhotoAlbumListController {
             if assetsFetchResult.count > 0, let localizedTitle = collection.localizedTitle {
                 
                 let title = convertTitle(fromEnglish: localizedTitle)
-                let totalAssets = assetsFetchResult.objects(at: IndexSet(integersIn: 0...assetsFetchResult.count-1))
+                let totalAssets = assetsFetchResult.objects(at: IndexSet(integersIn: 0...assetsFetchResult.count - 1))
                 let assets = mediaType == .unknown ? totalAssets : totalAssets.filter({ $0.mediaType == mediaType})
                 if assets.count > 0 {
                     let album = AlbumItem(title: title, count: assets.count, assets: assets)
