@@ -1,5 +1,5 @@
 PODS:
-  - ZPhotoPicker (3.0.18)
+  - ZPhotoPicker (3.0.20)
 
 DEPENDENCIES:
   - ZPhotoPicker (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ZPhotoPicker: 633c854d6a4849cb882d8176802db6eed2d46285
+  ZPhotoPicker: 1daaa5721dc60f92b05b436dfec8db068692f6df
 
 PODFILE CHECKSUM: 8296adc76642b50c8369d5db18d18a804b891cec
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.11.3

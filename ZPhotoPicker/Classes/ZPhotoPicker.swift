@@ -9,6 +9,8 @@ import Photos
 
 public class ZPhotoPicker {
 
+    public static var themeColor: UIColor = UIColor.blue
+    
     public enum PhotoPickType {
 
         case camera(allowsCropping: Bool)

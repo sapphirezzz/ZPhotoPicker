@@ -50,15 +50,26 @@ class PhotoPickerImageCell: UICollectionViewCell {
         }
 
         if let index = index, self.isSelected {
-            let checkedImage: UIImage = UIImage(named: "image_checked", in: Bundle(for: ZPhotoPicker.self), compatibleWith: nil)!
-            checkedImage.draw(at: CGPoint(x: viewWidth - checkedImage.size.width, y: 0))
+            let checkedSideLength: CGFloat = 25
             
+            let rect = CGRect(origin: CGPoint(x: viewWidth - checkedSideLength, y: 0), size: CGSize(width: checkedSideLength, height: checkedSideLength))
+            let contextRef = UIGraphicsGetCurrentContext()!
+            ZPhotoPicker.themeColor.set()
+            contextRef.fillEllipse(in: rect)
+            UIColor.white.set()
+            contextRef.addEllipse(in: rect)
+            contextRef.strokePath()
+
             let indexLabel = UILabel()
+            indexLabel.backgroundColor = UIColor.red
+            indexLabel.layer.cornerRadius = checkedSideLength / 2
+            indexLabel.layer.borderWidth = 1
+            indexLabel.layer.borderColor = UIColor.white.cgColor
             indexLabel.textAlignment = .center
             indexLabel.textColor = .white
             indexLabel.font = .systemFont(ofSize: 13)
             indexLabel.text = "\(index)"
-            indexLabel.drawText(in: CGRect.init(x: viewWidth - checkedImage.size.width, y: 0, width: checkedImage.size.width, height: checkedImage.size.height))
+            indexLabel.drawText(in: CGRect(x: viewWidth - checkedSideLength, y: 0, width: checkedSideLength, height: checkedSideLength))
         }
 
         if videoDuration > 0 {
