@@ -24,7 +24,7 @@ class PhotoPickerSelectedCountView: UIView {
 
         let view = UIButton(type: .custom)
         view.backgroundColor = .clear
-        view.setTitle("完成", for: .normal)
+        view.setTitle("done".locale, for: .normal)
         view.setTitleColor(ZPhotoPicker.themeColor, for: .normal)
         return view
     }()

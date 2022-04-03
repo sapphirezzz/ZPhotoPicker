@@ -89,8 +89,17 @@ public class ZPhotoPicker {
 
     private class func alertUnsupportTypeError(onViewController controller: UIViewController) {
 
-        let alertVC = UIAlertController(title: "不支持的方式", message: "该设备不支持以该方式选取图片~", preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "知道了", style: .default, handler: nil))
+        let alertVC = UIAlertController(title: "notSupported".locale, message: "notSupportedByThisDevice".locale, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "know".locale, style: .default, handler: nil))
         controller.present(alertVC, animated: true, completion: nil)
+    }
+}
+
+extension String{
+
+    class NoUse {}
+    var locale: String {
+        let msg = NSLocalizedString(self, tableName: nil, bundle: Bundle(for: ZPhotoPicker.self), value: "", comment: "")
+        return msg
     }
 }

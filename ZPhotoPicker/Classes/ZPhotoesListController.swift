@@ -26,10 +26,7 @@ class ZPhotoesListController: UICollectionViewController {
         view.textColor = UIColor(red: 51.0 / 255, green: 51.0 / 255, blue: 51.0 / 255, alpha: 1)
         view.font = UIFont.systemFont(ofSize: 15.0)
         view.numberOfLines = 0
-        view.text = """
-        请在iPhone的“设置-隐私-照片”选项中,
-        允许该应用访问你的手机相册。
-        """
+        view.text = "authorizeOnSettings".locale
         return view
     }()
 
@@ -37,8 +34,9 @@ class ZPhotoesListController: UICollectionViewController {
         
         super.viewDidLoad()
 
-        navigationItem.title = selectedAlbum?.title ?? "所有照片"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(ZPhotoesListController.clickCancelButton))
+        navigationItem.title = selectedAlbum?.title ?? "allPhotos".locale
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "cancel".locale, style: .plain, target: self, action: #selector(ZPhotoesListController.clickCancelButton))
+        navigationController?.navigationBar.tintColor = ZPhotoPicker.themeColor
 
         collectionView?.backgroundColor = UIColor.white
         collectionView?.register(PhotoPickerTakePhotoCell.self, forCellWithReuseIdentifier: "PhotoPickerTakePhotoCell")
@@ -99,8 +97,8 @@ internal extension ZPhotoesListController {
     
     func alertGetImageError() {
 
-        let alertVC = UIAlertController(title: "获取照片失败", message: "从iCloud获取照片失败，请重新尝试~", preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "知道了", style: .default, handler: nil))
+        let alertVC = UIAlertController(title: "failedToFetchPhoto".locale, message: "failedToFetchPhotoFromICloud".locale, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "know".locale, style: .default, handler: nil))
         self.present(alertVC, animated: true, completion: nil)
     }
 }

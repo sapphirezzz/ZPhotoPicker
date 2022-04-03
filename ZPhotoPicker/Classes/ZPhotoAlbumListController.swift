@@ -17,8 +17,9 @@ class ZPhotoAlbumListController: UITableViewController {
 
         super.viewDidLoad()
         
-        title = "相册列表"
-        let cancelButton = UIBarButtonItem.init(title: "取消", style: .done, target: self, action: #selector(ZPhotoAlbumListController.clickCancelButton(sender:)))
+        title = "albumList".locale
+        let cancelButton = UIBarButtonItem(title: "cancel".locale, style: .plain, target: self, action: #selector(ZPhotoAlbumListController.clickCancelButton(sender:)))
+        cancelButton.tintColor = ZPhotoPicker.themeColor
         navigationItem.setRightBarButton(cancelButton, animated: false)
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "AlumTableViewCell")
@@ -81,39 +82,41 @@ private extension ZPhotoAlbumListController {
     }
     
     private func convertTitle(fromEnglish title: String) -> String {
-
+        
         switch title {
             
         case "Favorites":
-            return "个人收藏"
+            return "favorites".locale
         case "Panoramas":
-            return "个人收藏"
+            return "panoramas".locale
         case "Camera Roll":
-            return "相机胶卷"
+            return "cameraRoll".locale
         case "Slo-mo":
-            return "慢动作"
+            return "sloMo".locale
         case "Screenshots":
-            return "屏幕快照"
+            return "screenshots".locale
         case "Bursts":
-            return "全景照片"
+            return "bursts".locale
 //        case "Videos":
 //            return "视频"
         case "Selfies":
-            return "自拍"
+            return "selfies".locale
         case "Hidden":
-            return "隐藏照片"
+            return "hidden".locale
 //        case "Time-lapse":
 //            return "延时视频"
         case "Recently Added":
-            return "最近添加"
+            return "recentlyAdded".locale
 //        case "Long Exposure":
 //        case "Animated":
 //        case "Live Photos":
 //        case "Portrait":
         case "Recently Deleted":
-            return "最近删除"
+            return "recentlyDeleted".locale
         case "All Photos":
-            return "所有照片"
+            return "allPhotos".locale
+        case "Recents":
+            return "recents".locale
         default:
             return title
         }

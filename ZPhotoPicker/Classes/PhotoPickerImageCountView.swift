@@ -40,7 +40,7 @@ class PhotoPickerImageCountView: UICollectionReusableView {
     
     var count: Int = 0 {
         didSet {
-            label.text = "\(count) 张照片"
+            label.text = "\(count) \("photos".locale)"
         }
     }
 }

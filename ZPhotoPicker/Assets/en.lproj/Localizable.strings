@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  Pods
+
+  Created by zackzheng on 2022/4/3.
+  
+*/
+cancel="Cancel";
+done="Done";
+allPhotos="All Photos";
+photos="photos";
+uploadingPhotos="Upload photos...";
+albumList="Album List";
+
+favorites="Favorites";
+panoramas="Panoramas";
+cameraRoll="Camera Roll";
+sloMo="Slo-mo";
+screenshots="Screenshots";
+bursts="Bursts";
+selfies="Selfies";
+hidden="Hidden";
+recentlyAdded="Recently Added";
+recentlyDeleted="Recently Deleted";
+recents="Recents";
+know="OK";
+notSupported="Not supported";
+notSupportedByThisDevice="Not supported by this device";
+failedToFetchPhoto="Failed to fetch photo.";
+failedToFetchPhotoFromICloud="Failed to fetch photo from iCloud，please try later.";
+authorizeOnSettings="Please authorize to visit your album on settings.";

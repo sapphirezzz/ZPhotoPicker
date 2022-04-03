@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  Pods
+
+  Created by zackzheng on 2022/4/3.
+  
+*/
+cancel="取消";
+done="完成";
+allPhotos="所有照片";
+photos="张照片";
+uploadingPhotos="正在上传图片";
+albumList="照片列表";
+
+favorites="个人收藏";
+panoramas="个人收藏";
+cameraRoll="相机胶卷";
+sloMo="慢动作";
+screenshots="屏幕快照";
+bursts="全景照片";
+selfies="自拍";
+hidden="隐藏照片";
+recentlyAdded="最近添加";
+recentlyDeleted="最近删除";
+recents="最近";
+know="知道了";
+notSupported="不支持";
+notSupportedByThisDevice="该设备不支持以该方式选取图片";
+failedToFetchPhoto="获取照片失败";
+failedToFetchPhotoFromICloud="从iCloud获取照片失败，请重新尝试";
+authorizeOnSettings="请在iPhone的“设置-隐私-照片”选项中,\n允许该应用访问你的手机相册。";
